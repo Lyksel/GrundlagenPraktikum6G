@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1745759690.47079 "c:/Users/Lukas/ownCloud/Universität/4-Semester/GrundlagenPraktkum6G/meinTemplate/Thesis.tex" "Thesis.pdf" "Thesis" 1745759692.07804 0
+["pdflatex"] 1745930608.46362 "c:/Users/Lukas/Datein/Universität/GrundlagenPraktikum6G/meinTemplate/Thesis.tex" "Thesis.pdf" "Thesis" 1745930610.10589 0
   "C:/Users/Lukas/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1745754657 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Lukas/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1745746576 13148213 fd944e9cc043cc46532b05ec6bd502b2 ""
   "C:/Users/Lukas/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -113,14 +113,14 @@
   "Chapter/Literaturverzeichnis.tex" 1745759657 38 8ce27a0d2f132c4f6084c631115ca275 ""
   "Chapter/TheoretischeGrundlagen.tex" 1745759180 131 6a55f5bdf7480fb398622ce4f5d62fba ""
   "Chapter/Versuchsaufbau.tex" 1745759258 72 d095bc91444e049dbbca8912d52e836d ""
-  "ILH.jpg" 1745747897 8093 da524357aff59a0d8737fab9892d1def ""
-  "Thesis.aux" 1745759691 4045 89f55e413a30f0854795173ee24ac3e1 "pdflatex"
+  "Pictures/ILH.jpg" 1745747897 8093 da524357aff59a0d8737fab9892d1def ""
+  "Pictures/UST.jpg" 1745747898 108134 d9e5beecc248129df6cc3754d469ff83 ""
+  "Thesis.aux" 1745930609 4045 89f55e413a30f0854795173ee24ac3e1 "pdflatex"
   "Thesis.cls" 1745747897 11909 8b59eeb4be985573c6f5832ea73ccd6e ""
-  "Thesis.out" 1745759691 5026 d88a041df788f1c1392933feb36f29b6 "pdflatex"
-  "Thesis.tex" 1745759687 5392 5bd622e4ffb5fea3bdf6924098a8b34c ""
-  "Thesis.toc" 1745759691 2167 1bbee9c052b4a149e9f09ef68ba299d8 "pdflatex"
-  "UST.jpg" 1745747898 108134 d9e5beecc248129df6cc3754d469ff83 ""
-  "c:/Users/Lukas/ownCloud/Universität/4-Semester/GrundlagenPraktkum6G/meinTemplate/Thesis.tex" 1745759687 5392 5bd622e4ffb5fea3bdf6924098a8b34c ""
+  "Thesis.out" 1745930609 5026 d88a041df788f1c1392933feb36f29b6 "pdflatex"
+  "Thesis.tex" 1745930607 5409 d3a026de7b8a8ab3a8c2fa26e97856c5 ""
+  "Thesis.toc" 1745930609 2167 1bbee9c052b4a149e9f09ef68ba299d8 "pdflatex"
+  "c:/Users/Lukas/Datein/Universität/GrundlagenPraktikum6G/meinTemplate/Thesis.tex" 1745930607 5409 d3a026de7b8a8ab3a8c2fa26e97856c5 ""
   (generated)
   "Thesis.aux"
   "Thesis.log"

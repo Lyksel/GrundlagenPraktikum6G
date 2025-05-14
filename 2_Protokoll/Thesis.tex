@@ -2,6 +2,8 @@
 %% Thesis.tex -- MAIN FILE (the one that you compile with LaTeX)
 %% ---------------------------------------------------------------- 
 
+
+
 % Set up the document
 \documentclass[a4paper, 11pt, oneside]{Thesis}  % Use the "Thesis" style, based on the ECS Thesis style by Steve Gunn
 %\graphicspath{Figures/}  % Location of the graphics files (set up for graphics to be in PDF format)
@@ -11,10 +13,18 @@
 \usepackage{verbatim}  % Needed for the "comment" environment to make LaTeX comments
 \usepackage{vector}  % Allows "\bvec{}" and "\buvec{}" for "blackboard" style bold vectors in maths
 \usepackage{graphicx} 
+\usepackage[acronym]{glossaries}
+\usepackage{pdfpages}
+\makeglossaries
+\usepackage{acronym} % Required for the acronym environment
 \hypersetup{urlcolor=blue, colorlinks=true}  % Colours hyperlinks in blue, but this can be distracting if there are many links.
 %
 \pagestyle{fancy}
 \fancyhf{}  % Alle Kopfzeilen löschen
+%% ----------------------------------------------------------------
+\renewcommand{\chaptername}{Kapitel}
+\renewcommand{\tablename}{Tabelle}
+\renewcommand{\figurename}{Abbildung}
 %% ----------------------------------------------------------------
 \begin{document}
 \begin{titlepage}
@@ -52,16 +62,16 @@
 %----------------------------------------------------------------------------------------
 
 \HRule \\[0.4cm]
-{ \huge \bfseries Versuch 1: Drahtlose Übertragungen und Link-Budget}\\[0.4cm] % Title of your document
+{ \huge \bfseries Versuch 2: Auslegung eines HF-Verstärkers}\\[0.4cm] % Title of your document
 \HRule \\[1.5cm]
  
 %----------------------------------------------------------------------------------------
 %	AUTHOR SECTION
 %----------------------------------------------------------------------------------------
-\textbf{Protokollanten}\\
-{\large\ Lukas Müller}\\[0.5cm]
-{\large\ Erik Zimmerman}\\[0.2cm]
-{\large\ Farhad Valizada}\\[0.2cm]
+\textbf{Protokollführer}\\
+{\large\ Lukas Müller}\\[0.2cm]
+{\large\ Erik Zimmermann}\\[0.2cm]
+{\large\ Farhad Valizada}\\[0.7cm]
 
 \textbf{Betreuer}\\
 {\large\ Simon Haussmann}\\[0.2cm]
@@ -72,7 +82,8 @@
 %	DATE SECTION
 %----------------------------------------------------------------------------------------
 \textbf{Eingereicht}\\
-{\large \today} % Date, change the \today to a set date if you want to be precise
+{\large \today} % Hier bitte am Tag der Abgabe das Datum eintragen
+\\[0.2cm]
 
  
 %----------------------------------------------------------------------------------------
@@ -112,6 +123,16 @@
 \tableofcontents
 \newpage
 
+\chapter*{Abkürzungsverzeichnis}
+\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+\begin{acronym}[XXXXXX] % Adjust the width of the longest acronym
+    \acro{ADS}{Advanced Design System}
+    \acro{HF}{Hochfrequenz}
+    \acro{6G}{Sixth Generation}
+    \acro{SMA}{SubMiniature version A}
+    \acro{PCB}{Printed Circuit Board}
+\end{acronym}
+
 \chapter{Einleitung}
 \input{Chapter/Einleitung}
 
@@ -125,10 +146,7 @@
 \chapter{Technische Umsetzung}
 \input{Chapter/Technische_Umsetzung}
 
-\chapter{Ergebnisse}
-\input{Chapter/Ergebnisse}
-
-\chapter{Diskussion}
+\chapter{Diskussion der Ergebnisse} %Diskussion über die Qualität der Ergebnisse
 \input{Chapter/Diskussion}
 
 \chapter{Fazit}

@@ -6,3 +6,7 @@
 *.out
 *.synctex.gz
 *.toc
+*.acn
+*.glo
+*.ist
+Thesis.pdf

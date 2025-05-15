@@ -1,18 +1,36 @@
-
 \section{Inbetriebnahme von Keysight Advanced Design System (ADS)}
 \subsection{Installation von ADS}
 Die Software \ac{ADS} dient zur Simulation von Schaltungen verschiedener Komplexitätsgrade. 
 In diesem Versuch wird die Software verwendet, um eine Hochfrequenzschaltung zu simulieren und zu analysieren. 
 Die Software bietet eine Vielzahl von Funktionen, darunter die Möglichkeit, Schaltungen zu entwerfen, S-Parameter zu simulieren und verschiedene Analysewerkzeuge zu verwenden.
-\section{DC-Simulation}
+
 \subsection{Erstellen eines neuen Projekts}
 Die Software ist auf den Rechnern im Labor bereits installiert gewesen. 
 Nach dem Start der Software wird ein neues Projekt aus den bereits zur Verfügung stehenden Workspaces erstellt. 
 Diese sind auf der ILIAS-Seite des Praktikums in dem Dateiarchiv \texttt{TransmitterAmpDesign 2024.zip} hinterlegt. 
 Die Datei wird entpackt und in der Software geöffnet. Außerdem werden die benötigten Bibliotheken aus dem Dateiarchiv \texttt{Infineon-RFTransistor-Keysight ADS Design Kit-SM-v02 10-EN.zip} geladen, diese stehen ebenfalls auf der ILIAS-Seite zur Verfügung.
+\subsection{Vertrautmachen mit der Benutzeroberfläche}
+Schließlich werden die Tutorials 1 und 2 von \ac{ADS} durchgearbeitet, um sich mit der Benutzeroberfläche und den grundlegenden Funktionen der Software vertraut zu machen.
+Am Anfang der Schaltungsanalyse wird das Schema \texttt{TX\_Amp.dds} geöffnet.
+
 \section{Analyse des Datenblattes zu Transistor BFR181W}
-Die maximal zulässige Kollektorstrom $I_{C,\mathrm{max}}$ beträgt 20\,mA.
-\section{S-Parameter Simulation}
+Um die Schaltung zu simulieren, wird der Transistor BFR181W verwendet. Um die genauen Parameter des Transistors zu kennen, wird das Datenblatt des Transistors analysiert.
+Dieses steht auch auf der ILIAS-Seite des Praktikums zur Verfügung.
+
+Die Tabelle \enquote{Maximum Ratings at $T_\mathrm{A}=25\,^\circ\mathrm{C}$, unless otherwise specified} unten links auf Seite 1 des Dokuments zeigt, dass der maximal zulässige Kollektorstrom $I_{C,\mathrm{max}}$ 20\,mA beträgt.
+\section{DC-Simulation}
+Im folgendem wird eine DC-Simulation der später aufzubauenden Schaltung durchgeführt. 
+Außerdem werden die Arbeitspunkte optimal durch die Anpassung der Widerstandswerte eingestellt.
+Die DC-Simulation wird in \ac{ADS} durchgeführt, um die DC-Pegel der Schaltung zu überprüfen.
+
+Folgende Spannungswerte werden angenommen:
+\begin{itemize}
+    \item $V_{CC} = 4.8\,\mathrm{V}$
+    \item $V_{BE} = 0.77\,\mathrm{V}$
+\end{itemize}
+
+Der Kollektorwiderstand $R_5$ wird auf 330\,$\Omega$ eingestellt, um den Kollektorstrom $I_C$ auf 10\,mA zu setzen.
+\section{S-Parameter-Simulation}
 
 blabla
 \clearpage

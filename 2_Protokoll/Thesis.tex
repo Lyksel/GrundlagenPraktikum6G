@@ -19,11 +19,10 @@
 \usepackage{amsmath}  % Required for the \text command in maths mode
 \hypersetup{urlcolor=blue, colorlinks=true}  % Colours hyperlinks in blue, but this can be distracting if there are many links.
 %
-\pagestyle{fancy}
-\fancyhf{}  % Alle Kopfzeilen löschen
 %% ----------------------------------------------------------------
 \renewcommand{\chaptername}{Kapitel}
 \renewcommand{\tablename}{Tabelle}
+\renewcommand{\bibname}{Literaturverzeichnis}
 \renewcommand{\figurename}{Abbildung}
 %% ----------------------------------------------------------------
 \begin{document}
@@ -92,9 +91,18 @@
 
 \end{titlepage}
 
+\clearpage
 
-%\vfill\vfill\vfill\vfill\vfill\vfill\null
-\clearpage  % Funny Quote page ended, start a new page
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage} % Seitenzahl unten zentriert
+\renewcommand{\headrulewidth}{0pt}
+
+% Ensure every chapter resets the pagestyle to fancy
+\let\oldchapter\chapter
+\renewcommand{\chapter}{\clearpage\pagestyle{fancy}\oldchapter}
+
 %% ----------------------------------------------------------------
 
 % The Abstract Page
@@ -152,14 +160,9 @@
 \chapter{Fazit(Jeder)}
 \input{Chapter/Fazit}
 
-\chapter{Literaturverzeichnis}
-\input{Chapter/Literaturverzeichnis}
-
-
-
-
-
-
+\renewcommand{\bibname}{Literaturverzeichnis}
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\input{Chapter/literaturverzeichnis}
 
 \end{document}  % The End
 %% ----------------------------------------------------------------

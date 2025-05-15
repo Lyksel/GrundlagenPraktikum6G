@@ -25,11 +25,19 @@ Die DC-Simulation wird in \ac{ADS} durchgeführt, um die DC-Pegel der Schaltung 
 
 Folgende Spannungswerte werden angenommen:
 \begin{itemize}
-    \item $V_{CC} = 4.8\,\mathrm{V}$
-    \item $V_{BE} = 0.77\,\mathrm{V}$
+    \item $U_{CC} = 4.8\,\mathrm{V}$
+    \item $U_{BE} = 0.77\,\mathrm{V}$
 \end{itemize}
 
-Der Kollektorwiderstand $R_5$ wird auf 330\,$\Omega$ eingestellt, um den Kollektorstrom $I_C$ auf 10\,mA zu setzen.
+Zuerst wird der Kollektorwiderstand $R_5$ passend gewählt, sodass der Kollektorstrom $I_C$ auf $75\,\%$ des maximal zulässigen Kollektorstroms $I_{C,\mathrm{max}}$ gesetzt wird. 
+Dies geschieht, indem der Widerstandswert $R_5$ so gewählt wird, dass der Kollektorstrom $I_C$ 15\,mA beträgt.
+Der Widerstandswert $R_5$ wird mit folgender Formel berechnet:
+\begin{equation}
+    R_5 = \frac{U_{CC} - U_{CE}}{I_C} = \frac{4.8\,\mathrm{V} - 0.77\,\mathrm{V}}{15\,\mathrm{mA}} = 274.67\,\Omega
+\end{equation}
+
+Bei der Verwendung der E12-Reihe wird eine Faustregel verwendet, nach der man die Widerstandswerte auf die nächstgelegene E12-Reihe aufrundet. 
+Somit beträgt der Widerstandswert von $R_5$ 330\,\(\Omega\). Dadurch wird der in den Kollektor eingehende Strom beschränkt, was eine Überlastung des Transistors im Dauerbetrieb vorbeugt.
 \section{S-Parameter-Simulation}
 
 blabla

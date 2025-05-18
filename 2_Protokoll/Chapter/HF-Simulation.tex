@@ -29,7 +29,8 @@ Die Tabelle \enquote{Maximum Ratings at $T_\mathrm{A}=25\,^\circ\mathrm{C}$, unl
 Im folgendem wird eine DC-Simulation der später aufzubauenden Schaltung durchgeführt. 
 Außerdem werden die Arbeitspunkte optimal durch die Anpassung der Widerstandswerte eingestellt.
 Die DC-Simulation wird in \ac{ADS} durchgeführt, um die DC-Pegel der Schaltung zu überprüfen.
-
+\clearpage
+\subsection{Dimensionierung des Kollektorwiderstandes}
 Folgende Spannungswerte werden angenommen:
 \begin{itemize}
     \item $U_{CC} = 4.8\,\mathrm{V}$
@@ -44,9 +45,22 @@ Der Widerstandswert $R_5$ wird mit folgender Formel berechnet:
 \end{equation}
 
 Bei der Verwendung der E12-Reihe wird eine Faustregel verwendet, nach der man die Widerstandswerte auf die nächstgelegene E12-Reihe aufrundet. 
-Somit beträgt der Widerstandswert von $R_5$ 330\,\(\Omega\). Dadurch wird der in den Kollektor eingehende Strom beschränkt, was eine Überlastung des Transistors im Dauerbetrieb vorbeugt. Bei der Wahl eines niedrigeren Widerstandswertes würde der Kollektorstrom $I_C$ den maximalen Kollektorstrom $I_{C,\mathrm{max}}$ überschreiten, was zu einer Überlastung des Transistors führen würde.
+Somit beträgt der errechnete Widerstandswert von $R_5$ 330\,\(\Omega\). Dadurch wird der in den Kollektor eingehende Strom beschränkt, was eine Überlastung des Transistors im Dauerbetrieb vorbeugt. Bei der Wahl eines niedrigeren Widerstandswertes würde der Kollektorstrom $I_C$ den maximalen Kollektorstrom $I_{C,\mathrm{max}}$ überschreiten, was zu einer Überlastung des Transistors führen würde.
 
-\subsection*{Dimensionierung des Basis-Spannungsteilers}
+Dieses Ergebnis lässt sich anhand der Simulation in \ac{ADS} verifizieren. Es wird ein Sweep des Kollektorwiderstandes $R_5$ in der Spanne von 100\,\(\Omega\) bis 4,7\,k\(\Omega\) durchgeführt.
+Es ergibt sich der folgende Verlauf des Kollektorstroms $I_C$ in Abhängigkeit des Kollektorwiderstandes $R_5$:
+\begin{figure}[H] % Fix: [H] erzwingt die Platzierung genau hier
+    \centering
+    \includegraphics[width=0.7\textwidth]{Pictures/RCollector.png}
+    \caption{Verlauf des Kollektorstroms $I_C$ in Abhängigkeit des Kollektorwiderstandes $R_5$.}
+    \label{fig:RCollector}
+\end{figure}
+
+Aus der Abbildung \ref{fig:RCollector} ist zu erkennen, dass der Kollektorstrom $I_C$ mit steigendem Kollektorwiderstand $R_5$ abnimmt. Mit dem Marker m1 wird außerdem
+gezeigt, dass der Kollektorstrom $I_C$ bei einem Widerstandswert von 317,416\,\(\Omega\) einen Wert von 15\,mA erreicht. Es wird der nächstgrößere Widerstandswert der E12-Reihe gewählt, also 330\,\(\Omega\).
+Die Ergebnisse der Rechnung wurden also somit bestätigt.
+
+\subsection{Dimensionierung des Basis-Spannungsteilers}
 
 Um einen Arbeitspunkt mit $I_C \approx 10\,\mathrm{mA}$ zu erreichen, wird der Basis-Spannungsteiler dimensioniert. Die Basis-Emitter-Spannung beträgt $U_{BE} \approx 0{,}7\,\mathrm{V}$. Der Emitterwiderstand wird hier vernachlässigt.
 
@@ -87,13 +101,33 @@ Damit ist der Spannungsteiler dimensioniert, sodass im Arbeitspunkt ein Kollekto
 \section{S-Parameter-Simulation}
 Schließlich wird die S-Parameter-Simulation durchgeführt. Diese ist wichtig, um einen angemessenen Gain bei der Übertragung zu gewährleisten.
 Die S-Parameter-Simulation wird in \ac{ADS} nach folgenden Schritten durchgeführt:
-\begin{itemize}
-    \item Im ADS-Model wird die Kommentierung des S-Parameter-Controllers aufgehoben, also die S-Parameter-Einstellung wird aktiviert. 
-    \item Da jetzt die DC-Simulatiom überflüssig ist, wird diese deaktiviert.
+\begin{enumerate}
+    \item Im ADS-Model wird die Kommentierung des S-Parameter-Controllers aufgehoben, also die S-Parameter-Einstellung wird aktiviert.
+    \item Da jetzt die DC-Simulation überflüssig ist, wird diese deaktiviert.
     \item Vor der Simulation wird die Schrittweite des S-Parameter-Controllers auf 250 MHz gesetzt, sodass man die Qualität des Frequenz-Sweeps verbessert.
     \includegraphics[height=0.7cm]{Pictures/simulate.png}
-    \item Nach der Simulation wird das Ergebnis in einem neuen Fenster angezeigt. Hier wählt man die Schaltfläche \enquote{Insert A New Marker} aus \includegraphics[height=0.5cm]{Pictures/marker.png}.
-    Wir setzen den Marker auf den Punkt unserer Arbeitsfrequenz, also bei 1{,}25 GHz.
-    \item Es wird
-\end{itemize}
+    \item Nach der Simulation wird das Ergebnis in einem neuen Fenster angezeigt. Es ergibt sich der folgende Verlauf des Gains für verschiedene Frequenzen:
+    
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.7\textwidth]{Pictures/SParameter.png}
+            \caption{Ergebnisse der S-Parameter-Simulation.}
+            \label{fig:SParameter}
+        \end{figure}
+    
+    Hier wählt man die Schaltfläche \enquote{Insert A New Marker} aus \includegraphics[height=0.5cm]{Pictures/marker.png}.
+    Wir setzen den Marker auf den Punkt unserer Arbeitsfrequenz, also bei 1{,}25 GHz (s. Abbildung \ref{fig:SParameter}). Der Marker m1 zeigt eine \textbf{Verstärkung (Gain) von 11,266 dB} an.
+\end{enumerate}
+
+\section{Fazit}
+Zusammenfassend lässt sich sagen, dass die Simulation der Hochfrequenzschaltung mit \ac{ADS} erfolgreich durchgeführt wurde.
+Die Dimensionierung der Widerstände wurde erfolgreich durchgeführt, um einen stabilen Arbeitspunkt zu erreichen. Auch die S-Parameter-Simulation zeigte ein positives Gain von 11,266 dB bei einer Frequenz von 1{,}25 GHz.
+Die Ergebnisse der Simulation stimmen mit den theoretischen Berechnungen überein.
+Die Software \ac{ADS} erwies sich als nützliches Werkzeug zur Analyse und Simulation von Hochfrequenzschaltungen.
 \clearpage
+% Erklärung zu [h] und [H]:
+%
+% [h] ist ein "placement specifier" für Gleitobjekte (z.B. figure, table) und bedeutet "here" – also möglichst an der aktuellen Stelle im Text.
+% LaTeX kann das Objekt aber trotzdem verschieben, wenn es an dieser Stelle nicht passt.
+%
+% [H] (nur mit \usepackage{float}) erzwingt die Platzierung GENAU an der Stelle im Quelltext, ohne Ausweichmöglichkeiten.

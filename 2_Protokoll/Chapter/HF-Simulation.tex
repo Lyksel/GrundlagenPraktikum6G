@@ -98,6 +98,18 @@ Mit der E12-Reihe werden gewählt:
 \end{align*}
 
 Damit ist der Spannungsteiler dimensioniert, sodass im Arbeitspunkt ein Kollektorstrom von ca. $10\,\mathrm{mA}$ zu erwarten ist und die Simulation ein positives Gain liefert.
+
+Diese Dimensionierung wird in der Simulation mit \ac{ADS} überprüft. Beim Sweepen des Widerstandes $R_3$ in der Spanne von 100\,\(\Omega\) bis 4,7\,k\(\Omega\) und des damit verbundenen Spannungsteilers, also dadurch auch durch das Sweepen des Widerstandes $R_4$ ergibt sich der folgende Verlauf des Basisstroms $I_B$ in Abhängigkeit des Widerstandes $R_3$:
+\begin{figure}[H] % Fix: [H] erzwingt die Platzierung genau hier
+    \centering
+    \includegraphics[width=0.7\textwidth]{Pictures/RBase.png}
+    \caption{Verlauf des Basisstroms $I_B$ in Abhängigkeit des Basiswiderstandes $R_3$.}
+    \label{fig:RBase}
+\end{figure}
+Die Abbildung \ref{fig:RBase} bestätigt, dass der Basiswiderstand $R_3$ mit einem Wert von 1{,}0\,k\(\Omega\) einen Kollektortstrom $I_C$ von 10\,mA ergibt. Hierbei liest man auch ab, dass es sich ein $R_B$-Ratio von 4,243 ergibt. 
+Das bedeutet, dass der Widerstand $R_4$ einen Widerstandswert von 4{,}243\,k\(\Omega\) haben sollte. Bei der Anpassung an die E12-Reihe wird der Widerstandswert auf 4{,}7\,k\(\Omega\) gewählt. 
+Dies erfüllt die errechneten Bedingungen für die Widerstandswerte somit perfekt und bestätigt die von uns ausgewählte Dimensionierung.
+
 \section{S-Parameter-Simulation}
 Schließlich wird die S-Parameter-Simulation durchgeführt. Diese ist wichtig, um einen angemessenen Gain bei der Übertragung zu gewährleisten.
 Die S-Parameter-Simulation wird in \ac{ADS} nach folgenden Schritten durchgeführt:

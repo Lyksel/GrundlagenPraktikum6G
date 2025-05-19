@@ -4,7 +4,7 @@ Die Platine ist mit mehreren Bauteilen ausgestattet, die bis auf drei selbstdime
 bereits vollständig bestückt ist. \\
 % Auf dem Schaltplan  (R Widerstand, C Kondensator, J Stecker/Relais)% 
 \\
-Zur Erkärung von Abbx hier eine kurze Information zu den wichtigsten Abkürzungen:
+Zur Erkärung von Abbildung 4.1 hier eine kurze Information zu den wichtigsten Abkürzungen:
 \begin{itemize}
     \item R: Widerstand
     \item C: Kondensator
@@ -16,14 +16,20 @@ Zur Erkärung von Abbx hier eine kurze Information zu den wichtigsten Abkürzung
 Die wichtigsten Bauteile sind:
 %Frage: Generell wichtig oder nur für das was wir bei diesem Versuch machen? USB Buchse hier irrelevant....
 \begin{itemize}
-    \item J1: ?
-    \item J40:  ? Verbindung zu Oszillator (Taktquelle für die Schaltung) und Anschluss an den FiedFox
+    \item J1: Anschluss an den FieldFox (Ausgangssignal)
+    \item J40: Verbindung zu Oszillator (Taktquelle für die Schaltung) und Anschluss an den FiedFox (Eingangssignal)
     \item R47-49: Widerständ zur Arbeitspunkteinstellung
     \item Oszillator (XLL536C50.000000X): HF-Taktsignal
     \item Transistor (BFR181W) : ERKLÄRUNG?
     \item Operationsverstärker (U20-LMV651MG/NOPB; U21-NCX2200GW,125): ERKLÄRUNG?
     \item USB UART IC (FT232RL) : ERKLÄRUNG?
 \end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.0\textwidth]{Pictures/Bestückungsplan.jpg}
+    \caption{Bestückungsplan}
+\end{figure}
 
 
 
@@ -32,6 +38,12 @@ Die in Kapitel 3 bestimmten Widerstände werden nun im Rahmen der praktischen Um
 bereits vorbereitete Platine angebracht. Auf dem Bestückungsplan entspricht hier R47 R3 mit 1000 Ohm, R48 R4 mit 
 4700 Ohm und R49 R5 mit 330 Ohm. Bei dem Löten der drei Widerständen wird auf eine saubere und präzise Löttechnik
 geachtet um die gewollte elektrische, mechanische und HF-technische Funktion der Schaltung zu garantieren. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Pictures/Platinebestückt.jpg}
+    \caption{Bestückungsplan}
+\end{figure}
+
 
 \section{DC-Pegel Verifizieren}
 Nach dem Bestücken der Platine wird die Funktionalität der Schaltung überprüft. Hierzu wird eine Versorgungsspannung von 

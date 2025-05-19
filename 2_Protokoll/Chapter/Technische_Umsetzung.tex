@@ -77,5 +77,25 @@ Die Kalibierung wird an dem Keysight FieldFox durchgeführt. Sie erfolgt über s
 angeleitet werden. Danach ist das Gerät bereit für die Messung.
 
 \section{Vergleich zur Simulation}
-Ergebnisse SImulation Farhad vergleichen mit Notizen Farhad.
+Die Simulation wurde, wie zuvor beschrieben, mit der Sofrware Adcanced Design System (ADS) durchgeführt. In der Simulation fällt über R47 eine Spannung
+von 0,811 V, bei R48 eine Spannung von 3,989 V und bei R49 eine Spannung von 1,27 V ab. Wir überprüfen nun ob sich unsere Messung mit den simulierten Werten
+deckt.
+\\
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Widerstand} & \textbf{Simulation [V]} & \textbf{Messung [V]} \\
+        \hline
+        R47 & 0{,}811 & 0{,}809 \\
+        \hline
+        R48 & 3{,}989 & 3{,}991 \\
+        \hline
+        R49 & 1{,}27  & 1{,}26 \\
+        \hline
+    \end{tabular}
+    \caption{Vergleich von simulierten und gemessenen Spannungswerten}
+\end{table}
+
 \clearpage

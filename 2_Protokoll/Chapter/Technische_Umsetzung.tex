@@ -20,9 +20,9 @@ Die wichtigsten Bauteile sind:
     \item J40: Verbindung zu Oszillator (Taktquelle für die Schaltung) und Anschluss an den FiedFox (Eingangssignal)
     \item R47-49: Widerständ zur Arbeitspunkteinstellung
     \item Oszillator (XLL536C50.000000X): HF-Taktsignal
-    \item Transistor (BFR181W) : ERKLÄRUNG?
-    \item Operationsverstärker (U20-LMV651MG/NOPB; U21-NCX2200GW,125): ERKLÄRUNG?
-    \item USB UART IC (FT232RL) : ERKLÄRUNG?
+    \item Transistor (BFR181W) 
+    \item Operationsverstärker (U20-LMV651MG/NOPB; U21-NCX2200GW,125)
+    \item USB UART IC (FT232RL)
 \end{itemize}
 
 \begin{figure}[h]
@@ -40,7 +40,8 @@ bereits vorbereitete Platine angebracht. Auf dem Bestückungsplan entspricht hie
 geachtet um die gewollte elektrische, mechanische und HF-technische Funktion der Schaltung zu garantieren. 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{Pictures/Platinebestückt.jpg}
+    \includegraphics[width=0.54
+    \textwidth]{Pictures/Platinebestückt.jpg}
     \caption{Bestückungsplan}
 \end{figure}
 
@@ -50,8 +51,7 @@ Nach dem Bestücken der Platine wird die Funktionalität der Schaltung überprü
 4.8V angelegt um den Gleichspannungspegel an den relevanten Punkten der Schaltung zu überprüfen. Die abfallenden 
 Spannungen werden mit einem Oszilloskop gemessen. Releavnt sind die Spannungsabfälle über R47, R48 und R49. Diese gemessenen
 Spannungen werden mit den idealen Werten 
-der Simulation verglichen. Anhand der geringfügigen Abweichung der Spannungen zeigt sich, dass die Bestückung 
-der Platine erfolgreich war und die Schaltung wie gewünscht funktioniert.
+der Simulation verglichen. 
 
 \section{SOLT-Kalibrierung}
 Das Ziel der SOLT-Kalibrierung (Short, Open, Load, Through) ist die elemenierung
@@ -65,6 +65,17 @@ Dafür werden vier verschiedene Kalibrierstandards benötigt:
     \item Load (Abschluss/Last): Ein Präzisions-Abschlusswiderstand (meist 50 Ohm) wird angeschlossen. Ein idealer Abschlusswiderstand absorbiert die gesamte Leistung ohne Reflexion. Dies dient dazu, die Leistungsanpassung des Systems zu kalibrieren.
     \item Through (Durchgang): Bei einer 2-Port-Messung wird ein direkter Durchgang (ein kurzes, bekanntes Kabel oder ein Adapter) zwischen den beiden Messports des VNAs angeschlossen. Dies ermöglicht die Kalibrierung der Übertragungseigenschaften zwischen den Ports und die Korrektur von Phasen- und Amplitudenfehlern des Übertragungspfades.
 \end{itemize}
+\clearpage
+
 %(erklärung warums tut)
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.35\textwidth]{Pictures/Keysightkallibrierung.jpg}
+    \caption{Bestückungsplan}
+\end{figure}
+Die Kalibierung wird an dem Keysight FieldFox durchgeführt. Sie erfolgt über sieben Schritte die von dem Gerät 
+angeleitet werden. Danach ist das Gerät bereit für die Messung.
+
 \section{Vergleich zur Simulation}
+Ergebnisse SImulation Farhad vergleichen mit Notizen Farhad.
 \clearpage

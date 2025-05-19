@@ -1,17 +1,18 @@
 \section{Inbetriebnahme von Keysight Advanced Design System (ADS)}
 \subsection{Installation von ADS}
-Die Software \ac{ADS} dient zur Simulation von Schaltungen verschiedener Komplexitätsgrade. 
+Die Software \ac{ADS} dient zur Simulation von Schaltungen unterschiedlichen Komplexitätsgrades. 
 In diesem Versuch wird die Software verwendet, um eine Hochfrequenzschaltung zu simulieren und zu analysieren. 
-Die Software bietet eine Vielzahl von Funktionen, darunter die Möglichkeit, Schaltungen zu entwerfen, S-Parameter zu simulieren und verschiedene Analysewerkzeuge zu verwenden.
+Die Software bietet eine Vielzahl von Funktionen, darunter die Möglichkeit, Schaltungen zu entwerfen, S-Parameter zu simulieren und verschiedene Analysewerkzeuge zu nutzen.
 
 \subsection{Erstellen eines neuen Projekts}
-Die Software ist auf den Rechnern im Labor bereits installiert gewesen. 
+Die Software ist auf den Rechnern im Labor bereits installiert. 
 Nach dem Start der Software wird ein neues Projekt aus den bereits zur Verfügung stehenden Workspaces erstellt. 
-Diese sind auf der ILIAS-Seite des Praktikums in dem Dateiarchiv \texttt{TransmitterAmpDesign 2024.zip} hinterlegt. 
-Die Datei wird entpackt und in der Software geöffnet. Außerdem werden die benötigten Bibliotheken aus dem Dateiarchiv \texttt{Infineon-RFTransistor-Keysight ADS Design Kit-SM-v02 10-EN.zip} geladen, diese stehen ebenfalls auf der ILIAS-Seite zur Verfügung.
+Diese sind auf der ILIAS-Seite des Praktikums im Dateiarchiv \texttt{TransmitterAmpDesign 2024.zip} hinterlegt. 
+Die Datei wird entpackt und in der Software geöffnet. Außerdem werden die benötigten Bibliotheken aus dem Dateiarchiv \texttt{Infineon-RFTransistor-Keysight ADS Design Kit-SM-v02 10-EN.zip} geladen. Diese stehen ebenfalls auf der ILIAS-Seite zur Verfügung.
+
 \subsection{Vertrautmachen mit der Benutzeroberfläche}
 Schließlich werden die Tutorials 1 und 2 von \ac{ADS} durchgearbeitet, um sich mit der Benutzeroberfläche und den grundlegenden Funktionen der Software vertraut zu machen.
-Am Anfang der Schaltungsanalyse wird das Schema \texttt{TX\_Amp\_Bias.dds} geöffnet. Diese ist in der Abbildung \ref{fig:TX_BIAS} zu sehen.
+Zu Beginn der Schaltungsanalyse wird das Schema \texttt{TX\_Amp\_Bias.dds} geöffnet. Dieses ist in Abbildung \ref{fig:TX_BIAS} zu sehen.
 
 \begin{figure}[h]
     \centering
@@ -20,16 +21,18 @@ Am Anfang der Schaltungsanalyse wird das Schema \texttt{TX\_Amp\_Bias.dds} geöf
     \label{fig:TX_BIAS}
 \end{figure}
 
-\section{Analyse des Datenblattes zu Transistor BFR181W}
-Um die Schaltung zu simulieren, wird der Transistor BFR181W verwendet. Um die genauen Parameter des Transistors zu kennen, wird das Datenblatt des Transistors analysiert.
-Dieses steht auch auf der ILIAS-Seite des Praktikums zur Verfügung.
+\section{Analyse des Datenblattes zum Transistor BFR181W}
+Um die Schaltung zu simulieren, wird der Transistor BFR181W verwendet. Um die genauen Parameter des Transistors zu kennen, wird das Datenblatt analysiert.
+Dieses steht ebenfalls auf der ILIAS-Seite des Praktikums zur Verfügung.
 
 Die Tabelle \enquote{Maximum Ratings at $T_\mathrm{A}=25\,^\circ\mathrm{C}$, unless otherwise specified} unten links auf Seite 1 des Dokuments zeigt, dass der maximal zulässige Kollektorstrom $I_{C,\mathrm{max}}$ 20\,mA beträgt.
+
 \section{DC-Simulation}
-Im folgendem wird eine DC-Simulation der später aufzubauenden Schaltung durchgeführt. 
+Im Folgenden wird eine DC-Simulation der später aufzubauenden Schaltung durchgeführt. 
 Außerdem werden die Arbeitspunkte optimal durch die Anpassung der Widerstandswerte eingestellt.
 Die DC-Simulation wird in \ac{ADS} durchgeführt, um die DC-Pegel der Schaltung zu überprüfen.
 \clearpage
+
 \subsection{Dimensionierung des Kollektorwiderstandes}
 Folgende Spannungswerte werden angenommen:
 \begin{itemize}
@@ -37,28 +40,28 @@ Folgende Spannungswerte werden angenommen:
     \item $U_{BE} = 0.77\,\mathrm{V}$
 \end{itemize}
 
-Zuerst wird der Kollektorwiderstand $R_5$ passend gewählt, sodass der Kollektorstrom $I_C$ auf $75\,\%$ des maximal zulässigen Kollektorstroms $I_{C,\mathrm{max}}$ gesetzt wird. 
+Zuerst wird der Kollektorwiderstand $R_5$ so gewählt, dass der Kollektorstrom $I_C$ auf $75\,\%$ des maximal zulässigen Kollektorstroms $I_{C,\mathrm{max}}$ gesetzt wird. 
 Dies geschieht, indem der Widerstandswert $R_5$ so gewählt wird, dass der Kollektorstrom $I_C$ 15\,mA beträgt.
 Der Widerstandswert $R_5$ wird mit folgender Formel berechnet:
 \begin{equation}
     R_5 = \frac{U_{CC} - U_{CE}}{I_C} = \frac{4.8\,\mathrm{V}}{15\,\mathrm{mA}} = 320\,\Omega
 \end{equation}
 
-Bei der Verwendung der E12-Reihe wird eine Faustregel verwendet, nach der man die Widerstandswerte auf die nächstgelegene E12-Reihe aufrundet. 
-Somit beträgt der errechnete Widerstandswert von $R_5$ 330\,\(\Omega\). Dadurch wird der in den Kollektor eingehende Strom beschränkt, was eine Überlastung des Transistors im Dauerbetrieb vorbeugt. Bei der Wahl eines niedrigeren Widerstandswertes würde der Kollektorstrom $I_C$ den maximalen Kollektorstrom $I_{C,\mathrm{max}}$ überschreiten, was zu einer Überlastung des Transistors führen würde.
+Bei der Verwendung der E12-Reihe wird eine Faustregel angewendet, nach der man die Widerstandswerte auf die nächstgelegene E12-Reihe aufrundet. 
+Somit beträgt der errechnete Widerstandswert von $R_5$ 330\,\(\Omega\). Dadurch wird der in den Kollektor eingehende Strom begrenzt, was eine Überlastung des Transistors im Dauerbetrieb verhindert. Bei der Wahl eines niedrigeren Widerstandswertes würde der Kollektorstrom $I_C$ den maximalen Kollektorstrom $I_{C,\mathrm{max}}$ überschreiten, was zu einer Überlastung des Transistors führen würde.
 
-Dieses Ergebnis lässt sich anhand der Simulation in \ac{ADS} verifizieren. Es wird ein Sweep des Kollektorwiderstandes $R_5$ in der Spanne von 100\,\(\Omega\) bis 4,7\,k\(\Omega\) durchgeführt.
-Es ergibt sich der folgende Verlauf des Kollektorstroms $I_C$ in Abhängigkeit des Kollektorwiderstandes $R_5$:
-\begin{figure}[H] % Fix: [H] erzwingt die Platzierung genau hier
+Dieses Ergebnis lässt sich anhand der Simulation in \ac{ADS} verifizieren. Es wird ein Sweep des Kollektorwiderstandes $R_5$ im Bereich von 100\,\(\Omega\) bis 4,7\,k\(\Omega\) durchgeführt.
+Es ergibt sich folgender Verlauf des Kollektorstroms $I_C$ in Abhängigkeit des Kollektorwiderstandes $R_5$:
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{Pictures/RCollector.png}
     \caption{Verlauf des Kollektorstroms $I_C$ in Abhängigkeit des Kollektorwiderstandes $R_5$.}
     \label{fig:RCollector}
 \end{figure}
 
-Aus der Abbildung \ref{fig:RCollector} ist zu erkennen, dass der Kollektorstrom $I_C$ mit steigendem Kollektorwiderstand $R_5$ abnimmt. Mit dem Marker m1 wird außerdem
-gezeigt, dass der Kollektorstrom $I_C$ bei einem Widerstandswert von 317,416\,\(\Omega\) einen Wert von 15\,mA erreicht. Es wird der nächstgrößere Widerstandswert der E12-Reihe gewählt, also 330\,\(\Omega\).
-Die Ergebnisse der Rechnung wurden also somit bestätigt.
+Aus Abbildung \ref{fig:RCollector} ist zu erkennen, dass der Kollektorstrom $I_C$ mit steigendem Kollektorwiderstand $R_5$ abnimmt. Mit dem Marker m1 wird außerdem
+gezeigt, dass der Kollektorstrom $I_C$ bei einem Widerstandswert von 317{,}416\,\(\Omega\) einen Wert von 15\,mA erreicht. Es wird der nächstgrößere Widerstandswert der E12-Reihe gewählt, also 330\,\(\Omega\).
+Die Ergebnisse der Rechnung werden somit bestätigt.
 
 \subsection{Dimensionierung des Basis-Spannungsteilers}
 
@@ -83,7 +86,7 @@ Die Basisspannung $U_B$ ergibt sich zu:
     U_B = U_{BE} + U_E \approx 0{,}77\,\mathrm{V}
 \end{equation}
 
-Angenommen, die Betriebsspannung ist $U_{CC} = 4{,}8\,\mathrm{V}$, ergibt sich für die Widerstände $R_4$ (oben) und $R_3$ (unten):
+Angenommen, die Betriebsspannung ist $U_{CC} = 4{,}8\,\mathrm{V}$, ergeben sich für die Widerstände $R_4$ (oben) und $R_3$ (unten):
 \begin{align}
     R_3 &= \frac{U_B}{I_Q} = \frac{0{,}77\,\mathrm{V}}{1{,}0\,\mathrm{mA}} = 0{,}77\,\mathrm{k}\Omega \\
     R_4 &= \frac{U_{CC} - U_B}{I_Q} = \frac{4{,}8\,\mathrm{V} - 0{,}77\,\mathrm{V}}{1{,}0\,\mathrm{mA}} = 4{,}03\,\mathrm{k}\Omega
@@ -98,15 +101,27 @@ Mit der E12-Reihe werden gewählt:
 \end{align*}
 
 Damit ist der Spannungsteiler dimensioniert, sodass im Arbeitspunkt ein Kollektorstrom von ca. $10\,\mathrm{mA}$ zu erwarten ist und die Simulation ein positives Gain liefert.
+
+Diese Dimensionierung wird in der Simulation mit \ac{ADS} überprüft. Beim Sweepen des Widerstandes $R_3$ im Bereich von 100\,\(\Omega\) bis 4,7\,k\(\Omega\) und des damit verbundenen Spannungsteilers, also auch durch das Sweepen des Widerstandes $R_4$, ergibt sich folgender Verlauf des Basisstroms $I_B$ in Abhängigkeit des Widerstandes $R_3$:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Pictures/RBase.png}
+    \caption{Verlauf des Basisstroms $I_B$ in Abhängigkeit des Basiswiderstandes $R_3$.}
+    \label{fig:RBase}
+\end{figure}
+Abbildung \ref{fig:RBase} bestätigt, dass der Basiswiderstand $R_3$ mit einem Wert von 1{,}0\,k\(\Omega\) einen Kollektorstrom $I_C$ von 10\,mA ergibt. Hierbei ist auch zu erkennen, dass sich ein $R_B$-Ratio von 4,243 ergibt. 
+Das bedeutet, dass der Widerstand $R_4$ einen Widerstandswert von 4{,}243\,k\(\Omega\) haben sollte. Bei der Anpassung an die E12-Reihe wird der Widerstandswert auf 4{,}7\,k\(\Omega\) gewählt. 
+Dies erfüllt die errechneten Bedingungen für die Widerstandswerte und bestätigt die ausgewählte Dimensionierung.
+
 \section{S-Parameter-Simulation}
 Schließlich wird die S-Parameter-Simulation durchgeführt. Diese ist wichtig, um einen angemessenen Gain bei der Übertragung zu gewährleisten.
 Die S-Parameter-Simulation wird in \ac{ADS} nach folgenden Schritten durchgeführt:
 \begin{enumerate}
     \item Im ADS-Model wird die Kommentierung des S-Parameter-Controllers aufgehoben, also die S-Parameter-Einstellung wird aktiviert.
     \item Da jetzt die DC-Simulation überflüssig ist, wird diese deaktiviert.
-    \item Vor der Simulation wird die Schrittweite des S-Parameter-Controllers auf 250 MHz gesetzt, sodass man die Qualität des Frequenz-Sweeps verbessert.
+    \item Vor der Simulation wird die Schrittweite des S-Parameter-Controllers auf 250 MHz gesetzt, sodass die Qualität des Frequenz-Sweeps verbessert wird.
     \includegraphics[height=0.7cm]{Pictures/simulate.png}
-    \item Nach der Simulation wird das Ergebnis in einem neuen Fenster angezeigt. Es ergibt sich der folgende Verlauf des Gains für verschiedene Frequenzen:
+    \item Nach der Simulation wird das Ergebnis in einem neuen Fenster angezeigt. Es ergibt sich folgender Verlauf des Gains für verschiedene Frequenzen:
     
     \begin{figure}[h]
             \centering
@@ -116,9 +131,8 @@ Die S-Parameter-Simulation wird in \ac{ADS} nach folgenden Schritten durchgefüh
         \end{figure}
     
     Hier wählt man die Schaltfläche \enquote{Insert A New Marker} aus \includegraphics[height=0.5cm]{Pictures/marker.png}.
-    Wir setzen den Marker auf den Punkt unserer Arbeitsfrequenz, also bei 1{,}25 GHz (s. Abbildung \ref{fig:SParameter}). Der Marker m1 zeigt eine \textbf{Verstärkung (Gain) von 11,266 dB} an.
+    Wir setzen den Marker auf den Punkt unserer Arbeitsfrequenz, also bei 1{,}25 GHz (siehe Abbildung \ref{fig:SParameter}). Der Marker m1 zeigt eine \textbf{Verstärkung (Gain) von 11,266 dB} an.
 \end{enumerate}
-
 
 \clearpage
 % Erklärung zu [h] und [H]:

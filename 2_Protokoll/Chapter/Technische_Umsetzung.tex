@@ -41,7 +41,18 @@ Spannungen werden mit den idealen Werten
 der Simulation verglichen. Anhand der geringfügigen Abweichung der Spannungen zeigt sich, dass die Bestückung 
 der Platine erfolgreich war und die Schaltung wie gewünscht funktioniert.
 
-\section{Kalibrierung}
+\section{SOLT-Kalibrierung}
+Das Ziel der SOLT-Kalibrierung (Short, Open, Load, Through) ist die elemenierung
+von systematischen Messfehlern. Die durch die Messausrüstung(Kabel,Adapter, etc.)
+selbst entstehen und die Messung verfälschen.
+Durch Messen von diesen Fehlern lässt sich die Messung korrigieren.
+Dafür werden vier verschiedene Kalibrierstandards benötigt:
+\begin{itemize}
+    \item Short (Kurzschluss): Ein Kurzschluss-Standard wird an den Messport des VNAs angeschlossen. Da ein idealer Kurzschluss alle Leistung reflektiert und eine Phasenverschiebung von 180 Grad verursacht, misst der VNA diese Referenz. Abweichungen vom Ideal werden erfasst. 
+    \item Open (Leerlauf): Ein Leerlauf-Standard wird angeschlossen. Ein idealer Leerlauf reflektiert ebenfalls die gesamte Leistung, jedoch mit einer Phasenverschiebung von 0 Grad. Auch hier werden Abweichungen aufgezeichnet.
+    \item Load (Abschluss/Last): Ein Präzisions-Abschlusswiderstand (meist 50 Ohm) wird angeschlossen. Ein idealer Abschlusswiderstand absorbiert die gesamte Leistung ohne Reflexion. Dies dient dazu, die Leistungsanpassung des Systems zu kalibrieren.
+    \item Through (Durchgang): Bei einer 2-Port-Messung wird ein direkter Durchgang (ein kurzes, bekanntes Kabel oder ein Adapter) zwischen den beiden Messports des VNAs angeschlossen. Dies ermöglicht die Kalibrierung der Übertragungseigenschaften zwischen den Ports und die Korrektur von Phasen- und Amplitudenfehlern des Übertragungspfades.
+\end{itemize}
 %(erklärung warums tut)
 \section{Vergleich zur Simulation}
 \clearpage

@@ -24,7 +24,7 @@ Zu Beginn der Schaltungsanalyse wird das Schema \texttt{TX\_Amp\_Bias.dds} geöf
 \end{figure}
 
 \section{Analyse des Datenblattes zum Transistor BFR181W}
-Um die Schaltung zu simulieren, wird der Transistor BFR181W aus der verfügbaren Bibliothek verwendet. Um die genauen Parameter des Transistors zu kennen, wird das Datenblatt analysiert.
+Um die Schaltung zu simulieren, wird der Transistor BFR181W aus der verfügbaren Bibliothek verwendet. Die genauen Parameter des Transistors werden aus dem Datenblatt entnommen.
 Dieses steht ebenfalls auf der ILIAS-Seite des Praktikums zur Verfügung.
 
 Die Tabelle \enquote{Maximum Ratings at $T_\mathrm{A}=25\,^\circ\mathrm{C}$, unless otherwise specified} unten links auf Seite 1 des Dokuments zeigt, dass der maximal zulässige Kollektorstrom $I_{C,\mathrm{max}}$ 20\,mA beträgt.
@@ -65,13 +65,13 @@ Es ergibt sich folgender Verlauf des Kollektorstroms $I_C$ in Abhängigkeit des 
 \end{figure}
 
 Aus Abbildung \ref{fig:RCollector} ist zu erkennen, dass der Kollektorstrom $I_C$ mit steigendem Kollektorwiderstand $R_5$ abnimmt. Mit dem Marker m1 wird außerdem
-gezeigt, dass der Kollektorstrom $I_C$ bei einem Widerstandswert von 317{,}416\,\(\Omega\) einen Wert von 15\,mA erreicht. Es wird der nächstgrößere Widerstandswert der E12-Reihe gewählt, also 330\,\(\Omega\).
+gezeigt, dass der Kollektorstrom $I_C$ bei einem Widerstandswert von 317{,}416\,\(\Omega\) einen Wert von 15\,mA erreicht. Es wird der nächstgrößere Widerstandswert der E12-Reihe gewählt, also 330\(\Omega\), damit $I_C$ nicht überschritten wird.\,.
 Die Ergebnisse der Rechnung werden somit bestätigt.
 
 \subsection{Dimensionierung des Basis-Spannungsteilers}
 \label{sec:dimensionierung_basis_spannungsteiler}
 
-Um einen Arbeitspunkt mit $I_C \approx 10\,\mathrm{mA}$ zu erreichen, wird der Basis-Spannungsteiler dimensioniert. Die Basis-Emitter-Spannung beträgt $U_{BE} \approx 0{,}7\,\mathrm{V}$. Der Emitterwiderstand wird hier vernachlässigt.
+Um einen Arbeitspunkt mit $I_C \approx 10\,\mathrm{mA}$ zu erreichen, wird der Basis-Spannungsteiler dimensioniert. Die Basis-Emitter-Spannung beträgt $U_{BE} \approx 0{,}7\,\mathrm{V}$.
 
 % FÜR LUKAS
 % Der Basisstrom berechnet sich zu:

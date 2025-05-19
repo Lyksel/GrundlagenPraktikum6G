@@ -2,15 +2,24 @@
 \section{Platinen Aufbau}
 Die Platine ist mit mehreren Bauteilen ausgestattet, die bis auf drei selbstdimensionierten Widerständen
 bereits vollständig bestückt ist. \\
-% Auf dem Schaltplan  (R Widerstand, C Kondensator, J Stecker/Relais)
+% Auf dem Schaltplan  (R Widerstand, C Kondensator, J Stecker/Relais)% 
+\\
+Zur Erkärung von Abbx hier eine kurze Information zu den wichtigsten Abkürzungen:
+\begin{itemize}
+    \item R: Widerstand
+    \item C: Kondensator
+    \item J: Stecker/Relais
+
+    
+\end{itemize}
+%mache wir die Bilder 1-3 auch rein?
 Die wichtigsten Bauteile sind:
 %Frage: Generell wichtig oder nur für das was wir bei diesem Versuch machen? USB Buchse hier irrelevant....
 \begin{itemize}
-    \item J1: \textbf{[Platzhalter für Bauteilbeschreibung]}
-    \item J40: \textbf{[Platzhalter für Bauteilbeschreibung]}
-    \item Bauteil 3: \textbf{[Platzhalter für Bauteilbeschreibung]}
-    \item Bauteil 4: \textbf{[Platzhalter für Bauteilbeschreibung]}
-    \item Bauteil 5: \textbf{[Platzhalter für Bauteilbeschreibung]}
+    \item J1: ?
+    \item J40:  ? Verbindung zu Oszillator (Taktquelle für die Schaltung) und Anschluss an den FiedFox
+    \item R47-49: Widerstände, die in der Schaltung zur Anpassung des DC-Pegels dienen
+    \item Quarzoszillator (XLL536C50.000000X): HF-Taktsignal
 \end{itemize}
 
 
@@ -20,7 +29,15 @@ Die in Kapitel 3 bestimmten Widerstände werden nun im Rahmen der praktischen Um
 bereits vorbereitete Platine angebracht. Auf dem Bestückungsplan entspricht hier R47 R3 mit 1000 Ohm, R48 R4 mit 
 4700 Ohm und R49 R5 mit 330 Ohm. Bei dem Löten der drei Widerständen wird auf eine saubere und präzise Löttechnik
 geachtet um die gewollte elektrische, mechanische und HF-technische Funktion der Schaltung zu garantieren. 
+
 \section{DC-Pegel Verifizieren}
+Nach dem Bestücken der Platine wird die Funktionalität der Schaltung überprüft. Hierzu wird eine Versorgungsspannung von 
+4.8V angelegt um den Gleichspannungspegel an den relevanten Punkten der Schaltung zu überprüfen. Die abfallenden 
+Spannungen werden mit einem Oszilloskop gemessen. Releavnt sind die Spannungsabfälle über R47, R48 und R49. Diese gemessenen
+Spannungen werden mit den idealen Werten 
+der Simulation verglichen. Anhand der geringfügigen Abweichung der Spannungen zeigt sich, dass die Bestückung 
+der Platine erfolgreich war und die Schaltung wie gewünscht funktioniert.
+
 \section{Kalibrierung}
 %(erklärung warums tut)
 \section{Vergleich zur Simulation}

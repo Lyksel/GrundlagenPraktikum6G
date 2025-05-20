@@ -143,7 +143,16 @@ Die S-Parameter-Simulation wird in \ac{ADS} nach folgenden Schritten durchgefüh
 \end{enumerate}
 
 Die Ergebnisse der Simulation werden bei der technischen Umsetzung der Schaltung überprüft. 
-
+\subsection{Input- und Output Anpassung}
+Wir beurteilen die Input- und Output-Anpassung der Schaltung mit Hilfe der durch die in der ADS-Simulation erstellte Grafik 
+zur Auswertung der S-Parameter, hier dargestellt in Abbildung 3.4. Bei der Grafik handelt es sich um ein, bereits durch die 
+Lehrveranstaltung Grundlagen der Nachrichtenübertragung bekanntes Diagramm,  das Smith Diagramm. Hier werden zwei 
+Kurvenverläufe über eine Frequenz von 1 MHz bis hin zu 10 GHz dargestellt. Die rote Kurve S(1,1) zeigt den 
+Eingangsreflexionsfaktor und die blaue Kurve S(2,2) den Ausgansgsreflexionsfaktor. Optimal wäre ein Verlauf nahe des
+Zentrums, das bei beiden Kurven für niedrige Frequenzen gegeben ist. Für höhere Frequenzen bewegen sich die Kurven in 
+Richtung des Rands, was eine schlechte Anpassung  und somit einen hohen Reflexionfaktor bedeutet. Bei direktem Vergleich 
+Verläuft die blaue Kurve ingesammt näher Richtung Zentrum als die rote Kurve. Jedoch liegt auch hier keine optimale 
+Leistungsanpassung vor.
 \clearpage
 % Erklärung zu [h] und [H]:
 %

@@ -46,15 +46,17 @@ Dafür werden vier verschiedene Kalibrierstandards benötigt:
     \item Load (Abschluss/Last): Ein Präzisions-Abschlusswiderstand (meist 50~Ohm) wird angeschlossen. Ein idealer Abschlusswiderstand absorbiert die gesamte Leistung ohne Reflexion. Dies dient dazu, die Leistungsanpassung des Systems zu kalibrieren.
     \item Through (Durchgang): Bei einer 2-Port-Messung wird ein direkter Durchgang (ein kurzes, bekanntes Kabel oder ein Adapter) zwischen den beiden Messports des VNAs angeschlossen. Dies ermöglicht die Kalibrierung der Übertragungseigenschaften zwischen den Ports und die Korrektur von Phasen- und Amplitudenfehlern des Übertragungspfades.
 \end{itemize}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.25\textwidth]{Pictures/Keysightkallibrierung.jpg}
+    \caption{Kalibrierung am Keysight FieldFox}
+\end{figure}
+\clearpage
+
+Die Kalibrierung wird am Keysight FieldFox durchgeführt. Sie erfolgt über sieben Schritte, die vom Gerät angeleitet werden. Danach ist das Gerät bereit für die Messung.
 \subsection{Verfizierung der Qualität der SOLT-Kalibrierung}
 Unter Beibehaltung des Messaufbaus werden nun die S-Parameter, der bei der Kalibrierung verwendeten Kabel, betrachtet. Ist die Kalibrierung gelungen sollte unter optimalen Bedingungen bei den Streuparametern keine Dämpfung mehr angezeigt werden, da die Kalibrierung die Kabeldämpfung herausrechnet. In unserem Fall ist die zeigt die Messung eine kleine Abweichung, ist jedoch sehr nahe am Optimum. Es ist daher keine erneute Kalibrierung von Nöten.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.35\textwidth]{Pictures/Keysightkallibrierung.jpg}
-    \caption{Kalibrierung am Keysight FieldFox}
-\end{figure}
-Die Kalibrierung wird am Keysight FieldFox durchgeführt. Sie erfolgt über sieben Schritte, die vom Gerät angeleitet werden. Danach ist das Gerät bereit für die Messung.
 
 \section{Vergleich zur Simulation}
 Die Simulation wurde, wie zuvor beschrieben, mit der Software Advanced Design System (ADS) durchgeführt. In der Simulation fällt über R47 eine Spannung von 0,811~V, über R48 eine Spannung von 3,989~V und über R49 eine Spannung von 1,27~V ab. Wir überprüfen nun, ob sich unsere Messung mit den simulierten Werten deckt.

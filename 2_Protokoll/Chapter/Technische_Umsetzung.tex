@@ -57,6 +57,18 @@ Die Kalibrierung wird am Keysight FieldFox durchgeführt. Sie erfolgt über sieb
 \subsection{Verfizierung der Qualität der SOLT-Kalibrierung}
 Unter Beibehaltung des Messaufbaus werden nun die S-Parameter, der bei der Kalibrierung verwendeten Kabel, betrachtet. Ist die Kalibrierung gelungen sollte unter optimalen Bedingungen bei den Streuparametern keine Dämpfung mehr angezeigt werden, da die Kalibrierung die Kabeldämpfung herausrechnet. In unserem Fall ist die zeigt die Messung eine kleine Abweichung, ist jedoch sehr nahe am Optimum. Es ist daher keine erneute Kalibrierung von Nöten.
 
+\subsection{Messen der S-Paramter}
+Nach der Kaliebrierung werden die S-Paramater der Schaltung gemessen. Der für den direkten Vergleich relevante S-Parameter ist S21. Dieser
+ist in Abbildung 4.4 dargestellt.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Pictures/SParameterrichtig.png}
+    \caption{S-Paramter S21}
+\end{figure}
+\clearpage
+
+
+
 
 \section{Vergleich zur Simulation}
 Die Simulation wurde, wie zuvor beschrieben, mit der Software Advanced Design System (ADS) durchgeführt. In der Simulation fällt über R47 eine Spannung von 0,811~V, über R48 eine Spannung von 3,989~V und über R49 eine Spannung von 1,27~V ab. Wir überprüfen nun, ob sich unsere Messung mit den simulierten Werten deckt.

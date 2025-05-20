@@ -144,18 +144,21 @@ Die S-Parameter-Simulation wird in \ac{ADS} nach folgenden Schritten durchgefüh
 
 Die Ergebnisse der Simulation werden bei der technischen Umsetzung der Schaltung überprüft. 
 \subsection{Input- und Output Anpassung}
-Wir beurteilen die Input- und Output-Anpassung der Schaltung mit Hilfe der durch die in der ADS-Simulation erstellte Grafik 
+Wir beurteilen die Input- und Output-Anpassung der Schaltung mit Hilfe der durch die in der ADS-Simulation erstellten Grafik
 zur Auswertung der S-Parameter, hier dargestellt in Abbildung 3.4. Bei der Grafik handelt es sich um ein, bereits durch die 
 Lehrveranstaltung Grundlagen der Nachrichtenübertragung bekanntes Diagramm,  das Smith Diagramm. Hier werden zwei 
 Kurvenverläufe über eine Frequenz von 1 MHz bis hin zu 10 GHz dargestellt. Die rote Kurve S(1,1) zeigt den 
 Eingangsreflexionsfaktor und die blaue Kurve S(2,2) den Ausgansgsreflexionsfaktor. 
-Wünschenswert wäre ein Verlauf nahe des Zentrums bei $Z=1+j0$ da hier die Optimale Leistungsanpassung vorliegt. 
-
-Damit die Kurven durch das Zentrum verläuft muss das Eingangs- und Ausgangsnetzwerk 
-angepasst werden. Beide Netzwerke müssen auf den innenwiderstand von $Z_0=50\Omega$ angepasst werden.
+Wünschenswert wäre ein Verlauf nahe des Zentrums bei $Z=1+j0$ da hier die Reflexion null ist und somit die ganze Leistung übertragen wird. 
+Es gilt:
+\begin{equation}
+    \Gamma = \frac{Z_L - Z_0}{Z_L + Z_0} = 0 \Rightarrow Z_L = Z_0
+\end{equation}
+Um das zu erreichen muss das Eingangs- und Ausgangsnetzwerk an den Innenwiderstand $Z_0 = 50\Omega$ angepasst werden.
+In diesem Fall die Baulteile $L_2$,$C_2$ für das Eingangsnetzwerk und $L_6$,$C_3$ für das Ausgangsnetzwerk.
 
 \clearpage
-% Erklärung zu [h] und [H]:
+% Erklärung zu [h] und [H]:<
 %
 % [h] ist ein "placement specifier" für Gleitobjekte (z.B. figure, table) und bedeutet "here" – also möglichst an der aktuellen Stelle im Text.
 % LaTeX kann das Objekt aber trotzdem verschieben, wenn es an dieser Stelle nicht passt.

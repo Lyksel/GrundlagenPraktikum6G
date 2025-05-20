@@ -1,4 +1,4 @@
-In diesem Kapitel wird die \ac{HF}-Simulation des Transistors BFR181W durchgeführt sowie die Dimensionierung der Widerstände $R_3$, $R_4$ und $R_5$ aus dem Kapitel 2 \enquote{Theoretische Grundlagen} überprüft und belegt.
+In diesem Kapitel wird die \ac{HF}-Simulation des Transistors BFR181W durchgeführt sowie die Dimensionierung der Widerstände $R_3$, $R_4$ und $R_5$ aus dem Kapitel 2: \enquote{Theoretische Grundlagen} überprüft und belegt.
 
 \section{Inbetriebnahme von Keysight Advanced Design System (ADS)}
 \subsection{Installation von ADS}
@@ -53,7 +53,7 @@ Die DC-Simulation wird in \ac{ADS} durchgeführt, um die DC-Pegel der Schaltung 
 % Somit beträgt der errechnete Widerstandswert von $R_5$ 330\,\(\Omega\). Dadurch wird der in den Kollektor eingehende Strom begrenzt, was eine Überlastung des Transistors im Dauerbetrieb verhindert. 
 % Bei der Wahl eines niedrigeren Widerstandswertes würde der Kollektorstrom $I_C$ den maximalen Kollektorstrom $I_{C,\mathrm{max}}$ überschreiten, was zu einer Überlastung des Transistors führen würde.
 
-Das errechnete Ergebnis aus dem Kapitel \ref{sec:rechnungkollektor} lässt sich anhand der Simulation verifizieren. 
+Das errechnete Ergebnis aus dem Kapitel \ref{subsec:rechnungkollektor} lässt sich anhand der Simulation verifizieren. 
 
 Zuerst wird ein Sweep des Kollektorwiderstandes $R_5$ im Bereich von 100\,\(\Omega\) bis 4,7\,k\(\Omega\) durchgeführt.
 Es ergibt sich folgender Verlauf des Kollektorstroms $I_C$ in Abhängigkeit des Kollektorwiderstandes $R_5$:
@@ -69,7 +69,7 @@ gezeigt, dass der Kollektorstrom $I_C$ bei einem Widerstandswert von 317{,}416\,
 Die Ergebnisse der Rechnung werden somit bestätigt.
 
 \subsection{Dimensionierung des Basis-Spannungsteilers}
-\label{sec:dimensionierung_basis_spannungsteiler}
+
 
 Um einen Arbeitspunkt mit $I_C \approx 10\,\mathrm{mA}$ zu erreichen, wird der Basis-Spannungsteiler dimensioniert. Die Basis-Emitter-Spannung beträgt $U_{BE} \approx 0{,}7\,\mathrm{V}$.
 
@@ -109,7 +109,7 @@ Um einen Arbeitspunkt mit $I_C \approx 10\,\mathrm{mA}$ zu erreichen, wird der B
 %
 % Damit ist der Spannungsteiler dimensioniert, sodass im Arbeitspunkt ein Kollektorstrom von ca. $10\,\mathrm{mA}$ zu erwarten ist und die Simulation ein positives Gain liefert.
 
-Auch hier kann die im Kapitel \ref{sec:theoretische_grundlagen} berechnete Dimensionierung überprüft werden. Beim Sweepen des Widerstandes $R_3$ im Bereich von 100\,\(\Omega\) bis 4,7\,k\(\Omega\) und des damit verbundenen Spannungsteilers, also auch durch das Sweepen des Widerstandes $R_4$, ergibt sich folgender Verlauf des Basisstroms $I_B$ in Abhängigkeit des Widerstandes $R_3$:
+Auch hier kann die im Kapitel \ref{subsec:basis-spannungsteiler} berechnete Dimensionierung überprüft werden. Beim Sweepen des Widerstandes $R_3$ im Bereich von 100\,\(\Omega\) bis 4,7\,k\(\Omega\) und des damit verbundenen Spannungsteilers, also auch durch das Sweepen des Widerstandes $R_4$, ergibt sich folgender Verlauf des Basisstroms $I_B$ in Abhängigkeit des Widerstandes $R_3$:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{Pictures/RBase.png}
@@ -141,6 +141,8 @@ Die S-Parameter-Simulation wird in \ac{ADS} nach folgenden Schritten durchgefüh
     Hier wählt man die Schaltfläche \enquote{Insert A New Marker} aus \includegraphics[height=0.5cm]{Pictures/marker.png}.
     Wir setzen den Marker auf den Punkt unserer Arbeitsfrequenz, also bei 1{,}25 GHz (siehe Abbildung \ref{fig:SParameter}). Der Marker m1 zeigt eine \textbf{Verstärkung (Gain) von 11,266 dB} an.
 \end{enumerate}
+
+Die Ergebnisse der Simulation werden bei der technischen Umsetzung der Schaltung überprüft. 
 
 \clearpage
 % Erklärung zu [h] und [H]:

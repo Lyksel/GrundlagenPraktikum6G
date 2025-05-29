@@ -11,10 +11,20 @@
 \usepackage{verbatim}  % Needed for the "comment" environment to make LaTeX comments
 \usepackage{vector}  % Allows "\bvec{}" and "\buvec{}" for "blackboard" style bold vectors in maths
 \usepackage{graphicx} 
+\usepackage{pdfpages}
+\usepackage{float}  % Required for the [H] option in figures
+\usepackage{acronym} % Required for the acronym environment
+\usepackage[autostyle,german=quotes]{csquotes} % Required for the \enquote command
+\usepackage{amsmath}  % Required for the \text command in maths mode
 \hypersetup{urlcolor=blue, colorlinks=true}  % Colours hyperlinks in blue, but this can be distracting if there are many links.
 %
 \pagestyle{fancy}
 \fancyhf{}  % Alle Kopfzeilen löschen
+%% ----------------------------------------------------------------
+\renewcommand{\chaptername}{Kapitel}
+\renewcommand{\tablename}{Tabelle}
+\renewcommand{\bibname}{Literaturverzeichnis}
+\renewcommand{\figurename}{Abbildung}
 %% ----------------------------------------------------------------
 \begin{document}
 \begin{titlepage}
@@ -52,23 +62,20 @@
 %----------------------------------------------------------------------------------------
 
 \HRule \\[0.4cm]
-{ \huge \bfseries Versuch 1: Drahtlose Übertragungen und Link-Budget}\\[0.4cm] % Title of your document
+{ \huge \bfseries Versuch 3: Design  und Simulation eines Coupled-Line Filters}\\[0.4cm] % Title of your document
 \HRule \\[1.5cm]
  
 %----------------------------------------------------------------------------------------
 %	AUTHOR SECTION
 %----------------------------------------------------------------------------------------
 \textbf{Protokollführer}\\
-{\large\ Lukas Müller}\\[0.5cm]
-\textbf{Versuchspartner}\\
-{\large\ Andric Steiner}\\[0.2cm]
-{\large\ Erik Zimmerman}\\[0.2cm]
-{\large\ Farhad Valizada}\\[0.2cm]
-{\large\ Samuel Brunner}\\[0.2cm]
-{\large\ Tari Kausler}\\[0.7cm]
+{\large\ Lukas Müller}\\[0.2cm]
+{\large\ Erik Zimmermann}\\[0.2cm]
+{\large\ Farhad Valizada}\\[0.7cm]
 
 \textbf{Betreuer}\\
 {\large\ Simon Haussmann}\\[0.2cm]
+
 
 
 
@@ -89,6 +96,19 @@
 %\vfill\vfill\vfill\vfill\vfill\vfill\null
 \clearpage  % Funny Quote page ended, start a new page
 %% ----------------------------------------------------------------
+
+\clearpage
+
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage} % Seitenzahl unten zentriert
+\renewcommand{\headrulewidth}{0pt}
+
+% Ensure every chapter resets the pagestyle to fancy
+\let\oldchapter\chapter
+\renewcommand{\chapter}{\clearpage\pagestyle{fancy}\oldchapter}
+
 
 % The Abstract Page
 
@@ -116,6 +136,18 @@
 \tableofcontents
 \newpage
 
+\chapter*{Abkürzungsverzeichnis}
+\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+\begin{acronym}[XXXXXX] % Adjust the width of the longest acronym
+    \acro{ADS}{Advanced Design System}
+    \acro{HF}{Hochfrequenz}
+    \acro{6G}{Sixth Generation}
+    \acro{SMA}{SubMiniature version A}
+    \acro{PCB}{Printed Circuit Board}
+\end{acronym}
+\clearpage  % End of the Abkürzungsverzeichnis
+%% ----------------------------------------------------------------
+
 \chapter{Einleitung}
 \input{Chapter/Einleitung}
 
@@ -132,14 +164,15 @@
 \chapter{Ergebnisse}
 \input{Chapter/Ergebnisse}
 
-\chapter{Diskussion}
-\input{Chapter/Diskussion}
+%\chapter{Diskussion}
+%\input{Chapter/Diskussion}
 
 \chapter{Fazit}
 \input{Chapter/Fazit}
 
-\chapter{Literaturverzeichnis}
-\input{Chapter/Literaturverzeichnis}
+\renewcommand{\bibname}{Literaturverzeichnis}
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\input{Chapter/literaturverzeichnis}
 
 
 

@@ -13,12 +13,12 @@
             \caption{Substratfile}
         \end{figure}
 
-    \subsection{Nutzung des Controlled Impedance Line Designers}
+   
 
 \section{Leitungsdimensionierung}
     \subsection{\texorpdfstring{Berechnung der Leitungsbreite ($Z_0 = 50~\Omega$)}{Berechnung der Leitungsbreite (Z0 = 50 Ohm)}}
     Nun wird die Leitungsbreite einer Microstrip Leitung mit der Wellenimpedanz $Z_0 = 50~\Omega$ berechnet.
-    Dazu verwenden wir die Formeln, die uns auf der Website von Microwaves101 Kapitel Microstrip zur
+    Dazu werden die Formeln verwendet, die uns auf der Website von Microwaves101 Kapitel Microstrip zur
     Verfügung gestellt werden. Durch eine grobe Abmessung der Leitungsbreite sieht man das folgende Beziehung gilt: \\
     \[
     \frac{w}{h} \geq 1
@@ -71,22 +71,21 @@
     $1.8mm$ und $1.9mm$ liegt.
 
         \subsection{Charakteristische Länge der Koppelleitungen}
-    Die Gleichung für die Länge der Leitung wurde schon in \eqref{eq:laenge} hergeleitet.
-    Gegebene Werte:
+    Die Gleichung für die Länge der Leitung wurde schon in $2.2$ hergeleitet.
+    \\Gegebene Werte:
     \begin{align}
         \mu_r &= 1 \\
         c_0 &= 3 \cdot 10^8 \frac{m}{s}
     \end{align}
 
     Die Permitivität von Kufper kann nicht allgemein angegeben werden, sondern muss bestimmt werden. 
-    Wir konnten mithilfe des "Controlled Impedance Line Designers" die Permitivität auf $\epsilon_r = 3.42631$ bestimmen 
-    Damit lässt sich die Theoretische Leitung berrechnen.
+    Die Permitivität $\epsilon_r = 3.42631$ konnte mithilfe des "Controlled Impedance Designers" bestimmt werden. Damit lässt sich die theoretische Leitung berrechnen.
     \begin{equation}
         L= \frac{c_0}{4 \cdot f_c \cdot \sqrt{\epsilon_r}} = 0.03241m = 32.41mm
         \label{eq:laenge}
     \end{equation}
     \clearpage
-    Mithilfe von ADS konnten wir die Filtercharakteristik in abhängigkeit der Leitungslänge Simulieren. Durch das Sweepen der 
+    Mithilfe von ADS wurde die Filtercharakteristik in abhängigkeit der Leitungslänge simuliert. Durch das Sweepen der 
     Leitungslänge konnten wir folgendes Diagramm erstellen.
     \begin{figure}[H]
         \includegraphics[width=0.7\textwidth]{Pictures/SimulationSweepLängeS21.png}
@@ -94,10 +93,10 @@
         \centering
         \caption{Leitungslängensweep}
     \end{figure}
-    Schauen wir uns den Filter bei 1.25Ghz an, dort sehen wir das wir die beste Filtercharteristik bei einer
-    Leitungslänge von etwa $L=32.80mm$ haben.
-    Was eine abweichung von etwa $0.4mm$ entspricht, das liegt mitunter an anderen 
-    Simulationsmodellen und auch an der berücksichtigung von den vier Bandpassfiltern.
+    Schauen wir uns den Filter bei 1.25Ghz an, sehen wir das die beste Filtercharakteristik bei einer
+    Leitungslänge von etwa $L=32.80mm$ ist.
+    Das entspricht eine Abweichung von etwa $0.4mm$. Dies liegt unter anderem an anderen 
+    Simulationsmodellen und auch an der Berücksichtigung von den vier Bandpassfiltern.
 
     \clearpage
     \section{Simulation im Vergleich zur Praxis}
@@ -107,25 +106,26 @@
         \centering
         \caption{Filtercharakteristik Praxis vs Simulation}
     \end{figure}
-    In der Praxis lassen sich ebenso wie in der Theorie die Peaks,die ein Vielfachse von 1.25GHz sind sehen.
-    Wenn wir uns in der Praxis die 1.25Ghz genauer anschauen, sehen wir das der Filter eine Dämpfung von -13.31dB
-    aufweist in der Theorie jedoch nur -5.23dB. Dieser Fehler kommt duch die Dämpfung des Koaxialkabels
+    In der Praxis sind wie in der Theorie die Peaks, die ein Vielfachse von 1.25GHz sind, erkennbar.
+    Wenn man in der Praxis die 1.25Ghz genauer anschaut sieht man, das der Filter eine Dämpfung von -13.31dB
+    aufweist. In der Theorie jedoch nur -5.23dB. Dieser Fehler kommt duch die Dämpfung des Koaxialkabels
     das in der Theorie nicht berücksichtigt wurde.
     Nach Versuch 1 ist bekannt, dass die Dämpfung des Koaxialkabels bei 1.25GHz bei etwa -7.13dB liegt.
-    Wird diese Dämpung vom Theorie wert abgezogen $D=-5.23dB-7.13dB=-12.36dB$, kommen wir dem Praktischen wert schon deutlich näher.
+    Wird diese Dämpung vom theoretischen Wert abgezogen: $D=-5.23dB-7.13dB=-12.36dB$ 
+    kommen wir dem praktischen Wert schon deutlich näher.
      
 
 
 
 
-\section{Aufbau des Coupled-Line-Filters im Schematic}
-\subsection{Erstellung des Schematic (Ohne Knick)}
-Jetzt soll das Coupled-Line-Filter im Schematic aufgebaut werden. Dazu wird das Schematic geöffnet und oben im Menü auf "Layout" und dann auf "Generate/Update Layout" geklickt. Dies führt dazu, dass das im Schematic erstellte Schatlbild in das Layout übertragen wird. Es ist festzustellen, die Leitungen im Layout tatsächlich erstellt wurden. Dabei ist darauf zu achten, dass die Leitungen korrekt verbunden sind und die Abstände zwischen den Leitungen den Vorgaben entsprechen. Außerdem müssen die Eingangs- und Ausgangsanschlüsse korrekt platziert werden, um eine ordnungsgemäße Simulation der Signalübertragung zu gewährleisten.
+\section{2.5D EM Simulation des Coupled-Line-Filters}
+
+Jetzt soll das Coupled-Line-Filter im Schematic aufgebaut werden. Dazu wird die Schmeatic geöffnet und oben im Menü auf "Layout" und dann auf "Generate/Update Layout" geklickt. Dies führt dazu, dass das im Schematic erstellte Schatlbild in das Layout übertragen wird. Es ist festzustellen, die Leitungen im Layout tatsächlich erstellt wurden. Dabei ist darauf zu achten, dass die Leitungen korrekt verbunden sind und die Abstände zwischen den Leitungen den Vorgaben entsprechen. Außerdem müssen die Eingangs- und Ausgangsanschlüsse korrekt platziert werden, um eine ordnungsgemäße Simulation der Signalübertragung zu gewährleisten.
 Es kommt zur folgenden Ansicht:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Pictures/Layout ohne Knick.png}
-    \caption{Schematic des Coupled-Line-Filters}
+    \caption{Layout des Coupled-Line-Filters}
 \end{figure}
 
 Daraufhin wird die Übertragungsdämpfung des Filters simuliert. Eine elektromagnetische Simulation (EM Simulation) wird durchgeführt, um die Übertragungsdämpfung des Filters nicht nur im Eindimensionalen, sondern auch im 2,5-Dimensionalen Raum zu betrachten. 

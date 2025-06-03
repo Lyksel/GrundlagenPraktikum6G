@@ -119,12 +119,12 @@
 
 
 \section{Aufbau des Coupled-Line-Filters im Schematic}
-\subsection{Erstellung des Schematic (Ohne Knick)}
+\subsection{Erstellung des Layouts (Ohne Knick)}
 Jetzt soll das Coupled-Line-Filter im Schematic aufgebaut werden. Dazu wird das Schematic geöffnet und oben im Menü auf "Layout" und dann auf "Generate/Update Layout" geklickt. Dies führt dazu, dass das im Schematic erstellte Schatlbild in das Layout übertragen wird. Es ist festzustellen, die Leitungen im Layout tatsächlich erstellt wurden. Dabei ist darauf zu achten, dass die Leitungen korrekt verbunden sind und die Abstände zwischen den Leitungen den Vorgaben entsprechen. Außerdem müssen die Eingangs- und Ausgangsanschlüsse korrekt platziert werden, um eine ordnungsgemäße Simulation der Signalübertragung zu gewährleisten.
 Es kommt zur folgenden Ansicht:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Pictures/Layout ohne Knick.png}
+    \includegraphics[width=0.8\textwidth]{Pictures/LayoutohneKnick.png}
     \caption{Schematic des Coupled-Line-Filters}
 \end{figure}
 
@@ -139,13 +139,35 @@ Nach einer erfolgreichen EM-Simulation entsteht das folgende Dämpfungsdiagramm:
     \caption{EM-Simulation des Coupled-Line-Filters}
 \end{figure}
 
-Man erkennt deutlich anhand des Diagramms für die S-Parameter S12 bzw. S21, dass die Dämpfung bei 1,25 GHz bei etwa -5,23 dB liegt und die Vielfachen dieser Frequenz auch nicht erheblich gedämpft werden. Dies bestätigt somit das \textbf{Bandpassverhalten} des Filters.
+Man erkennt deutlich anhand des Diagramms für die S-Parameter S12 bzw. S21, dass die Dämpfung im Bereich von 1,25 GHz bei gemittelt ca. -11 dB liegt und die Vielfachen dieser Frequenz auch nicht erheblich gedämpft werden. Dies bestätigt somit das \textbf{Bandpassverhalten} des Filters.
+Trotzdem liegt das Problem vor, dass das Peak 
+\section{Knick im Layout}
+    \subsection{Erstellung des Layouts (Mit Knick)}
+
+    \subsection{Vergleich mit Messdaten}
 
 \section{Simulation und Optimierung}
-    \subsection{Vergleich mit Messdaten}
+    
 
 \section{Knick zur Optimierung des Aspektverhältnisses}
 
 \section{Anpassung im Schematic und Re-Simulation}
-
+    Das Schematic wird an die neuen Anforderungen mit dem Knick angepasst, damit man die Größe des Filters optimieren kann. Es ergibt sich der folgende Aufbau des Schematic:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{Pictures/SchematicMitKnick.png}
+        \caption{Schematic des Coupled-Line-Filters mit Knick}
+    \end{figure}
+    Nach dem erneuten Update des Layouts ergibt sich das der echten Schaltung entsprechende Layout:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{Pictures/LayoutmitKnick.png}
+        \caption{Layout des Coupled-Line-Filters mit Knick}
+    \end{figure}
+    Daraufhin ergibt sich nach der EM-Simulation des Layouts mit dem Knick ergibt sich das folgende Dämpfungsdiagramm:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{Pictures/EMSimulationmitKnick.png}
+        \caption{EM-Simulation des Coupled-Line-Filters mit Knick}
+    \end{figure}
 \section{Auswirkungen auf die S-Parameter}

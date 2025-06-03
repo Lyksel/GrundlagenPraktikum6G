@@ -18,12 +18,45 @@
 \section{Leitungsdimensionierung}
     \subsection{\texorpdfstring{Berechnung der Leitungsbreite ($Z_0 = 50~\Omega$)}{Berechnung der Leitungsbreite (Z0 = 50 Ohm)}}
     Nun wird die Leitungsbreite einer Microstrip Leitung mit der Wellenimpedanz $Z_0 = 50~\Omega$ berechnet.
-    Dazu verwenden wir die Formeln, die uns auf der Webseite von MIcrowases101 Kapitel Microstrip zur
-    Verfügung gestellt werden. Durch eine grobe Abmessunge sieht man das folgende Beziehung gilt \\
+    Dazu verwenden wir die Formeln, die uns auf der Website von Microwaves101 Kapitel Microstrip zur
+    Verfügung gestellt werden. Durch eine grobe Abmessung der Leitungsbreite sieht man das folgende Beziehung gilt: \\
     \[
-    \frac{w}{h} < 1
+    \frac{w}{h} \geq 1
     \]
+    $w$ ist hier die Leitungsbreite und $h$ die Höhe des Dielektrikums. In unserem Fall ist $h = 1mm$ und $w$ wird variiert. Die 
+    effektive Permitivität wird mit folgender Formel berechnet:
+      \[
+    \varepsilon_e = \frac{\varepsilon_r + 1}{2} + \frac{\varepsilon_r - 1}{2} \left( 1 + 12 \frac{h}{w} \right)^{-\frac{1}{2}}
+    \]
+   \\ $\varepsilon_e$ wird in die Formel zur Leitungsimpedanz eingesetzt. Bei dieser wird $w$
+    variiert, bis die Wellenimpedanz $Z_0 = 50~\Omega$ erreicht wird.
+    \\
+    Die Formel zur Leistungsimpedanz $Z_o$ lautet:
+    \[
+    Z_0 = \frac{120 \pi}{\sqrt{\varepsilon_{\text{eff}}} \left( \frac{w}{h} + 1.393 + \frac{2}{3} \ln\left( \frac{w}{h} + 1.444 \right) \right)} \quad \text{(Ohm)}
+    \]
+    Die Berechnung der Leitungsbreite wird hierbei numerisch durchgeführt, da eine analytische Berechnung zu
+    komplex werden würde. Die Ergebnisse der Approximation werden in Tablle 4.1 dargestellt. \\
+    
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Leitungsbreite $w$ (mm)} & \textbf{Wellenimpedanz $Z_0$ ($\Omega$)} \\
+            \hline
+            1.7 & 52.749 \\
+            1.8 & 51.027 \\
+            1.9 & 49.419 \\
+            2.0 & 47.915 \\
+           
+            \hline
+        \end{tabular}
+        \caption{Berechnete Wellenimpedanz für verschiedene Leitungsbreiten}
+    \end{table}
+    Anhand der berechneten Werte liegt die Leitungsbreite mit $w = 1.8~mm$ am nähesten an der Wellenimpedanz.
+    Eine nähere Berechnung ist mit unserem TR nicht möglich. 
 
+       
 
     \subsection{Verifizierung der Berechneten Leitungsbreite}
     Nun wird die Leitungsbreite mithilfe des Controlled Impedance Line Designers Simuliert.

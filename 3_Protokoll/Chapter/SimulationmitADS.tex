@@ -71,7 +71,51 @@
     $1.8mm$ und $1.9mm$ liegt.
 
     \subsection{Charakteristische Länge der Koppelleitungen}
-    \subsection{Bestimmung der Filterordnung}
+    Die Gleichung für die Länge der Leitung wurde schon in \eqref{eq:laenge} hergeleitet.
+    Gegebene Werte:
+    \begin{align}
+        \mu_r &= 1 \\
+        c_0 &= 3 \cdot 10^8 \frac{m}{s}
+    \end{align}
+
+    Die Permitivität von Kufper kann nicht allgemein angegeben werden, sondern muss bestimmt werden. 
+    Wir konnten mithilfe des "Controlled Impedance Line Designers" die Permitivität auf $\epsilon_r = 3.42631$ bestimmen 
+    Damit lässt sich die Theoretische Leitung berrechnen.
+    \begin{equation}
+        L= \frac{c_0}{4 \cdot f_c \cdot \sqrt{\epsilon_r}} = 0.03241m = 32.41mm
+        \label{eq:laenge}
+    \end{equation}
+    \clearpage
+    Mithilfe von ADS konnten wir die Filtercharakteristik in abhängigkeit der Leitungslänge Simulieren. Durch das Sweepen der 
+    Leitungslänge konnten wir folgendes Diagramm erstellen.
+    \begin{figure}[H]
+        \includegraphics[width=0.7\textwidth]{Pictures/SimulationSweepLängeS21.png}
+        \includegraphics[width=0.3\textwidth]{Pictures/gezoomt.png}
+        \centering
+        \caption{Leitungslängensweep}
+    \end{figure}
+    Schauen wir uns den Filter bei 1.25Ghz an, dort sehen wir das wir die beste Filtercharteristik bei einer
+    Leitungslänge von etwa $L=32.80mm$ haben.
+    Was eine abweichung von etwa $0.4mm$ entspricht, das liegt mitunter an anderen 
+    Simulationsmodellen und auch an der berücksichtigung von den vier Bandpassfiltern.
+
+    \clearpage
+    \section{Simulation im Vergleich zur Praxis}
+    \begin{figure}[H]
+        \includegraphics[width=0.7\textwidth]{Pictures/simulationmitmarkern32.8.png}
+        \includegraphics[width=0.7\textwidth]{Pictures/S12neuCooleGrupp.png}
+        \centering
+        \caption{Filtercharakteristik Praxis vs Simulation}
+    \end{figure}
+    In der Praxis lassen sich ebenso wie in der Theorie die Peaks,die ein Vielfachse von 1.25GHz sind sehen.
+    Wenn wir uns in der Praxis die 1.25Ghz genauer anschauen, sehen wir das der Filter eine Dämpfung von -13.31dB
+    aufweist in der Theorie jedoch nur -5.23dB. Dieser Fehler kommt duch die Dämpfung des Koaxialkabels
+    das in der Theorie nicht berücksichtigt wurde.
+    Nach Versuch 1 ist bekannt, dass die Dämpfung des Koaxialkabels bei 1.25GHz bei etwa -7.13dB liegt.
+    Wird diese Dämpung vom Theorie wert abgezogen $D=-5.23dB-7.13dB=-12.36dB$, kommen wir dem Praktischen wert schon deutlich näher.
+
+
+
 
 \section{Aufbau des Coupled-Line-Filters im Schematic}
 

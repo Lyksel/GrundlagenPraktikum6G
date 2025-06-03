@@ -144,7 +144,12 @@ Trotzdem liegt das Problem vor, dass das Peak
 \section{Knick im Layout}
     \subsection{Erstellung des Layouts (Mit Knick)}
 
-    \subsection{Vergleich mit Messdaten}
+\section{Vergleich der 2.5D EM Simulation mit der 1D-Simulation}
+Man erkennt bei der 1D-Simulation einen viel glatteren Vergleich der Dämpfungskurve. Dies liegt daran, dass die 1D-Simulation nur die Übertragungsdämpfung in einer Dimension betrachtet, während die 2.5D EM-Simulation auch die Effekte der dritten Dimension berücksichtigt.
+Die 1D-Simulation ist daher weniger realistisch, da sie die komplexen Wechselwirkungen zwischen den Leitungen und den elektromagnetischen Feldern in der dritten Dimension nicht berücksichtigt.
+Auch der Peak liegt bei der 1D-Simulation die Frequenz von 1,25 GHz, während bei der 2.5D EM-Simulation der Peak leicht verschoben ist. Dies liegt daran, dass die 2.5D EM-Simulation die realen physikalischen Eigenschaften des Filters besser berücksichtigt und somit eine genauere Darstellung der Übertragungsdämpfung ermöglicht.
+
+Zusammenfassend lässt sich sagen, dass die 1D-Simulation ist daher weniger genau und kann in einigen Fällen zu ungenauen Ergebnissen führen, insbesondere bei höheren Frequenzen, bei denen die Effekte der dritten Dimension signifikant sind.
 
 \section{Simulation und Optimierung}
     
@@ -167,9 +172,10 @@ Trotzdem liegt das Problem vor, dass das Peak
     Daraufhin ergibt sich nach der EM-Simulation des Layouts mit dem Knick ergibt sich das folgende Dämpfungsdiagramm:
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.8\textwidth]{Pictures/EMSimulationmitKnick.png}
+        \includegraphics[width=0.45\textwidth]{Pictures/EMSimulationohneKnick.png}
+        \includegraphics[width=0.45\textwidth]{Pictures/EMSimulationmitKnick.png}
         \caption{EM-Simulation des Coupled-Line-Filters mit Knick}
     \end{figure}
 
-    Jetzt ist es zu erkennen, dass die Dämpfung exakt bei 1,25 GHz und bei den Vielfachen der Basisfrequenz von 1,25 GHz eine schwächere Dämpfung vorliegt. Demensprechend wurde die Fukntionalität des Bandpassfitlers nicht durch den Knick beeinträchtigt.
+    Jetzt ist es zu erkennen, dass die Dämpfung exakt bei 1,25 GHz und bei den Vielfachen der Basisfrequenz von 1,25 GHz eine schwächere Dämpfung vorliegt. Demensprechend wurde die Fukntionalität des Bandpassfitlers nicht durch den Knick 
 \section{Auswirkungen auf die S-Parameter}

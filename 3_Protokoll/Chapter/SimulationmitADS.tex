@@ -70,7 +70,7 @@
     am nähesten. Würde man noch genauer sweepen, wird man festellen dass die Optimale Leiterbreite irgendwo zwischen
     $1.8mm$ und $1.9mm$ liegt.
 
-    \subsection{Charakteristische Länge der Koppelleitungen}
+        \subsection{Charakteristische Länge der Koppelleitungen}
     Die Gleichung für die Länge der Leitung wurde schon in \eqref{eq:laenge} hergeleitet.
     Gegebene Werte:
     \begin{align}
@@ -119,6 +119,27 @@
 
 
 \section{Aufbau des Coupled-Line-Filters im Schematic}
+\subsection{Erstellung des Schematic (Ohne Knick)}
+Jetzt soll das Coupled-Line-Filter im Schematic aufgebaut werden. Dazu wird das Schematic geöffnet und oben im Menü auf "Layout" und dann auf "Generate/Update Layout" geklickt. Dies führt dazu, dass das im Schematic erstellte Schatlbild in das Layout übertragen wird. Es ist festzustellen, die Leitungen im Layout tatsächlich erstellt wurden. Dabei ist darauf zu achten, dass die Leitungen korrekt verbunden sind und die Abstände zwischen den Leitungen den Vorgaben entsprechen. Außerdem müssen die Eingangs- und Ausgangsanschlüsse korrekt platziert werden, um eine ordnungsgemäße Simulation der Signalübertragung zu gewährleisten.
+Es kommt zur folgenden Ansicht:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Pictures/Layout ohne Knick.png}
+    \caption{Schematic des Coupled-Line-Filters}
+\end{figure}
+
+Daraufhin wird die Übertragungsdämpfung des Filters simuliert. Eine elektromagnetische Simulation (EM Simulation) wird durchgeführt, um die Übertragungsdämpfung des Filters nicht nur im Eindimensionalen, sondern auch im 2,5-Dimensionalen Raum zu betrachten. 
+Dies bedeutet, dass die Simulation in einem physikalischen System geometrisch in 2D beschrieben wird, jedoch dabei elektromagnetische Effekte der dritten Dimension berücksichtigt. 
+Dies ist ein einer Schaltung, die auf Mikrowellen basiert von großer Bedeutung, da die Signale in der Regel auf Frequenzen im Gigahertz-Bereich arbeiten und die elektromagnetischen Effekte in diesem Bereich signifikant sind. 
+Die EM-Simulation ermöglicht es, die Übertragungsdämpfung des Filters unter Berücksichtigung dieser Effekte zu analysieren und zu optimieren.
+Nach einer erfolgreichen EM-Simulation entsteht das folgende Dämpfungsdiagramm:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Pictures/EMSimulationohneKnick.png}
+    \caption{EM-Simulation des Coupled-Line-Filters}
+\end{figure}
+
+Man erkennt deutlich anhand des Diagramms für die S-Parameter S12 bzw. S21, dass die Dämpfung bei 1,25 GHz bei etwa -5,23 dB liegt und die Vielfachen dieser Frequenz auch nicht erheblich gedämpft werden. Dies bestätigt somit das \textbf{Bandpassverhalten} des Filters.
 
 \section{Simulation und Optimierung}
     \subsection{Vergleich mit Messdaten}

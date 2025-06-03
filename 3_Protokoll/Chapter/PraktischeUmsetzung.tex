@@ -1,6 +1,6 @@
 \section{Messung der S-Parameter im NA-Modus}
 Die PCB mit dem Coupled-Line-Filter wird mit dem Fieldfox an beiden Ausgängen angeschlossen, 
-    woraufhin die S-Parameter dessen im Network-Analyzer-Modus vermessen werden. Folgende Leistungsspektren kommt zustande:
+    woraufhin die S-Parameter dessen im Network-Analyzer-Modus vermessen werden. Folgende Leistungsspektren kommen zustande:
     \begin{figure}[H]
         
         \begin{minipage}{0.45\textwidth}
@@ -33,7 +33,7 @@ Die PCB mit dem Coupled-Line-Filter wird mit dem Fieldfox an beiden Ausgängen a
     \end{figure}
     Diese Diagramme zeigen die entsprechenden Dämpfungen in Abhängigkeit von der Frequenz. Das Spektrum beginnt bei 30~kHz und endet bei 10~GHz, was unten im jeweiligen Diagramm abzulesen ist. 
     
-    Man erkennt im für uns relevantesten Diagramm zu S12 bzw. S21 einen kleinen Peak bei 1,25~GHz, was darauf hindeutet, dass der Filter bei dieser Frequenz einen höheren Gain aufweist. Die Dämpfung ist in diesem Fall bei S12 und S21 am geringsten und beträgt -13,13~dB, was darauf hinweist, dass der Filter in der Lage ist, Signale bei 1,25~GHz gut zu übertragen.
+    Man erkennt im Diagramm S12 bzw. S21 einen kleinen Peak bei 1,25~GHz, was darauf hindeutet, dass der Filter bei dieser Frequenz einen höheren Dämpfung aufweist. Die Dämpfung ist in diesem Fall bei S12 und S21 am geringsten und beträgt -13,13~dB, was darauf hinweist, dass der Filter in der Lage ist, Signale bei 1,25~GHz gut zu übertragen.
     Dies ist genau die Frequenz, bei der der bereitgestellte Transmitter funktioniert.
 \section{Anschluss an den Transmitter und Messung im SA-Modus}
     Als Nächstes wird der Filter vom FieldFox abgekoppelt und mit dem Transmitter mittels einer SMA-Verbindung zur Erzeugung eines Signals verbunden. Am Transmitter wird hierbei eine Spannung $V_\mathrm{CO}$ von 5~V angelegt.
@@ -63,8 +63,3 @@ Die PCB mit dem Coupled-Line-Filter wird mit dem Fieldfox an beiden Ausgängen a
 Als Fazit lässt sich schließen, dass der Filter die Leistung des Signals bei 1,20~GHz um etwa 9~dB reduziert hat. Trotzdem ist der Filter in der Lage, andere Frequenzen zu dämpfen, was ein Bandpassverhalten ist. 
 Der Filter hat somit die Aufgabe, unerwünschte Frequenzen zu dämpfen und das Signal bei 1,20~GHz zu erhalten. 
 Die Dämpfung des Signals bei 1,20~GHz ist zwar nicht ideal, aber der Filter erfüllt seine Aufgabe, indem er andere Frequenzen dämpft und das Signal bei 1,20~GHz erhält.
-
-\section{Zusammenfassung der Ergebnisse}
-Zusammenfassend lässt sich sagen, dass die Messungen ein Bandpassverhalten des Filters gezeigt haben.
-Diese bestätigen, dass der Filter eine Dämpfung von etwa 9~dB bei 1,20~GHz aufweist und somit in der Lage ist, unerwünschte Frequenzen zu dämpfen. Das erkennt man deutlich anhand der Nebenpeaks, die \textbf{ohne} Filter viel öfter auftreten, jedoch \textbf{mit} Filter stark reduziert sind bzw. gar nicht mehr auftreten.
-Solche Änderungen waren auch aufgrund des Aufbaus des Filters zu erwarten, da dieser speziell für die Frequenz von 1,20~GHz entworfen wurde.

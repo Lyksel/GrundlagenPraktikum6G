@@ -32,12 +32,22 @@ Um eine Microstrip-Leitung zu bauen, wird ein dünner Leitfähiger Streifen, wie
 Um die gewünschte Filtercharakteristik zu erreichen,
 muss die Länge der Microstrip-Leitungen auf die Frequenz des Signals angepasst werden.
 Typischerweise werden die Leitung als ein viertel der Wellelänge des Signals ausgelegt
-$\lambda/4$. 
+\begin{equation}
+    c_{Medium} = \frac{c_0}{\sqrt{\epsilon_r \cdot \mu_r}}
+\end{equation}
+\begin{equation}
+    L= \frac{\lambda}{4} = \frac{c_{Medium}}{4 \cdot f_c}=\frac{c_0}{4 \cdot f_c \cdot \sqrt{\epsilon_r \cdot \mu_r}}
+    \label{eq:laenge}
+\end{equation}
 \\
 Die Fitlerordung gibt an, wie viele parralele Übertragungsleitungen in einem Filter verbaut sind.
 Werden z.B. drei gekoppelte Resonatorabschnitte verwenden spricht man von Filterordnung 3.
 Durch höhere Filterordnungen kann die Steilheit des Amiltudengangs beim Übergang zwischen Durchlass- und Sperrberreich erhöht werden.
 Was eine bessere selektierung der Frequenzen ermöglicht.
+
+
+sdf
+
 
 
 \section{Bedeutung der S-Parameter}

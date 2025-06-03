@@ -1,54 +1,49 @@
 \section{Filter}
-Unter einem Filter (in der Elektrotechnik) versteht man eine Schaltung, bzw ein System das Frequenzen eines Signals selektiv dämpft.
-Das Ziel hirbei ist es, dadurch das bestimmte Frequenzen durchgelassen werden während andere gedämpft werden, Rauschanteile
-zu reduzieren und die Signalqualität zu verbessern. Er kann auch dazu genutzt werden, um SIgnale gezielt auf einen Frequenzbereich
-zu begrenzen.
-\\Es gibt vier primäre Filtertypen:
+Unter einem Filter (in der Elektrotechnik) versteht man eine Schaltung bzw. ein System, das Frequenzen eines Signals selektiv dämpft.
+Das Ziel hierbei ist es, bestimmte Frequenzen durchzulassen, während andere gedämpft werden, um Rauschanteile zu reduzieren und die Signalqualität zu verbessern. Er kann auch dazu genutzt werden, um Signale gezielt auf einen Frequenzbereich zu begrenzen.
+
+Es gibt vier primäre Filtertypen:
 \begin{itemize}
-    \item \textbf{Tiefpassfilter:} Niedrige Frequenzen werden durchgelassen, hohe Freuenzen werden gedämpft (Entfernung hoschfrquentes Rauschen)
-    \item \textbf{Hochpassfilter:} Niedrige Frequenzen werden gedämpft, hohe Frequenzen werden durchgelassen (Entfernung DC-Anteile)
-    \item \textbf{Bandpassfilter:} Lassen nur bestimmten Frequenzbereich durch (z.B. Kontrast zwischen Bildelemten erhöhen)
-    \item \textbf{Bandsperrfilter:} Unterdrücken eine bestimmte Frequenz/Frequenzbereich (Bekannte Störungen bei bekannten Frequenzen entfernen)
+    \item \textbf{Tiefpassfilter:} Niedrige Frequenzen werden durchgelassen, hohe Frequenzen werden gedämpft (Entfernung hochfrequenten Rauschens)
+    \item \textbf{Hochpassfilter:} Niedrige Frequenzen werden gedämpft, hohe Frequenzen werden durchgelassen (Entfernung von DC-Anteilen)
+    \item \textbf{Bandpassfilter:} Lassen nur einen bestimmten Frequenzbereich durch (z.B. Kontrast zwischen Bildelementen erhöhen)
+    \item \textbf{Bandsperrfilter:} Unterdrücken eine bestimmte Frequenz bzw. einen Frequenzbereich (bekannte Störungen bei bekannten Frequenzen entfernen)
 \end{itemize}
 
-In unserem Versuch wird ein Couoled-Line-Filter verwerwendet. Dieser ist Standardmäßig ein Bandpass.
+In unserem Versuch wird ein Coupled-Line-Filter verwendet. Dieser ist standardmäßig ein Bandpass.
 
 \section{Prinzip von Coupled-Line-Filtern}
-Ein Coupled Line Filter besteht aus zwei Parallelen Übertragungsleitungen (Transmission Lines), 
-diese liegen so nahe beieinander, dass ihre elektromagnetischen Felder sich gegenseitig beeinflussen.
-Diese elektromagnetische Kopplung hat Induktive sowie Kapazitive Anteile.
-\\
-Wird ein Hochfrequenzsignal über ein Coubled line Filter übertragen, hängt es stark
+Ein Coupled-Line-Filter besteht aus zwei parallelen Übertragungsleitungen (Transmission Lines), 
+die so nahe beieinander liegen, dass sich ihre elektromagnetischen Felder gegenseitig beeinflussen.
+Diese elektromagnetische Kopplung hat sowohl induktive als auch kapazitive Anteile.
+
+Wird ein Hochfrequenzsignal über ein Coupled-Line-Filter übertragen, hängt es stark
 von der Frequenz des Signals ab, wie viel Leistung am Ausgang ankommt.
-Da je nach Frequenz der Energieaustausch zwischen den Gekoppelten Leitungen effizienter oder weniger effizient ist.
-Das kann man sich jedoch zu nutze machen, um gewünsche Frequenzen duch den Filter zu lassen und ungewünschte zu dämpfen bzw. sperren.
+Je nach Frequenz ist der Energieaustausch zwischen den gekoppelten Leitungen effizienter oder weniger effizient.
+Das kann man sich zunutze machen, um gewünschte Frequenzen durch den Filter zu lassen und unerwünschte zu dämpfen bzw. zu sperren.
 
 \section{Eigenschaften von Microstrip-Leitungen}
-Microstip(Streifenleitung) gehören zu einer bestimmten Klasse der Wellenleiter.
+Microstrip-Leitungen (Streifenleitungen) gehören zu einer bestimmten Klasse von Wellenleitern.
 Besonders in der Hochfrequenztechnik kommen sie zum Einsatz.
-Um eine Microstrip-Leitung zu bauen, wird ein dünner Leitfähiger Streifen, wie Kupfer, auf einem Dielektrikum, wie FR4, aufgebracht.
+Um eine Microstrip-Leitung zu bauen, wird ein dünner leitfähiger Streifen, wie Kupfer, auf einem Dielektrikum, wie FR4, aufgebracht.
+
 \newpage
 \section{Charakteristische Leitungslänge und Filterordnung}
 Um die gewünschte Filtercharakteristik zu erreichen,
 muss die Länge der Microstrip-Leitungen auf die Frequenz des Signals angepasst werden.
-Typischerweise werden die Leitung als ein viertel der Wellelänge des Signals ausgelegt
+Typischerweise werden die Leitungen auf ein Viertel der Wellenlänge des Signals ausgelegt:
 \begin{equation}
-    c_{Medium} = \frac{c_0}{\sqrt{\epsilon_r \cdot \mu_r}}
+    c_{\text{Medium}} = \frac{c_0}{\sqrt{\epsilon_r \cdot \mu_r}}
 \end{equation}
 \begin{equation}
-    L= \frac{\lambda}{4} = \frac{c_{Medium}}{4 \cdot f_c}=\frac{c_0}{4 \cdot f_c \cdot \sqrt{\epsilon_r \cdot \mu_r}}
+    L = \frac{\lambda}{4} = \frac{c_{\text{Medium}}}{4 \cdot f_c} = \frac{c_0}{4 \cdot f_c \cdot \sqrt{\epsilon_r \cdot \mu_r}}
     \label{eq:laenge}
 \end{equation}
-\\
-Die Fitlerordung gibt an, wie viele parralele Übertragungsleitungen in einem Filter verbaut sind.
-Werden z.B. drei gekoppelte Resonatorabschnitte verwenden spricht man von Filterordnung 3.
-Durch höhere Filterordnungen kann die Steilheit des Amiltudengangs beim Übergang zwischen Durchlass- und Sperrberreich erhöht werden.
-Was eine bessere selektierung der Frequenzen ermöglicht.
 
-
-sdf
-
-
+Die Filterordnung gibt an, wie viele parallele Übertragungsleitungen in einem Filter verbaut sind.
+Werden z.B. drei gekoppelte Resonatorabschnitte verwendet, spricht man von Filterordnung 3.
+Durch höhere Filterordnungen kann die Steilheit des Amplitudengangs beim Übergang zwischen Durchlass- und Sperrbereich erhöht werden,
+was eine bessere Selektion der Frequenzen ermöglicht.
 
 \section{Bedeutung der S-Parameter}
 S-Parameter bzw. Streuparameter werden genutzt, um die HF-Eigenschaften eines
@@ -70,7 +65,7 @@ Somit können an einem Zweitor folgende S-Parameter auftreten:
     \item S22 ist der Ausgangsreflexionsfaktor. Dieser Parameter gibt an, wie viel des Ausgangssignals zurückreflektiert wird.
 \end{itemize}
 
-\subsection{Smith-Diagramm}
+\section{Smith-Diagramm}
 Das Smith-Diagramm ermöglicht die grafische Darstellung der S-Parameter.
 Dafür werden der Real- und Imaginärteil des Reflexionsfaktors in Abhängigkeit von der Frequenz
 aufgetragen und ermöglichen dadurch eine einfachere Impedanzanpassung.

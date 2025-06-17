@@ -18,6 +18,7 @@
 \usepackage{amsmath}  % Required for the \text command in maths mode
 \usepackage{subfigure}
 \usepackage{subcaption} % Add this line to your preamble
+\usepackage[ngerman]{datetime2} % For date formatting in German
 \hypersetup{urlcolor=blue, colorlinks=true}  % Colours hyperlinks in blue, but this can be distracting if there are many links.
 %
 \pagestyle{fancy}
@@ -64,7 +65,7 @@
 %----------------------------------------------------------------------------------------
 
 \HRule \\[0.4cm]
-{ \huge \bfseries Versuch 3: Design  und Simulation eines Coupled-Line Filters}\\[0.4cm] % Title of your document
+{ \huge \bfseries Versuch 4: Modulierte Daten, Modulation, Demodulation und Trägerfrequenz}\\[0.4cm] % Title of your document
 \HRule \\[1.5cm]
  
 %----------------------------------------------------------------------------------------
@@ -85,7 +86,11 @@
 %	DATE SECTION
 %----------------------------------------------------------------------------------------
 \textbf{Eingereicht am}\\
-{\large 03.06.2025} % Date, change the \today to a set date if you want to be precise
+
+\DTMdate{\the\year-\ifnum\month<10 0\fi\the\month-\ifnum\day<10 0\fi\the\day} % Zeigt das aktuelle Datum im deutschen Format, z.B. 4. Juni 2024
+% Nur das Datum ohne Uhrzeit anzeigen
+% \DTMnow gibt Datum und Uhrzeit aus, \DTMdate{YYYY-MM-DD} nur das Datum
+% Für das aktuelle Datum:
 
  
 %----------------------------------------------------------------------------------------
@@ -154,17 +159,15 @@
 \chapter{Einleitung}
 \input{Chapter/Einleitung}
 
-\chapter{Theoretische Grundlagen}
+\chapter{Analyse der theoretischen Grundlagen}
 \input{Chapter/TheoretischeGrundlagen}
 
 \chapter{Verwendete Geräte und Messaufbau}
 \input{Chapter/Versuchsaufbau}
 
 \chapter{Praktische Umsetzung}
-\input{Chapter/PraktischeUmsetzung}
+\input{Chapter/Durchführung}
 
-\chapter{Simulation mit ADS}
-\input{Chapter/SimulationmitADS}
 
 
 \chapter{Fazit}

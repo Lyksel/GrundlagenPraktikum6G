@@ -23,14 +23,55 @@ Das AM-Signal wird beschrieben durch.
 \subsection{Frequenzmodulation FM}
 
 \section{Blockdiagramm einer Sendestrecke}
+Im folgenden Abschnitt wird die Hochfrequenz-Übertragungsstrecke eines typischen Funksystems beschrieben. Bei der Grafik .. , handelt es sich um ein Blockdiagramm. Es zielt darauf ein grundlegendes
+systematisches Verständinis aufzubauen um das gelernte auf unsere spezifische Hardware anwenden zu können. Die einzelnen Komponenten der Hochfrequenz-Übertragungsstrecke 
+und deren Zusammenspiel wird im Anschluss näher erläutert und auf ihre Realiserung in unserer Hardware eingegangen.\\
+\\Bild\\
+
 \subsection{DAC}
-\subsection{LO}
-\subsection{Mischer} 
+Ein Digital-Analog-Wandler (eng. digital-to-analog converter, DAC) wandelt digitale Signale oder einzelne Werte in Analoge
+Signale um. Bei einem digital Signal handelt es sich um ein zeit- und wertdiskretes Signal. Durch die Wandlung
+in ein analoges Signal wird das Signal zeit- und wertkontinuierlich.  Dafür werden die Rechtecksignale des digitalen Eingangssignals mit Hilfe einer Fouriertransformation
+in eine  kontinuirlich veränderliche Spannung transfomiert. Diese Wandlung ist erforderlich um das Signal über eine
+Antenne aussenden zu können, da Antennen nur elektormagnetische Wellen abstrahlen können. \\
+
+\subsection{LO und Mischer}
+Der lokale Oszillaotr(eng. local oscillator, LO) erzeugt eine ungedämpfte hochfrequente Trägerschwingung. Diese Trägerschwingung 
+wird benötigt, um das analoge Signal auf die gewünschte Frequenz zu bringen. Der LO kann in verschiedenen Frequenzen arbeiten,
+abhängig von der Anwendung und dem gewünschten Frequenzbereich des Signals. Der Mischer übernimmt die Modulation des
+Bandsignals auf eine Hochfrequenz. Dies geschieht durch die Multiplikation des Bandsignals mit der Trägerschwinung des LO.
+
+\begin{equation}
+    S_{xx}(t) \cdot S_{xx}(t) \rightarrow S_{xx}(t)
+\end{equation}
+
+
 \subsection{PA}
-\subsection{Antennen}
+Der Leistungsverstärker (eng. power amplifier, PA) verstärkt das modulierte Signal auf eine Leistung, die für die Übertragung über eine Antenne 
+geeignet ist. Die hohe Leistung ist notwedig um über eine größere Diszanz senden zu können und um Zuverlässigkeit und
+Signalqualität zu gewährleisten. 
+
+\subsection{Drahtlose Übertragung mit Antennen}
+Die Sendeantenne strahlt das modulierte HF Signal Sxx als elektromagnetische Wellen in den Raum ab. DIese abgstrahlte Welle
+breitet sich mit Lichtgeschwindigkeit aus und kann von Empfängerantennen empfangen werden. Die Empfängerantenne wandelt
+die elektromagnetische welle wieder in eine elektrische Spannung um, die dann weiterverarbeitet werden kann. Diese entspricht
+jedoch nicht mehr dem ursprünglichen Bandsignal, da es durch die Übertragungseinflüsse wie Dämpfung, Rauschen und Interferenzen
+und vielen weiteren Einflüssen gedämpft und gestört wurde.
+
 \subsection{LNA}
+Bei dem LNA (eng. low noise amplifier) handelt es sich um einen rauscharmen HF-Verstärker. Das empfangene Signal Sxx ist
+durch die bereits erwähnten Einflüsse sehr schwach und muss  zuerst verstärkt werden, um weiterverarbeitet werden. Daher
+ist eine Verstärkung des Signals unmittlbar nach der Antennen zwingend notwendig. Der Vorteil des LNA gegenüber zu
+anderen Verstärkern ist, dass er kein nennenswertes Rauschen hiinzufügt. Dies ist wichtig, da jedes zusätzliche Rauschen
+die folgende Demolution erheblich erschweren würde. Ebenfall ist durch die Postion des LNA das empfangene Signal noch 
+nicht durch andere elektrischen Komponenten verfälscht worden, was durch eine spätere Verstärkung zu rekonstruktionsproblemen
+des eigentlichen Signals führen könnte.
 \subsection{Demodulation}
+Iwas mit Nyquisr Theorem und Abtastrate 
+
 \subsection{ADC}
+Nun muss das demodulisierte Signal wieder in ein digitales Signal umgewandelt werden, damit es weiterverarbeitet werden kann.
+In unsere Schaltung wird dafür ... verwendet. 
 
 
 \section{Mathematische Grundlagen: Fourier-Transformation}

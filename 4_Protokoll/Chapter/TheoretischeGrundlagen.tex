@@ -199,12 +199,19 @@ Der Verlauf der Rechteckfunktion $x(t)$ ist in Abbildung \ref{fig:rechteck} darg
     \label{fig:rechteck}
 \end{figure}
 
-Die Fourier-Transformierte der Rechteckfunktion $x(t)$ ist gegeben durch:
-Die Fourier-Transformierte einer Rechteckfunktion der Breite $2T$ und Höhe $1$ ist die normierte $\mathrm{sinc}$-Funktion:
+Die Rechteckfunktion $x(t)$ ist gegeben durch:
+\[
+x(t) = \begin{cases}
+    1 & \text{für } -1 < t < 1 \\
+    0 & \text{sonst}
+    \end{cases}
+\]
+    
+Die Fourier-Transformierte einer Rechteckfunktion der Breite $2T$ und Höhe $1$ ist gegeben durch die normierte $\mathrm{sinc}$-Funktion:
 \[
 \mathcal{F}\{x(t)\} = 2T \cdot \mathrm{sinc}(T\omega) = 2T \cdot \frac{\sin(T\omega)}{T\omega}
 \]
-Der Verlauf (inklusive Vorzeichen) der Fourier-Transformierten ist in folgender Abbildung dargestellt:
+Der Verlauf der Fourier-Transformierten ist in folgender Abbildung dargestellt:
 
 \begin{figure}[H]
     \centering
@@ -240,10 +247,12 @@ Der Verlauf (inklusive Vorzeichen) der Fourier-Transformierten ist in folgender 
     \label{fig:fourier_rechteck}
 \end{figure}
 
+Die Rechteckfunktion ist in der digitalen Signalverarbeitung von Relevanz, da diese eine Basis für die Änderung des Signalpegels darstellt. Durch die Idealisierung lässt sich der High-Pegel (1) und Low-Pegel (0) des Signals gut darstellen. In der Praxis wird die Rechteckfunktion jedoch durch eine $\mathrm{sinc}$-Funktion approximiert, um Übertragungsfehler zu minimieren.
+
 \subsection{Betrag und zeitlicher Verlauf von Sinusfunktion}
 Der Sinus ist eine wichtige Funktion in der Signalverarbeitung.
 Er beschreibt eine harmonische Schwingung und ist in der Fourier-Analyse von Bedeutung. Sein Verlauf ist in der Abbildung \ref{fig:sinus} dargestellt.
-Die Sinusfunktion $x(t) = \sin(t)$ hat eine Periode von $2\pi$ und schwingt zwischen -1 und 1. Sie ist symmetrisch um die $y$-Achse, was bedeutet, dass $x(-t) = -x(t)$ gilt. Dies ist eine Eigenschaft der ungeraden Funktion.
+Die Sinusfunktion $x(t) = \sin(t)$ hat eine Periode von $2\pi$ und schwingt zwischen -1 und 1. Sie ist punktsymmetrisch um den Koordinatenursprung, was bedeutet, dass $x(-t) = -x(t)$ gilt. Dies ist eine Eigenschaft der ungeraden Funktion.
 
 \begin{figure}[H]
     \centering
@@ -265,11 +274,10 @@ Die Sinusfunktion $x(t) = \sin(t)$ hat eine Periode von $2\pi$ und schwingt zwis
         \addplot[blue, thick] {sin(deg(x))};
         \end{axis}
     \end{tikzpicture}
-    \caption{Verlauf der Sinusfunktion $x(t) = \sin(t)$ über zwei Perioden symmetrisch um die $y$-Achse}
+    \caption{Verlauf der Sinusfunktion $x(t) = \sin(t)$ über zwei Perioden}
     \label{fig:sinus}
 \end{figure}
 
-Seine Fourier-Transformierte sieht wie folgt aus:
 Die Fourier-Transformierte der Sinusfunktion $x(t) = \sin(t)$ ist gegeben durch:
 \[
 \mathcal{F}\{\sin(\omega_0 t)\} = \pi j \left[ \delta(\omega + \omega_0) - \delta(\omega - \omega_0) \right]
@@ -278,7 +286,9 @@ Für $\omega_0 = 1$ ergibt sich:
 \[
 \mathcal{F}\{\sin(t)\} = \pi j \left[ \delta(\omega + 1) - \delta(\omega - 1) \right]
 \]
-Der Betrag der Fourier-Transformierten besteht aus zwei Dirac-Impulsen bei $\omega = \pm 1$.
+Der Betrag der Fourier-Transformierten besteht also aus zwei Dirac-Impulsen bei $\omega = \pm 1$.
+
+Die graphische Darstellung der Fourier-Transformierten der Sinusfunktion ist in Abbildung \ref{fig:fourier_sinus_komplex} zu sehen.
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -303,9 +313,13 @@ Der Betrag der Fourier-Transformierten besteht aus zwei Dirac-Impulsen bei $\ome
         \node[below] at (axis cs:1,-1) {$-\pi j\,\delta(\omega - \omega_0)$};
         \end{axis}
     \end{tikzpicture}
-    \caption{Graphische Darstellung von $\pi j [\delta(\omega + \omega_0) - \delta(\omega - \omega_0)]$ für $\omega_0=1$}
+    \caption{Graphische Darstellung der Fourier-Transformierten der Sinusfunktion.}
     \label{fig:fourier_sinus_komplex}
 \end{figure}
+
+Die Sinusfunktion spielt eine immens wichtige Rolle in der digitalen Signalverarbeitung, da es der Grundstein der Fourier-Analyse (Fourier-Reihen und Fourier-Transformation) ist. Auch sind diese für lineare zeitinvariante Systeme (LTI) von Bedeutung. 
+Der Sinus ist eine elementare periodische Funktion, seine Periodizität ist das grundlegende Konzept in vielen Signalen. Er lässt auch unter anderem komplex erscheinende Funktionen in Sinuskomponenten zerlegen und somit sie einfacher und kompakter darstellen.
+Auch in der analogen Signalverarbeitung ist der Sinus von Bedeutung, da er die Basis für die Amplituden-, Frequenz- und Phasenmodulation bildet. Schließlich ist die Idealform der aus der Steckdose kommenden Netzspannung eine Sinuswelle, die in vielen Anwendungen als Referenzsignal dient. 
 
 \subsection{Multiplikation der beiden Funktionen im Zeitbereich}
 

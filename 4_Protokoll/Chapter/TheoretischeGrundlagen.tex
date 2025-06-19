@@ -322,8 +322,71 @@ Der Sinus ist eine elementare periodische Funktion, seine Periodizität ist das 
 Auch in der analogen Signalverarbeitung ist der Sinus von Bedeutung, da er die Basis für die Amplituden-, Frequenz- und Phasenmodulation bildet. Schließlich ist die Idealform der aus der Steckdose kommenden Netzspannung eine Sinuswelle, die in vielen Anwendungen als Referenzsignal dient. 
 
 \subsection{Multiplikation der beiden Funktionen im Zeitbereich}
+Bei einer Multiplikation der beiden Funktionen im Zeitbereich, also der Rechteckfunktion $x(t)$ und der Sinusfunktion $y(t)$, ergibt sich eine neue Funktion $z(t) =  x(t) \cdot y(t)$, die in Abbildung \ref{fig:rechteck_sinus} dargestellt ist. Diese Funktion ist das Ergebnis der Punkt-für-Punkt-Multiplikation der beiden Funktionen.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.8\textwidth,
+            height=5cm,
+            axis lines=middle,
+            xlabel={$t$},
+            ylabel={$z(t)$},
+            domain=-2:2,
+            samples=200,
+            xtick={-2,-1,0,1,2},
+            ytick={-1,0,1},
+            ymin=-1.2, ymax=1.2,
+            grid=both,
+        ]
+        % Rechteckfunktion
+        \addplot[blue, thick, samples=2, domain=-2:-1] {0};
+        \addplot[blue, thick, samples=2, domain=-1:1] {1};
+        \addplot[blue, thick, samples=2, domain=1:2] {0};
+        % Sinusfunktion
+        \addplot[red, thick] {sin(deg(x))};
+        % Multiplikation der beiden Funktionen
+        \addplot[green, thick] {sin(deg(x)) * (x >= -1 && x <= 1)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Multiplikation der Rechteckfunktion $x(t)$ und der Sinusfunktion $y(t)$ im Zeitbereich}
+    \label{fig:rechteck_sinus}
+\end{figure}
 
+Die Fourier-Transformierte der Multiplikation zweier Funktionen im Zeitbereich ist gegeben durch die Faltung ihrer Fourier-Transformierten im Frequenzbereich. Das bedeutet, dass die Fourier-Transformierte von $z(t)$, also $\mathcal{F}\{z(t)\}$, das Ergebnis der Faltung der Fourier-Transformierten von $x(t)$ und $y(t)$ ist:
+\[
+\mathcal{F}\{z(t)\} = \mathcal{F}\{x(t)\} * \mathcal{F}\{y(t)\}
+\]
 
+Es ergibt sich also eine neue Funktion im Frequenzbereich, die die Frequenzkomponenten der beiden ursprünglichen Funktionen kombiniert. Diese sieht folgendermaßen aus:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.8\textwidth,
+            height=5cm,
+            axis lines=middle,
+            xlabel={$\omega$},
+            ylabel={$\mathcal{F}\{z(t)\}$},
+            domain=-10:10,
+            samples=400,
+            xtick=\empty, % entfernt die Zahlen auf der x-Achse
+            ytick={-1,0,1},
+            ymin=-0.3, ymax=1.1,
+            grid=both,
+        ]
+        % Rechteckfunktion im Frequenzbereich
+        \addplot[blue, thick, samples=400, domain=-10:10] {sin(deg(x))/x};
+        % Sinusfunktion im Frequenzbereich (wird durch Dirac-Impulse dargestellt)
+        % Faltung der beiden Funktionen im Frequenzbereich: Zwei Impulse bei -w_0 und w_0
+        \addplot+[ycomb, thick, green!70!black, mark=*, samples at={-1,1}] {1};
+        \node[above] at (axis cs:-1,1) {$2T\,\mathrm{sinc}(T(\omega+\omega_0))$};
+        \node[above] at (axis cs:1,1) {$2T\,\mathrm{sinc}(T(\omega-\omega_0))$};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Faltung der Fourier-Transformierten der Rechteckfunktion und der Sinusfunktion im Frequenzbereich}
+    \label{fig:faltung_rechteck_sinus}
+\end{figure}
 \section{Zusammenhang von Datenrate und Bandbreite}
 blabla
 \clearpage

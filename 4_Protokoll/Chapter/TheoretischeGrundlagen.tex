@@ -68,17 +68,60 @@ zur Ursprünglichen Phase des Trägersignal
 \end{figure}
 
 \section{Blockdiagramm einer Sendestrecke}
-Im folgenden Abschnitt wird die Hochfrequenz-Übertragungsstrecke eines typischen Funksystems beschrieben. Bei der Grafik .. , handelt es sich um ein Blockdiagramm. Es zielt darauf ein grundlegendes
-systematisches Verständinis aufzubauen um das gelernte auf unsere spezifische Hardware anwenden zu können. Die einzelnen Komponenten der Hochfrequenz-Übertragungsstrecke 
+Im folgenden Abschnitt wird die Hochfrequenz-Übertragungsstrecke eines typischen Funksystems beschrieben. Bei der Abbildung 2.3 handelt es sich um ein Blockdiagramm. Es zielt darauf aus ein grundlegendes
+systematisches Verständinis aufzubauen, um das gelernte auf unsere spezifische Hardware anwenden zu können. Die einzelnen Komponenten der Hochfrequenz-Übertragungsstrecke 
 und deren Zusammenspiel wird im Anschluss näher erläutert und auf ihre Realiserung in unserer Hardware eingegangen.\\
-\\Bild\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{Pictures/Blockdiagramm.jpg}   
+    \caption{Blockdiagramm einer typischen Hochfrequenz-Übertragungsstrecke}
+    %\footnotesize{Quelle: \url{https://www.elektronik-kompendium.de/sites/kom/0402021.htm}}
+\end{figure}
+\clearpage
+
+\begin{minipage}{0.48\textwidth}
+    \raggedright
+    \textbf{\large Blockdiagramm-Komponente}\\[2ex]
+    \begin{enumerate}
+        \item [2.2.1] Digital-Analog-Wandler (DAC)
+        \item [2.2.2] Lokaler Oszillator (LO)
+        \item [2.2.2] Mischer: Modulator
+        \item [2.2.3] Leistungsverstärker (PA)
+        \item [2.2.4] Sende- und Empfangsantenne
+        \item [2.2.5] Low Noise Amplifier (LNA)
+        \item [2.2.6] Mischer: Demodulator
+        \item [2.2.7] Analog-Digital-Wandler (ADC)
+        
+    \end{enumerate}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.48\textwidth}
+    \raggedright
+    \textbf{\large Funktion / Beschreibung}\\[2ex]
+    \begin{itemize}
+        \item $S_{\mathrm{TX}}(t)$: Digital erzeugtes Sendesignal
+        \item $S_{\mathrm{TX;DAC}}(t)$: Analoges Signal (Basisbandsignal)
+        \item $S_{\mathrm{LO}}(t)$: Sinusförmiges Trägersignal/ ungedämpfte hochfrequente Trägerschwingung
+        \item $S_{\mathrm{RF}}(t)$: moduliertes analoges Hochfrequenzsignal
+        \item $S_{\mathrm{RF;PA}}(t)$: Verstärkte Hochfrequenzsignal (durch PA)
+        \item $S_{\mathrm{Funk}}(t)$: Signal auf Funkstrecke
+        \item $S_{\mathrm{RF;in}}(t)$: Schwaches, empfangene Hochfrequenzsignal
+        \item $S_{\mathrm{RF;LNA}}(t)$: Verstärkte Hochfrequenzsignal (durch LNA)
+        \item $S_{\mathrm{BB}}(t)$: Demoduliertes analoges Basisbandsignal
+        \item $S_{\mathrm{RX}}(t)$: Digitalisiertes Basisbandsignal
+    \end{itemize}
+\end{minipage}
+
+
 
 \subsection{DAC}
 Ein Digital-Analog-Wandler (eng. digital-to-analog converter, DAC) wandelt digitale Signale oder einzelne Werte in Analoge
 Signale um. Bei einem digital Signal handelt es sich um ein zeit- und wertdiskretes Signal. Durch die Wandlung
 in ein analoges Signal wird das Signal zeit- und wertkontinuierlich.  Dafür werden die Rechtecksignale des digitalen Eingangssignals mit Hilfe einer Fouriertransformation
 in eine  kontinuirlich veränderliche Spannung transfomiert. Diese Wandlung ist erforderlich um das Signal über eine
-Antenne aussenden zu können, da Antennen nur elektormagnetische Wellen abstrahlen können. \\
+Antenne aussenden zu können, da Antennen nur elektormagnetische Wellen abstrahlen können. 
+\\
 
 \subsection{LO und Mischer}
 Der lokale Oszillaotr(eng. local oscillator, LO) erzeugt eine ungedämpfte hochfrequente Trägerschwingung. Diese Trägerschwingung 

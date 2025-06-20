@@ -464,34 +464,35 @@ Die analytische Form der Funktion aus dem Bild lautet:
 \]
 
 % Plot der Funktion mit Beispielwerten T=2, \omega_0=4\pi
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \begin{tikzpicture}
-    \begin{axis}[
-        width=13cm,
-        height=5cm,
-        axis lines=box, % Box um den Plot
-        xlabel={$\omega$},
-        ylabel={$\left| \mathcal{F}\{z(t)\} \right|$},
-        grid=both,
-        ymin=0, ymax=1.1,
-        domain=-24*pi:24*pi,
-        samples=1000,
-        xtick={-24*pi,-20*pi,-16*pi,-12*pi,-8*pi,-4*pi,0,4*pi,8*pi,12*pi,16*pi,20*pi,24*pi},
-        xticklabels={$-24\pi$,$-20\pi$,$-16\pi$,$-12\pi$,$-8\pi$,$-4\pi$,0,$4\pi$,$8\pi$,$12\pi$,$16\pi$,$20\pi$,$24\pi$},
-        enlargelimits=false,
-        clip=false,
-        declare function={
-            sincpgf(\x) = abs(\x) < 0.0001 ? 1 : (sin(deg(\x))/\x);
-        },
-    ]
-    \addplot[blue, thick, opacity=0.75]
-        {abs(sincpgf((x - 4*pi)/pi) - sincpgf((x + 4*pi)/pi))};
-    \end{axis}
+\begin{axis}[
+    width=0.9\textwidth,
+    height=5cm,
+    xlabel={$\omega$},
+    ylabel={$|X(\omega)|$},
+    title={Spektrum des Produkts $x(t) = r(t) \cdot \sin(\omega_0 t)$},
+    domain=-10*pi:10*pi,
+    samples=1000,
+    ymin=0, ymax=1.2,
+    xtick={-12.56, -6.28, 0, 6.28, 12.56},
+    xticklabels={$-4\pi$, $-2\pi$, $0$, $2\pi$, $4\pi$},
+    grid=major,
+    declare function={
+        T = 2;
+        omegaNull = 4*pi; % du kannst das später in der Präambel als \def\omegaNull{4*pi} setzen
+        sinc(\x) = (abs(\x) < 1e-3) ? 1 : sin(deg(\x))/\x;
+    },
+]
+\addplot[orange, thick, domain=-10*pi:10*pi] 
+    {abs( (T/2)*(sinc((x - omegaNull)*T/2) - sinc((x + omegaNull)*T/2)) )};
+\end{axis}
 \end{tikzpicture}
-\caption{Betragsverlauf der Fourier-Transformierten $\mathcal{F}\{z(t)\}$ für Rechteckfunktion $x(t)$ (Breite $T=2$) und Sinusfunktion $y(t) = \sin(4\pi t)$.}
+\caption{Allgemeines Betragsspektrum $|X(\omega)|$ des Produkts mit variabler Frequenz $\omega_0$ und Rechteckbreite $T$}
 \label{fig:fourier_rechteck_sinus}
 \end{figure}
+
 
 Somit ergibt sich eine Faltung der beiden $\mathrm{sinc}$-Funktionen, die in Abbildung \ref{fig:fourier_rechteck_sinus} dargestellt ist. Diese Faltung führt zu einem Frequenzspektrum, das die Eigenschaften beider Funktionen kombiniert.
 \clearpage

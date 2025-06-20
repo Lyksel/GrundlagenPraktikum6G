@@ -8,13 +8,14 @@ Es gibt Analoge und Digitale Modulationsarten.
 Für Analoge Signale werden folgende Verfahren verwendet.
 
 
-\subsection{Amplitudenmodulation AM}
+\subsection{Amplitudenmodulation}
+\subsubsection{Analoge Amplitudenmodulation AM}
 Die Idee hinter der Amplitudenmodulation ist dass das Informationssignal
 auf die Amplitude des Trägersignals zu modulieren.
 Daduch veränder sich die Amplituder des Trägersignals in abhängigkeit des Pegels und 
 Freqeuenz des Informationssignals.
 \\
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.22\textwidth]{Pictures/Screenshot 2025-06-19 125508.png}
     \caption{Amplitudenmodulation}
@@ -36,6 +37,22 @@ Das AM-Signal wird beschrieben durch.
     \item $f_c$: Trägerfrequenz
     \item $\mu$: Modulationsindex 0 < $\mu$ < 1
 \end{itemize}
+\subsubsection{Digitale Amplitudenmodulation ASK}
+Einer der Einfachsten digitalen Modulationsverfahren ist 
+das On-Off-Keying. 
+Die Idee ist ganz Simpel man hat ein digitales Datensignal aus nullen und einsen
+und ein Sinus/Cosinus Signal von einem Oszilator das als Trägerfrequenz fungiert.
+Und je nachdem ob eine null oder eins anliegt wird dann der Oszilator angeschalten bzw. ausgeschalten.
+Mathematisch ausgedrückt heißt das:
+\begin{equation}
+s(t) =
+\begin{cases}
+0, & \text{für Bit } = 0 \\
+A \cdot \cos(2 \pi f_c t), & \text{für Bit } = 1
+\end{cases}
+\end{equation}
+
+
 
 
 \subsection{Frequenzmodulation FM}
@@ -131,9 +148,27 @@ abhängig von der Anwendung und dem gewünschten Frequenzbereich des Signals. De
 Bandsignals auf eine Hochfrequenz. Dies geschieht durch die Multiplikation des Bandsignals mit der Trägerschwinung des LO.
 In unserer Schaltung ist der LO ein Quarz-Oszillator der bei einer Freqzenz $f=1,25GHz$ schwingt.
 
+
+\subsection{Mischer}
+Schaut man sich den Schaltplan stellt man fest dass folgendes Bauteil der Mischer und LO ist:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Pictures/MischerLO.png}
+    \caption{Mischer und LO}
+    \footnotesize{Quelle: \url{Schaltplan_PCB_V4}}
+    \label{fig:link_budget}
+\end{figure}
+Das digitale Datensignal $TX_{Digital}$ ($D_{TX}$) ist am Oszilator am ED eingang angeschlossen.
+Ein Blick ins Datenblatt veräht dass ED der Enable/Disable Pin ist.
+Das Bedeutet der lokale Oscillator wird mithilfe des Digitalensignals an und ausgeschalten.
+Somit haben wir es mit einer Digitalel Amplitudenmodulation zu tun genauer gesagt mit dem 
+On-Off Keying. Das Resultierende Signal wird beschrieben durch:
 \begin{equation}
-    S_{TX,DAC}(t) \cdot S_{LO}(t) \rightarrow S_{RF}(t)
+    s(t) = D_{TX}(t)\cdot S_{LO}(t)
 \end{equation}
+
+
+
 
 
 \subsection{PA}

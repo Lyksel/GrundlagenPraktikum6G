@@ -68,6 +68,43 @@ Die Sendeplatine wird zuerst an die Versorgungsspannung angeschlossen, um den Se
     \end{figure}
 
 Anhand der Ergebnisse in Abbildung~\ref{fig:MitDaten} im Vergleich zur Abbildung~ref{fig:OhneDaten} auf, dass es sich bei unserem Versuch um Amplitudenmodulation handelt, da die Amplitude der Trägerfrequenz bei der Datenübertragung nicht konstant bleibt. Diese variiert in Abhängigkeit von der übertragenen Information. Die Frequenz bleibt jedoch konstant, was ein typisches Merkmal der Amplitudenmodulation ist.
+\\
+Mann kann gut erkennen das die breite der Hauptkeule mit zunehmender Baudrate wächst.
+Die Baudrate(Datenrate) gibt die Symbolrate an:
+\begin{equation}
+    \text{Baudrate} = \frac{\text{Anzahl der Symbole}}{\text{Zeit in Sekunden}}= \frac{1}{\text{Symbolzeit}}= \frac{1}{T_s} = B
+\end{equation}
+Nach der Theorie messen wir eine sinc Funktion.
+\begin{equation}
+    sinc(f) = \frac{\sin(\pi f T_s)}{\pi f T_s}
+\end{equation}
+
+Die erste Nullstelle der Sinc Funktion entspricht der Baudrate(die Frequenz des Oszilator wird als Koordinatenursprung angenommen).
+Und die anderen Nullstellen sind Vielfache der Baudrate.
+\begin{equation}
+    f_n = n * B
+\end{equation}
+Betrachtet werden die ersten Nullstellen, sowie die breite der Hauptkeule und der Zusammenhang der Datenrate und der Breite der Hauptkeule.
+\\
+\\
+\begin{tabular}{|c|c|c|}
+    \hline
+    Baudrate (Baud) & Breite der Hauptkeule (Hz)& $\frac{\text{Breite}}{\text{Baudrate}}$  \\
+    \hline
+    57600 & 120000 & 2.083 \\
+    128000 & 250000 & 1.953 \\
+    256000 & 500000 & 1.953 \\
+    \hline
+\end{tabular}
+\\
+\\
+Empirisch haben wir damit eine Gesetzmäßigkeit gefunden von:
+\begin{equation}
+    breite = 1.9963 * B \approx 2 * B
+\end{equation}
+Was auch durchaus zu Theorie passt, denn die Breite der Hauptkeule ist von der $f_{-1}$ bis zur $f_{+1}$gegeben.
+Da $f_{1} = B$ und $f_{-1} = -B$ ist die Breite der Hauptkeule $2 * B$.
+
 \section{Vergleich mit den theoretischen Reflexionen}
 Die Ergebnisse der Spektrumanalyse zeigen, dass die Modulation des Signals bei verschiedenen Baudraten zu unterschiedlichen Frequenzspektren führt. Die theoretischen Reflexionen, die in der Literatur beschrieben sind, stimmen nicht ganz mit den experimentellen Ergebnissen überein. Dies kann auf verschiedene Faktoren zurückzuführen sein, wie z.B. die Qualität der Hardware, die Umgebungseinflüsse oder die spezifische Implementierung der Modulation. Auch die Tatsache, dass die Baudrate die Bandbreite des Signals beeinflusst, ist zu beachten. Höhere Baudraten führen zu einer breiteren Frequenzverteilung, was in den experimentellen Ergebnissen deutlich wird. 
 

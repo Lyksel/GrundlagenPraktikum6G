@@ -104,10 +104,10 @@ und deren Zusammenspiel wird im Anschluss näher erläutert und auf ihre Realise
         \item $S_{\mathrm{TX;DAC}}(t)$: Analoges Signal (Basisbandsignal)
         \item $S_{\mathrm{LO}}(t)$: Sinusförmiges Trägersignal/ ungedämpfte hochfrequente Trägerschwingung
         \item $S_{\mathrm{RF}}(t)$: moduliertes analoges Hochfrequenzsignal
-        \item $S_{\mathrm{RF;PA}}(t)$: Verstärkte Hochfrequenzsignal (durch PA)
+        \item $S_{\mathrm{RF,PA}}(t)$: Verstärkte Hochfrequenzsignal (durch PA)
         \item $S_{\mathrm{Funk}}(t)$: Signal auf Funkstrecke
-        \item $S_{\mathrm{RF;in}}(t)$: Schwaches, empfangene Hochfrequenzsignal
-        \item $S_{\mathrm{RF;LNA}}(t)$: Verstärkte Hochfrequenzsignal (durch LNA)
+        \item $S_{\mathrm{RF,in}}(t)$: Schwaches, empfangene Hochfrequenzsignal
+        \item $S_{\mathrm{RF,LNA}}(t)$: Verstärkte Hochfrequenzsignal (durch LNA)
         \item $S_{\mathrm{BB}}(t)$: Demoduliertes analoges Basisbandsignal
         \item $S_{\mathrm{RX}}(t)$: Digitalisiertes Basisbandsignal
     \end{itemize}
@@ -118,9 +118,10 @@ und deren Zusammenspiel wird im Anschluss näher erläutert und auf ihre Realise
 \subsection{DAC}
 Ein Digital-Analog-Wandler (eng. digital-to-analog converter, DAC) wandelt digitale Signale oder einzelne Werte in Analoge
 Signale um. Bei einem digital Signal handelt es sich um ein zeit- und wertdiskretes Signal. Durch die Wandlung
-in ein analoges Signal wird das Signal zeit- und wertkontinuierlich.  Dafür werden die Rechtecksignale des digitalen Eingangssignals mit Hilfe einer Fouriertransformation
+in ein analoges Signal wird das Signal zeit- und wertkontinuierlich.  Dafür werden die Rechtecksignale des digitalen Eingangssignals mit Hilfe einer Fouriertransformation (evtl. Referenz zu theorie)
 in eine  kontinuirlich veränderliche Spannung transfomiert. Diese Wandlung ist erforderlich um das Signal über eine
-Antenne aussenden zu können, da Antennen nur elektormagnetische Wellen abstrahlen können. 
+Antenne aussenden zu können, da Antennen nur elektormagnetische Wellen abstrahlen können. \\
+Gehen wir nun auf unsere Hardware ein:
 \\
 
 \subsection{LO und Mischer}
@@ -128,9 +129,10 @@ Der lokale Oszillaotr(eng. local oscillator, LO) erzeugt eine ungedämpfte hochf
 wird benötigt, um das analoge Signal auf die gewünschte Frequenz zu bringen. Der LO kann in verschiedenen Frequenzen arbeiten,
 abhängig von der Anwendung und dem gewünschten Frequenzbereich des Signals. Der Mischer übernimmt die Modulation des
 Bandsignals auf eine Hochfrequenz. Dies geschieht durch die Multiplikation des Bandsignals mit der Trägerschwinung des LO.
+In unserer Schaltung ist der LO ein Quarz-Oszillator der bei einer Freqzenz $f=1,25GHz$ schwingt.
 
 \begin{equation}
-    S_{xx}(t) \cdot S_{xx}(t) \rightarrow S_{xx}(t)
+    S_{TX,DAC}(t) \cdot S_{LO}(t) \rightarrow S_{RF}(t)
 \end{equation}
 
 
@@ -155,7 +157,22 @@ die folgende Demolution erheblich erschweren würde. Ebenfall ist durch die Post
 nicht durch andere elektrischen Komponenten verfälscht worden, was durch eine spätere Verstärkung zu rekonstruktionsproblemen
 des eigentlichen Signals führen könnte.
 \subsection{Demodulation}
-Iwas mit Nyquisr Theorem und Abtastrate 
+Die Demodulation ist der Prozess, bei dem das modulierte Signal wieder in das ursprüngliche Bandsignal zurücgewandelt wird. Dieser Schritt erfolgt
+vor dem ADC weil die Frequenz des Hochfrequenzsignals zu hoch ist um es direkt mit einem üblichen ADC zu digitalisieren. Die dafür notwendige
+Abtastrate wöre hierbei extrem hoch.
+Das Nyquist-Abtasttheorem besagt, dass ein Signal der maximalen Frequenz $f_\mathrm{max}$ nur dann verlustfrei rekonstruiert werden kann,
+wenn die Abtastfrequenz $f_\mathrm{s}$ mindestens doppelt so groß ist wie $f_\mathrm{max}$:
+\begin{equation}
+    f_\mathrm{s} \geq 2 f_\mathrm{max}
+\end{equation}
+(Samplerate richtig? Die Trägerfrequenz unseres
+Modulators beträgt $f=1,25GHz$. Das würde mindestens 2,5 Gigasamples pro Sekunde erfordern.) ADC die in der Lage sind solch hohe Frequenzen
+zu verarbeiten sind kosten-, energie- und datenintensiv. -> Nicht für unser Praktikum geeignet wegen spaaaaaren xD.\\
+\\
+Schwierigerer Teil. CGPT cooken lassen (irgendwie schaltplan einfügen, nummern von andric genommen). Betrachten wir nun die Koversion 
+(=Frequenzumsetzung) vom HF-Signal in ein digitales Nutzsignal im Empfänger in unserer Schaltung. 
+
+
 
 \subsection{ADC}
 Nun muss das demodulisierte Signal wieder in ein digitales Signal umgewandelt werden, damit es weiterverarbeitet werden kann.

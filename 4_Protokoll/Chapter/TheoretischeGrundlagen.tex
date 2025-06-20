@@ -5,24 +5,22 @@ Möchte man ein Datensignal übertragen muss es davor
 aufbereitet werden. Dies erledigt der Modulator/Mischer.
 \\
 Es gibt Analoge und Digitale Modulationsarten.
-Für Analoge Signale werden folgende Verfahren verwendet.
+Es folgen einige Beispiele:
 
 
 \subsection{Amplitudenmodulation}
 \subsubsection{Analoge Amplitudenmodulation AM}
-Die Idee hinter der Amplitudenmodulation ist dass das Informationssignal
+Die Idee hinter der Amplitudenmodulation ist, dass das Informationssignal
 auf die Amplitude des Trägersignals zu modulieren.
-Daduch veränder sich die Amplituder des Trägersignals in abhängigkeit des Pegels und 
-Freqeuenz des Informationssignals.
-\\
+Dadurch verändert sich die Amplitude des Trägersignals in Abhängigkeit des Pegels und
+der Frequenz des Informationssignals.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.22\textwidth]{Pictures/Screenshot 2025-06-19 125508.png}
+    \includegraphics[width=0.20\textwidth]{Pictures/Screenshot 2025-06-19 125508.png}
     \caption{Amplitudenmodulation}
     \footnotesize{Quelle: \url{https://www.elektronik-kompendium.de/sites/kom/0401181.htm}}
     \label{fig:link_budget}
 \end{figure}
-\clearpage
 Die Amplitude der Trägerschwingung wird durch das analoge Datensignal
 $x(t)$ folgendermaßen verändert.
 \begin{equation}
@@ -35,14 +33,14 @@ Das AM-Signal wird beschrieben durch.
 \begin{itemize}
     \item $A_c$: Trägeramplitude
     \item $f_c$: Trägerfrequenz
-    \item $\mu$: Modulationsindex 0 < $\mu$ < 1
+    \item $\mu$: Modulationsindex 0 $< \mu <$ 1
 \end{itemize}
 \subsubsection{Digitale Amplitudenmodulation ASK}
-Einer der Einfachsten digitalen Modulationsverfahren ist 
+Einer der einfachsten digitalen Modulationsverfahren ist 
 das On-Off-Keying. 
-Die Idee ist ganz Simpel man hat ein digitales Datensignal aus nullen und einsen
-und ein Sinus/Cosinus Signal von einem Oszilator das als Trägerfrequenz fungiert.
-Und je nachdem ob eine null oder eins anliegt wird dann der Oszilator angeschalten bzw. ausgeschalten.
+Die Idee ist ganz simpel: man hat ein digitales Datensignal aus Nullen und Einsen
+und ein Sinus/Cosinus-Signal von einem Oszillator, das als Trägerfrequenz fungiert.
+Und je nachdem, ob eine Null oder Eins anliegt, wird dann der Oszillator angeschaltet bzw. ausgeschaltet.
 Mathematisch ausgedrückt heißt das:
 \begin{equation}
 s(t) =
@@ -75,8 +73,8 @@ x_c(t) = A_c \cos\left( 2\pi f_c t + 2\pi f_\Delta \int_0^t x(\tau) \, \mathrm{d
 \subsection{Phasenmodulation PM}
 Die Phasenmodulation gehört wie die Frequenzmodulation zu den Winkelmodulationen.
 Hier wird die Phase der Trägerwelle in Abhängigkeit des Datensignals verändert.
-Die Phasenveränder bleibt im Signal erhalten variiert jedoch im vergleich
-zur Ursprünglichen Phase des Trägersignal
+Die Phasenveränderung bleibt im Signal erhalten, variiert jedoch im Vergleich
+zur ursprünglichen Phase des Trägersignals.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{Pictures/04020211.png}
@@ -86,8 +84,8 @@ zur Ursprünglichen Phase des Trägersignal
 
 \section{Blockdiagramm einer Sendestrecke}
 Im folgenden Abschnitt wird die Hochfrequenz-Übertragungsstrecke eines typischen Funksystems beschrieben. Bei der Abbildung 2.3 handelt es sich um ein Blockdiagramm. Es zielt darauf aus ein grundlegendes
-systematisches Verständinis aufzubauen, um das gelernte auf unsere spezifische Hardware anwenden zu können. Die einzelnen Komponenten der Hochfrequenz-Übertragungsstrecke 
-und deren Zusammenspiel wird im Anschluss näher erläutert und auf ihre Realiserung in unserer Hardware eingegangen.\\
+systematisches Verständnis aufzubauen, um das gelernte auf unsere spezifische Hardware anwenden zu können. Die einzelnen Komponenten der Hochfrequenz-Übertragungsstrecke
+und deren Zusammenspiel wird im Anschluss näher erläutert und auf ihre Realisierung in unserer Hardware eingegangen.\\
 
 \begin{figure}[h]
     \centering
@@ -97,7 +95,7 @@ und deren Zusammenspiel wird im Anschluss näher erläutert und auf ihre Realise
 \end{figure}
 \clearpage
 
-\begin{minipage}{0.48\textwidth}
+\begin{minipage}[t]{0.48\textwidth}
     \raggedright
     \textbf{\large Blockdiagramm-Komponente}\\[2ex]
     \begin{enumerate}
@@ -113,9 +111,9 @@ und deren Zusammenspiel wird im Anschluss näher erläutert und auf ihre Realise
     \end{enumerate}
 \end{minipage}%
 \hfill
-\begin{minipage}{0.48\textwidth}
+\begin{minipage}[t]{0.48\textwidth}
     \raggedright
-    \textbf{\large Funktion / Beschreibung}\\[2ex]
+    \textbf{\large Beschreibung}\\[2ex]
     \begin{itemize}
         \item $S_{\mathrm{TX}}(t)$: Digital erzeugtes Sendesignal
         \item $S_{\mathrm{TX,DAC}}(t)$: Analoges Signal (Basisbandsignal)
@@ -133,20 +131,20 @@ und deren Zusammenspiel wird im Anschluss näher erläutert und auf ihre Realise
 
 
 \subsection{DAC}
-Ein Digital-Analog-Wandler (eng. digital-to-analog converter, DAC) wandelt digitale Signale oder einzelne Werte in Analoge
-Signale um. Bei einem digital Signal handelt es sich um ein zeit- und wertdiskretes Signal. Durch die Wandlung
+Ein Digital-Analog-Wandler (eng. digital-to-analog converter, DAC) wandelt digitale Signale oder einzelne Werte in analoge
+Signale um. Bei einem digitalen Signal handelt es sich um ein zeitkontinuierliches und wertdiskretes Signal. Durch die Wandlung
 in ein analoges Signal wird das Signal zeit- und wertkontinuierlich.  Dafür werden die Rechtecksignale des digitalen Eingangssignals mit Hilfe einer Fouriertransformation (evtl. Referenz zu theorie)
-in eine  kontinuirlich veränderliche Spannung transfomiert. Diese Wandlung ist erforderlich um das Signal über eine
-Antenne aussenden zu können, da Antennen nur elektormagnetische Wellen abstrahlen können. \\
+in eine  kontinuierlich veränderliche Spannung transformiert. Diese Wandlung ist erforderlich um das Signal über eine
+Antenne aussenden zu können, da Antennen nur elektromagnetische Wellen abstrahlen können. \\
 Gehen wir nun auf unsere Hardware ein:
 \\
 
 \subsection{LO und Mischer}
-Der lokale Oszillaotr(eng. local oscillator, LO) erzeugt eine ungedämpfte hochfrequente Trägerschwingung. Diese Trägerschwingung 
+Der lokale Oszillator (eng. local oscillator, LO) erzeugt eine ungedämpfte hochfrequente Trägerschwingung. Diese Trägerschwingung
 wird benötigt, um das analoge Signal auf die gewünschte Frequenz zu bringen. Der LO kann in verschiedenen Frequenzen arbeiten,
 abhängig von der Anwendung und dem gewünschten Frequenzbereich des Signals. Der Mischer übernimmt die Modulation des
-Bandsignals auf eine Hochfrequenz. Dies geschieht durch die Multiplikation des Bandsignals mit der Trägerschwinung des LO.
-In unserer Schaltung ist der LO ein Quarz-Oszillator der bei einer Freqzenz $f=1,25GHz$ schwingt.
+Bandsignals auf eine Hochfrequenz. Dies geschieht durch die Multiplikation des Bandsignals mit der Trägerschwingung des LO.
+In unserer Schaltung ist der LO ein Quarz-Oszillator der bei einer Frequenz $f=1,25GHz$ schwingt.
 
 
 \subsection{Mischer}
@@ -158,11 +156,11 @@ Schaut man sich den Schaltplan stellt man fest dass folgendes Bauteil der Mische
     \footnotesize{Quelle: \url{Schaltplan_PCB_V4}}
     \label{fig:link_budget}
 \end{figure}
-Das digitale Datensignal $TX_{Digital}$ ($D_{TX}$) ist am Oszilator am ED eingang angeschlossen.
-Ein Blick ins Datenblatt veräht dass ED der Enable/Disable Pin ist.
-Das Bedeutet der lokale Oscillator wird mithilfe des Digitalensignals an und ausgeschalten.
-Somit haben wir es mit einer Digitalel Amplitudenmodulation zu tun genauer gesagt mit dem 
-On-Off Keying. Das Resultierende Signal wird beschrieben durch:
+Das digitale Datensignal $TX_{Digital}$ ($D_{TX}$) ist am Oszillator am ED Eingang angeschlossen.
+Ein Blick ins Datenblatt verrät, dass ED der Enable/Disable Pin ist.
+Das Bedeutet der lokale Oszillator wird mithilfe des digitalen Signals an und ausgeschaltet.
+Somit haben wir es mit einer digitalen Amplitudenmodulation zu tun, genauer gesagt mit dem
+On-Off Keying. Das resultierende Signal wird beschrieben durch:
 \begin{equation}
     s(t) = D_{TX}(t)\cdot S_{LO}(t)
 \end{equation}
@@ -173,23 +171,23 @@ On-Off Keying. Das Resultierende Signal wird beschrieben durch:
 
 \subsection{PA}
 Der Leistungsverstärker (eng. power amplifier, PA) verstärkt das modulierte Signal auf eine Leistung, die für die Übertragung über eine Antenne 
-geeignet ist. Die hohe Leistung ist notwedig um über eine größere Diszanz senden zu können und um Zuverlässigkeit und
+geeignet ist. Die hohe Leistung ist notwendig um über eine größere Distanz senden zu können und um Zuverlässigkeit und
 Signalqualität zu gewährleisten. 
 
 \subsection{Drahtlose Übertragung mit Antennen}
-Die Sendeantenne strahlt das modulierte HF Signal Sxx als elektromagnetische Wellen in den Raum ab. DIese abgstrahlte Welle
+Die Sendeantenne strahlt das modulierte HF Signal Sxx als elektromagnetische Wellen in den Raum ab. DDiese abgestrahlte Welle
 breitet sich mit Lichtgeschwindigkeit aus und kann von Empfängerantennen empfangen werden. Die Empfängerantenne wandelt
-die elektromagnetische welle wieder in eine elektrische Spannung um, die dann weiterverarbeitet werden kann. Diese entspricht
+die elektromagnetische Welle wieder in eine elektrische Spannung um, die dann weiterverarbeitet werden kann. Diese entspricht
 jedoch nicht mehr dem ursprünglichen Bandsignal, da es durch die Übertragungseinflüsse wie Dämpfung, Rauschen und Interferenzen
 und vielen weiteren Einflüssen gedämpft und gestört wurde.
 
 \subsection{LNA}
 Bei dem LNA (eng. low noise amplifier) handelt es sich um einen rauscharmen HF-Verstärker. Das empfangene Signal $S_{RF,in}$ ist
 durch die bereits erwähnten Einflüsse sehr schwach und muss  zuerst verstärkt werden, um weiterverarbeitet werden. Daher
-ist eine Verstärkung des Signals unmittlbar nach den Antennen zwingend notwendig. Der Vorteil des LNA gegenüber zu
+ist eine Verstärkung des Signals unmittelbar nach den Antennen zwingend notwendig. Der Vorteil des LNA gegenüber zu
 anderen Verstärkern ist, dass er kein nennenswertes Rauschen hinzufügt. Dies ist wichtig, da jedes zusätzliche Rauschen
-die folgende Demodulation erheblich erschweren würde. Ebenfall ist durch die Postion des LNA das empfangene Signal noch 
-nicht durch andere elektrischen Komponenten verfälscht worden. Wäre dies nicht der Fall könnte es durch die spätere Verstärkung zu 
+die folgende Demodulation erheblich erschweren würde. Ebenfalls ist durch die Position des LNA das empfangene Signal noch
+nicht durch andere elektrischen Komponenten verfälscht worden. Wäre dies nicht der Fall könnte es durch die spätere Verstärkung zu
 Rekonstruktionsproblemen des eigentlichen Signals führen.
 \begin{figure}[H]
     \centering

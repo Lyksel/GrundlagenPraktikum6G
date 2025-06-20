@@ -4,7 +4,7 @@ Obwohl die Startfrequenz für die Analyse auf 1,248 GHz und die Stopfrequenz auf
 \section{Sender mit und ohne Datenübertragung}
 Die Messung des Spektrums erfolgt in zwei Szenarien: Zunächst wird der Sender ohne Datenübertragung betrieben, um das Grundrauschen und die Trägerfrequenz zu erfassen. Anschließend wird der Sender mit aktivierter Datenübertragung betrieben, um die Auswirkungen der Modulation auf das Spektrum zu beobachten.
 
-Die Sendeplatine wird zuerst an die Versorgungsspannung angeschlossen, um den Sender zu aktivieren. Es wird eine SMA-Verbindung mit dem Fieldfox hergestellt, um das Rauschen zu minimieren. Ein nichtqualitatives Bild der Versuchanseinrichtung ist in Abbildung~\ref{fig:Versuchsanordnung} zu sehen.
+Die Sendeplatine wird zuerst an die Versorgungsspannung angeschlossen, um den Sender zu aktivieren. Es wird eine SMA-Verbindung mit dem Fieldfox hergestellt, um das Rauschen zu minimieren. 
 
     \subsection{Messung ohne Datenübertragung}
     Erstens soll die Messung ohne Datenübertragung durchgeführt werden. Hierdurch wird die Trägerfrequenz und das Grundrauschen des Senders erfasst. Diese Messung dient als Referenz für die spätere Analyse der Modulationseffekte.
@@ -67,24 +67,24 @@ Die Sendeplatine wird zuerst an die Versorgungsspannung angeschlossen, um den Se
         \label{fig:MitDaten}
     \end{figure}
 
-Anhand der Ergebnisse in Abbildung~\ref{fig:MitDaten} im Vergleich zur Abbildung~ref{fig:OhneDaten} auf, dass es sich bei unserem Versuch um Amplitudenmodulation handelt, da die Amplitude der Trägerfrequenz bei der Datenübertragung nicht konstant bleibt. Diese variiert in Abhängigkeit von der übertragenen Information. Die Frequenz bleibt jedoch konstant, was ein typisches Merkmal der Amplitudenmodulation ist.
+Anhand der Ergebnisse in Abbildung~\ref{fig:MitDaten} im Vergleich zur Abbildung~\ref{fig:OhneDaten} auf, dass es sich bei unserem Versuch um Amplitudenmodulation handelt, da die Amplitude der Trägerfrequenz bei der Datenübertragung nicht konstant bleibt. Diese variiert in Abhängigkeit von der übertragenen Information. Die Frequenz bleibt jedoch konstant, was ein typisches Merkmal der Amplitudenmodulation ist.
 \\
 Mann kann gut erkennen das die breite der Hauptkeule mit zunehmender Baudrate wächst.
 Die Baudrate(Datenrate) gibt die Symbolrate an:
 \begin{equation}
     \text{Baudrate} = \frac{\text{Anzahl der Symbole}}{\text{Zeit in Sekunden}}= \frac{1}{\text{Symbolzeit}}= \frac{1}{T_s} = B
 \end{equation}
-Nach der Theorie messen wir eine sinc Funktion.
+Nach der Theorie messen wir eine Sinc Funktion.
 \begin{equation}
     sinc(f) = \frac{\sin(\pi f T_s)}{\pi f T_s}
 \end{equation}
 
-Die erste Nullstelle der Sinc Funktion entspricht der Baudrate(die Frequenz des Oszilator wird als Koordinatenursprung angenommen).
-Und die anderen Nullstellen sind Vielfache der Baudrate.
+Die erste Nullstelle der Sinc Funktion entspricht der Baudrate(die Frequenz des Oszilator wird als Koordinatenursprung angenommen)
+und die anderen Nullstellen sind Vielfache der Baudrate.
 \begin{equation}
     f_n = n * B
 \end{equation}
-Betrachtet werden die ersten Nullstellen, sowie die breite der Hauptkeule und der Zusammenhang der Datenrate und der Breite der Hauptkeule.
+Betrachtet werden die ersten Nullstellen, sowie die Breite der Hauptkeule und der Zusammenhang der Datenrate und der Breite der Hauptkeule.
 \\
 \\
 \begin{tabular}{|c|c|c|}
@@ -100,17 +100,12 @@ Betrachtet werden die ersten Nullstellen, sowie die breite der Hauptkeule und de
 \\
 Empirisch haben wir damit eine Gesetzmäßigkeit gefunden von:
 \begin{equation}
-    breite = 1.9963 * B \approx 2 * B
+    Breite = 1.9963 * B \approx 2 * B
 \end{equation}
 Was auch durchaus zu Theorie passt, denn die Breite der Hauptkeule ist von der $f_{-1}$ bis zur $f_{+1}$gegeben.
 Da $f_{1} = B$ und $f_{-1} = -B$ ist die Breite der Hauptkeule $2 * B$.
 
 \section{Vergleich mit den theoretischen Reflexionen}
-Die Ergebnisse der Spektrumanalyse zeigen, dass die Modulation des Signals bei verschiedenen Baudraten zu unterschiedlichen Frequenzspektren führt. Die theoretischen Reflexionen, die in der Literatur beschrieben sind, stimmen nicht ganz mit den experimentellen Ergebnissen überein. Dies kann auf verschiedene Faktoren zurückzuführen sein, wie z.B. die Qualität der Hardware, die Umgebungseinflüsse oder die spezifische Implementierung der Modulation. Auch die Tatsache, dass die Baudrate die Bandbreite des Signals beeinflusst, ist zu beachten. Höhere Baudraten führen zu einer breiteren Frequenzverteilung, was in den experimentellen Ergebnissen deutlich wird. 
-
-Die Abweichung von der Darstellung des multiplizierten Spektrums im theoretischen Teil könnte außerdem darauf zurückzuführen sein, dass dort zur Veranschaulichung $\omega_0 = 4\pi$ und $T = 2$ verwendet wurden.
-
-\section{Variation der Datenrate}
-\section{Aufbau und Funktionsweise des Demodulators}
-blabla
+Die Ergebnisse der Spektrumanalyse zeigen, dass die Modulation des Signals bei verschiedenen Baudraten zu unterschiedlichen Frequenzspektren führt. Die Praxis stimmt in Rahmen der Messungenauigkeit mit der Theorie überein.
+Es wird der Verlauf der Sinc-Funktion sichtbar, natürlich mit Abweichungen, in der Theorie wird z.B. kein Rauschen berücksichtigt.
 \clearpage

@@ -118,7 +118,7 @@ und deren Zusammenspiel wird im Anschluss näher erläutert und auf ihre Realise
     \textbf{\large Funktion / Beschreibung}\\[2ex]
     \begin{itemize}
         \item $S_{\mathrm{TX}}(t)$: Digital erzeugtes Sendesignal
-        \item $S_{\mathrm{TX;DAC}}(t)$: Analoges Signal (Basisbandsignal)
+        \item $S_{\mathrm{TX,DAC}}(t)$: Analoges Signal (Basisbandsignal)
         \item $S_{\mathrm{LO}}(t)$: Sinusförmiges Trägersignal/ ungedämpfte hochfrequente Trägerschwingung
         \item $S_{\mathrm{RF}}(t)$: moduliertes analoges Hochfrequenzsignal
         \item $S_{\mathrm{RF,PA}}(t)$: Verstärkte Hochfrequenzsignal (durch PA)
@@ -216,6 +216,8 @@ Danach folgt ein Tiefpassfilter (bestehend aus einer paralelschaltung aus R26 un
 \[
 S_{RF,LNA}(t) \rightarrow S_{BB}(t)
 \]
+
+%Eigentlich ab hier ADC
 Es folgt in Teil 8 ein Analogversträker U20 der die das demodulierte Basisband signal auf (?) verstärkt.\\
 Der letzte Schritt (9) ist verleichung des demodulierten Signals mit einem festen Schwellwert durch den Komparator U21. Dieser ist hier U21.
 Wird dieser Schwellwert überschritten gilt:

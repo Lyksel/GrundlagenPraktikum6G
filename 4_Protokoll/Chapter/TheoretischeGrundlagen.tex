@@ -8,7 +8,8 @@ Es gibt Analoge und Digitale Modulationsarten.
 Für Analoge Signale werden folgende Verfahren verwendet.
 
 
-\subsection{Amplitudenmodulation AM}
+\subsection{Amplitudenmodulation}
+\subsubsection{Analoge Amplitudenmodulation AM}
 Die Idee hinter der Amplitudenmodulation ist dass das Informationssignal
 auf die Amplitude des Trägersignals zu modulieren.
 Daduch veränder sich die Amplituder des Trägersignals in abhängigkeit des Pegels und 
@@ -36,6 +37,22 @@ Das AM-Signal wird beschrieben durch.
     \item $f_c$: Trägerfrequenz
     \item $\mu$: Modulationsindex 0 < $\mu$ < 1
 \end{itemize}
+\subsubsection{Digitale Amplitudenmodulation ASK}
+Einer der Einfachsten digitalen Modulationsverfahren ist 
+das On-Off-Keying. 
+Die Idee ist ganz Simpel man hat ein digitales Datensignal aus nullen und einsen
+und ein Sinus/Cosinus Signal von einem Oszilator das als Trägerfrequenz fungiert.
+Und je nachdem ob eine null oder eins anliegt wird dann der Oszilator angeschalten bzw. ausgeschalten.
+Mathematisch ausgedrückt heißt das:
+\begin{equation}
+s(t) =
+\begin{cases}
+0, & \text{für Bit } = 0 \\
+A \cdot \cos(2 \pi f_c t), & \text{für Bit } = 1
+\end{cases}
+\end{equation}
+
+
 
 
 \subsection{Frequenzmodulation FM}

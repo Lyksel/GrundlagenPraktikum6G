@@ -133,22 +133,18 @@ und deren Zusammenspiel wird im Anschluss näher erläutert und auf ihre Realisi
 \subsection{DAC}
 Ein Digital-Analog-Wandler (eng. digital-to-analog converter, DAC) wandelt digitale Signale oder einzelne Werte in analoge
 Signale um. Bei einem digitalen Signal handelt es sich um ein zeitkontinuierliches und wertdiskretes Signal. Durch die Wandlung
-in ein analoges Signal wird das Signal zeit- und wertkontinuierlich.  Dafür werden die Rechtecksignale des digitalen Eingangssignals mit Hilfe einer Fouriertransformation (evtl. Referenz zu theorie)
+in ein analoges Signal wird das Signal zeit- und wertkontinuierlich.  Dafür werden die Rechtecksignale des digitalen Eingangssignals mit Hilfe einer Fouriertransformation
 in eine  kontinuierlich veränderliche Spannung transformiert. Diese Wandlung ist erforderlich um das Signal über eine
 Antenne aussenden zu können, da Antennen nur elektromagnetische Wellen abstrahlen können. \\
-Gehen wir nun auf unsere Hardware ein:
+\[S_{TX}(t) \rightarrow S_{TX,DAC}(t)\]
 \\
 
 \subsection{LO und Mischer}
 Der lokale Oszillator (eng. local oscillator, LO) erzeugt eine ungedämpfte hochfrequente Trägerschwingung. Diese Trägerschwingung
 wird benötigt, um das analoge Signal auf die gewünschte Frequenz zu bringen. Der LO kann in verschiedenen Frequenzen arbeiten,
-abhängig von der Anwendung und dem gewünschten Frequenzbereich des Signals. Der Mischer übernimmt die Modulation des
-Bandsignals auf eine Hochfrequenz. Dies geschieht durch die Multiplikation des Bandsignals mit der Trägerschwingung des LO.
-In unserer Schaltung ist der LO ein Quarz-Oszillator der bei einer Frequenz $f=1,25GHz$ schwingt.
-
-
-\subsection{Mischer}
-Schaut man sich den Schaltplan stellt man fest dass folgendes Bauteil der Mischer und LO ist:
+abhängig von der Anwendung und dem gewünschten Frequenzbereich des Signals. In unserer Schaltung ist der LO ein Quarz-Oszillator der bei einer Frequenz $f=1,25GHz$ schwingt.
+\\
+Schaut man sich den Schaltplan an, so stellt man fest dass folgendes Bauteil der Mischer und LO ist:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Pictures/MischerLO.png}
@@ -158,13 +154,11 @@ Schaut man sich den Schaltplan stellt man fest dass folgendes Bauteil der Mische
 \end{figure}
 Das digitale Datensignal $TX_{Digital}$ ($D_{TX}$) ist am Oszillator am ED Eingang angeschlossen.
 Ein Blick ins Datenblatt verrät, dass ED der Enable/Disable Pin ist.
-Das Bedeutet der lokale Oszillator wird mithilfe des digitalen Signals an und ausgeschaltet.
-Somit haben wir es mit einer digitalen Amplitudenmodulation zu tun, genauer gesagt mit dem
+Das bedeutet, der lokale Oszillator wird mithilfe des digitalen Signals an und ausgeschaltet.
+Somit haben wir es mit einer \textbf{digitalen Amplitudenmodulation} zu tun, genauer gesagt mit dem
 On-Off Keying. Das resultierende Signal wird beschrieben durch:
-\begin{equation}
-    s(t) = D_{TX}(t)\cdot S_{LO}(t)
-\end{equation}
 
+\[S_{TX,DAC}(t)*S_{LO}(t) \rightarrow S_{RF}(t)\]
 
 
 
@@ -173,17 +167,19 @@ On-Off Keying. Das resultierende Signal wird beschrieben durch:
 Der Leistungsverstärker (eng. power amplifier, PA) verstärkt das modulierte Signal auf eine Leistung, die für die Übertragung über eine Antenne 
 geeignet ist. Die hohe Leistung ist notwendig um über eine größere Distanz senden zu können und um Zuverlässigkeit und
 Signalqualität zu gewährleisten. 
+\[S_{RF}(t) \rightarrow S_{RF,PA}(t)\]
 
 \subsection{Drahtlose Übertragung mit Antennen}
-Die Sendeantenne strahlt das modulierte HF Signal Sxx als elektromagnetische Wellen in den Raum ab. DDiese abgestrahlte Welle
+Die Sendeantenne strahlt das modulierte HF Signal $S_{Funk}$ als elektromagnetische Wellen in den Raum ab. Diese abgestrahlte Welle
 breitet sich mit Lichtgeschwindigkeit aus und kann von Empfängerantennen empfangen werden. Die Empfängerantenne wandelt
 die elektromagnetische Welle wieder in eine elektrische Spannung um, die dann weiterverarbeitet werden kann. Diese entspricht
 jedoch nicht mehr dem ursprünglichen Bandsignal, da es durch die Übertragungseinflüsse wie Dämpfung, Rauschen und Interferenzen
 und vielen weiteren Einflüssen gedämpft und gestört wurde.
+\[S_{RF,PA}(t) \rightarrow S_{Funk}(t) \rightarrow S_{RF,in}(t)\]
 
 \subsection{LNA}
 Bei dem LNA (eng. low noise amplifier) handelt es sich um einen rauscharmen HF-Verstärker. Das empfangene Signal $S_{RF,in}$ ist
-durch die bereits erwähnten Einflüsse sehr schwach und muss  zuerst verstärkt werden, um weiterverarbeitet werden. Daher
+durch die bereits erwähnten Einflüsse sehr schwach und muss  zuerst verstärkt werden, um weiterverarbeitet werden zu können. Daher
 ist eine Verstärkung des Signals unmittelbar nach den Antennen zwingend notwendig. Der Vorteil des LNA gegenüber zu
 anderen Verstärkern ist, dass er kein nennenswertes Rauschen hinzufügt. Dies ist wichtig, da jedes zusätzliche Rauschen
 die folgende Demodulation erheblich erschweren würde. Ebenfalls ist durch die Position des LNA das empfangene Signal noch
@@ -204,7 +200,7 @@ wird das empfangene Signal $S_{RF,in}(t)$ über den Kondensator C20 eingekoppelt
 S_{RF,in}(t) \rightarrow S_{RF,LNA}(t)
 \]
 \subsection{Demodulation}
-Die Demodulation ist der Prozess, bei dem das modulierte Signal wieder in das ursprüngliche Bandsignal zurückgewandelt wird. Dieser Schritt erfolgt
+Die Demodulation ist der Prozess, bei dem das modulierte Signal wieder in das ursprüngliche Datensignal zurückgewandelt wird. Dieser Schritt erfolgt
 vor dem ADC weil die Frequenz des Hochfrequenzsignals zu hoch ist um es direkt mit einem üblichen ADC zu digitalisieren. Die dafür notwendige
 Abtastrate wäre hierbei extrem hoch.
 Das Nyquist-Abtasttheorem besagt, dass ein Signal der maximalen Frequenz $f_\mathrm{max}$ nur dann verlustfrei rekonstruiert werden kann,
@@ -226,12 +222,11 @@ zu verarbeiten sind kosten-, energie- und datenintensiv. Daher ist es nicht für
 
 
 Die Abbildung 2.6 stellt den Demodulator dar. Der Transistor Q21 ist in Diodenschaltung betrieben. Dadurch werden nur postive Halbewelle des Signals 
-durchgelassen (=Gleichrichtung). Danach folgt ein Tiefpassfilter (bestehend aus einer paralellschaltung aus R26 und C22) mit einer 10MHz Grenzfrequenz
+durchgelassen (=Gleichrichtung). Danach folgt ein Tiefpassfilter (bestehend aus einer Paralellschaltung aus R26 und C22) mit einer 10MHz Grenzfrequenz
 der die hochfrequente Trägerwelle unterdürckt und nur das Basisbandsignal $S_{BB}(t)$ (/modulierte Hüllkurve) durchlässt.
 \[
 S_{RF,LNA}(t) \rightarrow S_{BB}(t)
 \]
-(Sample rate richtig? Sollte eignetlich passen; gibts es solche ADCs die es könntenn?;  )
 
 
 
@@ -250,7 +245,7 @@ einem Komparator.
 
 \subsubsection{Analogverstärker}
 Der linke Teil der in Abbildung 2.7 dargestellten Schaltung ist der Analogverstärker. Das geschwächte analoge Signal durchläuft den 
-Operationsverstärker U20 um den Pegel überhalb des festgelegten Schwellwerts des Komperators U21 zu bringen.
+Operationsverstärker U20 um den Pegel überhalb des festgelegten Schwellwerts für die Komperatorschaltung zu bringen.
 
 
 \subsubsection{Komperator}
@@ -267,8 +262,7 @@ Dadurch wird ein binäres digitales Ausgangssignal erzeugt das von einem Compute
 S_{BB}(t) \rightarrow S_{RX}(t)
 \]
 
-(Eigene Bennenung der Signale oder wie im Schaltplan? Komperatpor U21 sagen erlaubt? USB Ports erwähnen)
-
+\clearpage
 
 \section{Mathematische Grundlagen: Fourier-Transformation}
 Übersichtlichkeitshalber werden in diesem Abschnitt für die Fourier-Transformation die Werte $w_0 = 4\pi$ für Sinusfunktion und $T = 2$ für Rechteckfunktion angenommen. Dies ändert jedoch im Allgemeinen nichts an der Theorie, sondern vereinfacht lediglich die Darstellung der Grafiken.
@@ -320,6 +314,7 @@ Die Fourier-Transformierte einer Rechteckfunktion der Breite $2T$ und Höhe $1$ 
 \[
 \mathcal{F}\{x(t)\} = 2T \cdot \mathrm{sinc}(T\omega) = 2T \cdot \frac{\sin(T\omega)}{T\omega}
 \]
+\clearpage
 Der Verlauf der Fourier-Transformierten ist in folgender Abbildung dargestellt:
 
 \begin{figure}[h]

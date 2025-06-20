@@ -169,10 +169,32 @@ wenn die Abtastfrequenz $f_\mathrm{s}$ mindestens doppelt so groß ist wie $f_\m
 Modulators beträgt $f=1,25GHz$. Das würde mindestens 2,5 Gigasamples pro Sekunde erfordern.) ADC die in der Lage sind solch hohe Frequenzen
 zu verarbeiten sind kosten-, energie- und datenintensiv. -> Nicht für unser Praktikum geeignet wegen spaaaaaren xD.\\
 \\
-Schwierigerer Teil. CGPT cooken lassen (irgendwie schaltplan einfügen, nummern von andric genommen). Betrachten wir nun die Koversion 
-(=Frequenzumsetzung) vom HF-Signal in ein digitales Nutzsignal im Empfänger in unserer Schaltung. 
-
-
+Schwierigerer Teil. CGPT cooken lassen (irgendwie schaltplan einfügen, nummern von andric genommen und evtl. noch in andere bereiche aufteilen). 
+Betrachten wir nun die Koversion (=Frequenzumsetzung) vom HF-Signal in ein digitales Nutzsignal im Empfänger in unserer Schaltung. In Teil 6
+unsere schlatung wird das empfangene Signal $S_{RF,in}(t)$ über den Kondensator C20 eingekoppelt. Q22 ist ein HF-Transistorverstärker.\\
+\[
+S_{RF,in}(t) \rightarrow S_{RF,LNA}(t)
+\]
+Block 7 ist der Demodulator. Q21 ist in Diodenschaltung betrieben. Dadurch werden nur postive Halbewelle des Signals durchgelassen (=Gleichrichtung).
+Danach folgt ein Tiefpassfilter (bestehend aus einer paralelschaltung aus R26 und C22) mit einer 10MHz Grenzfrequenz der die hochfrequente Trägerwelle unterdürckt und nur das Basisbandsignal $S_{BB}(t)$
+(/modulierte Hüllkurve) durchlässt.
+\[
+S_{RF,LNA}(t) \rightarrow S_{BB}(t)
+\]
+Es folgt in Teil 8 ein Analogversträker U20 der die das demodulierte Basisband signal auf (?) verstärkt.\\
+Der letzte Schritt (9) ist verleichung des demodulierten Signals mit einem festen Schwellwert durch den Komparator U21. Dieser ist hier U21.
+Wird dieser Schwellwert überschritten gilt:
+\[
+S_{BB}(t) > 0{,}79\,\mathrm{V} \implies \text{HIGH}
+\]
+\[
+S_{BB}(t) < 0{,}79\,\mathrm{V} \implies \text{LOW}
+\]
+Dadurch wird ein binäres digitales Ausgangssignal erzeugt.
+\[
+S_{BB}(t) \rightarrow S_{RX}(t)
+\]
+Hier bin ich mir unsicher ob ich die bennenung der Signale aus Schaltplan übernehmen soll oder nicht. Typische Aufbau stimmt j anicht genau überein
 
 \subsection{ADC}
 Nun muss das demodulisierte Signal wieder in ein digitales Signal umgewandelt werden, damit es weiterverarbeitet werden kann.

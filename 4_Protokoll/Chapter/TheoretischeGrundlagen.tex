@@ -1,18 +1,18 @@
 \section{Modulationsarten}
 Modulationsverfahren sind ein großes Anwendungsgebiet in der Nachrichtentechnik.
-Ziel ist es viele Informationen Verlustfrei zu übertragen.
-Möchte man ein Datensignal übertragen muss es davor
+Ziel ist es, viele Informationen verlustfrei zu übertragen.
+Möchte man ein Datensignal übertragen, muss es davor
 aufbereitet werden. Dies erledigt der Modulator/Mischer.
 \\
-Es gibt Analoge und Digitale Modulationsarten.
+Es gibt analoge und digitale Modulationsarten.
 Es folgen einige Beispiele:
 
 
 \subsection{Amplitudenmodulation}
 \subsubsection{Analoge Amplitudenmodulation AM}
 Die Idee hinter der Amplitudenmodulation ist, dass das Informationssignal
-auf die Amplitude des Trägersignals zu modulieren.
-Dadurch verändert sich die Amplitude des Trägersignals in Abhängigkeit des Pegels und
+auf die Amplitude des Trägersignals moduliert wird.
+Dadurch verändert sich die Amplitude des Trägersignals in Abhängigkeit vom Pegel und
 der Frequenz des Informationssignals.
 \begin{figure}[H]
     \centering
@@ -22,24 +22,24 @@ der Frequenz des Informationssignals.
     \label{fig:link_budget}
 \end{figure}
 Die Amplitude der Trägerschwingung wird durch das analoge Datensignal
-$x(t)$ folgendermaßen verändert.
+$x(t)$ folgendermaßen verändert:
 \begin{equation}
     a(t)=A_c(1+\mu x(t))
 \end{equation}
-Das AM-Signal wird beschrieben durch.
+Das AM-Signal wird beschrieben durch:
 \begin{equation}
     x_c(t)=A_c(1+\mu x(t))cos(2\pi f_c t)
 \end{equation}
 \begin{itemize}
     \item $A_c$: Trägeramplitude
     \item $f_c$: Trägerfrequenz
-    \item $\mu$: Modulationsindex 0 $< \mu <$ 1
+    \item $\mu$: Modulationsindex $0 < \mu < 1$
 \end{itemize}
 \subsubsection{Digitale Amplitudenmodulation ASK}
 Einer der einfachsten digitalen Modulationsverfahren ist 
 das On-Off-Keying. 
-Die Idee ist ganz simpel: man hat ein digitales Datensignal aus Nullen und Einsen
-und ein Sinus/Cosinus-Signal von einem Oszillator, das als Trägerfrequenz fungiert.
+Die Idee ist ganz simpel: Man hat ein digitales Datensignal aus Nullen und Einsen
+und ein Sinus-/Kosinus-Signal von einem Oszillator, das als Trägerfrequenz fungiert.
 Und je nachdem, ob eine Null oder Eins anliegt, wird dann der Oszillator angeschaltet bzw. ausgeschaltet.
 Mathematisch ausgedrückt heißt das:
 \begin{equation}
@@ -54,10 +54,10 @@ A \cdot \cos(2 \pi f_c t), & \text{für Bit } = 1
 
 
 \subsection{Frequenzmodulation FM}
-Die Frequenzmodulation spielt eine eben so wichtige Rolle wie die Amplitudenmodulation,
-ist im vergleich jedoch weniger Störanfällig. 
-Hier wird auch ein hochfrequentes Trägersignal erzeugt und dadurch die Sendefrequenz um ein kleinen Betrag verändert.
-Am einfachsten ist so eine Modulation durch ein LC-Schwingkreis.
+Die Frequenzmodulation spielt eine ebenso wichtige Rolle wie die Amplitudenmodulation,
+ist im Vergleich jedoch weniger störanfällig. 
+Hier wird auch ein hochfrequentes Trägersignal erzeugt und dadurch die Sendefrequenz um einen kleinen Betrag verändert.
+Am einfachsten ist so eine Modulation durch einen LC-Schwingkreis.
 
 \begin{equation}
 x_c(t) = A_c \cos\left( 2\pi f_c t + 2\pi f_\Delta \int_0^t x(\tau) \, \mathrm{d}\tau \right)
@@ -66,13 +66,13 @@ x_c(t) = A_c \cos\left( 2\pi f_c t + 2\pi f_\Delta \int_0^t x(\tau) \, \mathrm{d
     \item $x(\tau)$: Datensignal
     \item $A_c$: Amplitude des Trägersignals (konstant)
     \item $f_c$: Trägerfrequenz 
-    \item $f_\Delta$: Frequenzhub, legt die maximale abwichung zu $f_c$ fest
+    \item $f_\Delta$: Frequenzhub, legt die maximale Abweichung zu $f_c$ fest
 \end{itemize}
 \clearpage
 
 \subsection{Phasenmodulation PM}
 Die Phasenmodulation gehört wie die Frequenzmodulation zu den Winkelmodulationen.
-Hier wird die Phase der Trägerwelle in Abhängigkeit des Datensignals verändert.
+Hier wird die Phase der Trägerwelle in Abhängigkeit vom Datensignal verändert.
 Die Phasenveränderung bleibt im Signal erhalten, variiert jedoch im Vergleich
 zur ursprünglichen Phase des Trägersignals.
 \begin{figure}[h]
@@ -83,9 +83,9 @@ zur ursprünglichen Phase des Trägersignals.
 \end{figure}
 
 \section{Blockdiagramm einer Sendestrecke}
-Im folgenden Abschnitt wird die Hochfrequenz-Übertragungsstrecke eines typischen Funksystems beschrieben. Bei der Abbildung 2.3 handelt es sich um ein Blockdiagramm. Es zielt darauf aus ein grundlegendes
-systematisches Verständnis aufzubauen, um das gelernte auf unsere spezifische Hardware anwenden zu können. Die einzelnen Komponenten der Hochfrequenz-Übertragungsstrecke
-und deren Zusammenspiel wird im Anschluss näher erläutert und auf ihre Realisierung in unserer Hardware eingegangen.\\
+Im folgenden Abschnitt wird die Hochfrequenz-Übertragungsstrecke eines typischen Funksystems beschrieben. Bei Abbildung 2.3 handelt es sich um ein Blockdiagramm. Es zielt darauf ab, ein grundlegendes
+systematisches Verständnis aufzubauen, um das Gelernte auf unsere spezifische Hardware anwenden zu können. Die einzelnen Komponenten der Hochfrequenz-Übertragungsstrecke
+und deren Zusammenspiel werden im Anschluss näher erläutert und auf ihre Realisierung in unserer Hardware eingegangen.\\
 
 \begin{figure}[h]
     \centering
@@ -152,11 +152,11 @@ Schaut man sich den Schaltplan an, so stellt man fest dass folgendes Bauteil der
     \footnotesize{Quelle: \url{Schaltplan_PCB_V4}}
     \label{fig:link_budget}
 \end{figure}
-Das digitale Datensignal $TX_{Digital}$ ($D_{TX}$) ist am Oszillator am ED Eingang angeschlossen.
-Ein Blick ins Datenblatt verrät, dass ED der Enable/Disable Pin ist.
-Das bedeutet, der lokale Oszillator wird mithilfe des digitalen Signals an und ausgeschaltet.
+Das digitale Datensignal $TX_{Digital}$ ($D_{TX}$) ist am Oszillator am ED-Eingang angeschlossen.
+Ein Blick ins Datenblatt verrät, dass ED der Enable/Disable-Pin ist.
+Das bedeutet, der lokale Oszillator wird mithilfe des digitalen Signals an- und ausgeschaltet.
 Somit haben wir es mit einer \textbf{digitalen Amplitudenmodulation} zu tun, genauer gesagt mit dem
-On-Off Keying. Das resultierende Signal wird beschrieben durch:
+On-Off-Keying. Das resultierende Signal wird beschrieben durch:
 
 \[S_{TX,DAC}(t)*S_{LO}(t) \rightarrow S_{RF}(t)\]
 
@@ -164,26 +164,26 @@ On-Off Keying. Das resultierende Signal wird beschrieben durch:
 
 
 \subsection{PA}
-Der Leistungsverstärker (eng. power amplifier, PA) verstärkt das modulierte Signal auf eine Leistung, die für die Übertragung über eine Antenne 
-geeignet ist. Die hohe Leistung ist notwendig um über eine größere Distanz senden zu können und um Zuverlässigkeit und
+Der Leistungsverstärker (engl. power amplifier, PA) verstärkt das modulierte Signal auf eine Leistung, die für die Übertragung über eine Antenne 
+geeignet ist. Die hohe Leistung ist notwendig, um über eine größere Distanz senden zu können und um Zuverlässigkeit und
 Signalqualität zu gewährleisten. 
 \[S_{RF}(t) \rightarrow S_{RF,PA}(t)\]
 
 \subsection{Drahtlose Übertragung mit Antennen}
-Die Sendeantenne strahlt das modulierte HF Signal $S_{Funk}$ als elektromagnetische Wellen in den Raum ab. Diese abgestrahlte Welle
+Die Sendeantenne strahlt das modulierte HF-Signal $S_{Funk}$ als elektromagnetische Wellen in den Raum ab. Diese abgestrahlte Welle
 breitet sich mit Lichtgeschwindigkeit aus und kann von Empfängerantennen empfangen werden. Die Empfängerantenne wandelt
 die elektromagnetische Welle wieder in eine elektrische Spannung um, die dann weiterverarbeitet werden kann. Diese entspricht
-jedoch nicht mehr dem ursprünglichen Bandsignal, da es durch die Übertragungseinflüsse wie Dämpfung, Rauschen und Interferenzen
-und vielen weiteren Einflüssen gedämpft und gestört wurde.
+jedoch nicht mehr dem ursprünglichen Bandsignal, da es durch Übertragungseinflüsse wie Dämpfung, Rauschen und Interferenzen
+und viele weitere Einflüsse gedämpft und gestört wurde.
 \[S_{RF,PA}(t) \rightarrow S_{Funk}(t) \rightarrow S_{RF,in}(t)\]
 
 \subsection{LNA}
-Bei dem LNA (eng. low noise amplifier) handelt es sich um einen rauscharmen HF-Verstärker. Das empfangene Signal $S_{RF,in}$ ist
-durch die bereits erwähnten Einflüsse sehr schwach und muss  zuerst verstärkt werden, um weiterverarbeitet werden zu können. Daher
-ist eine Verstärkung des Signals unmittelbar nach den Antennen zwingend notwendig. Der Vorteil des LNA gegenüber zu
+Bei dem LNA (engl. low noise amplifier) handelt es sich um einen rauscharmen HF-Verstärker. Das empfangene Signal $S_{RF,in}$ ist
+durch die bereits erwähnten Einflüsse sehr schwach und muss zuerst verstärkt werden, um weiterverarbeitet werden zu können. Daher
+ist eine Verstärkung des Signals unmittelbar nach den Antennen zwingend notwendig. Der Vorteil des LNA gegenüber
 anderen Verstärkern ist, dass er kein nennenswertes Rauschen hinzufügt. Dies ist wichtig, da jedes zusätzliche Rauschen
 die folgende Demodulation erheblich erschweren würde. Ebenfalls ist durch die Position des LNA das empfangene Signal noch
-nicht durch andere elektrischen Komponenten verfälscht worden. Wäre dies nicht der Fall könnte es durch die spätere Verstärkung zu
+nicht durch andere elektrische Komponenten verfälscht worden. Wäre dies nicht der Fall, könnte es durch die spätere Verstärkung zu
 Rekonstruktionsproblemen des eigentlichen Signals führen.
 \begin{figure}[H]
     \centering
@@ -194,22 +194,22 @@ Rekonstruktionsproblemen des eigentlichen Signals führen.
 \end{figure}
 
 
-Beginnen wir nun die Koversion (=Frequenzumsetzung) vom HF-Signal in ein digitales Nutzsignal im Empfänger in unserer Schaltung. In Abbildung 2.5
+Beginnen wir nun die Konversion (=Frequenzumsetzung) vom HF-Signal in ein digitales Nutzsignal im Empfänger in unserer Schaltung. In Abbildung 2.5
 wird das empfangene Signal $S_{RF,in}(t)$ über den Kondensator C20 eingekoppelt. Q22 ist hierbei ein HF-Transistorverstärker.\\
 \[
 S_{RF,in}(t) \rightarrow S_{RF,LNA}(t)
 \]
 \subsection{Demodulation}
 Die Demodulation ist der Prozess, bei dem das modulierte Signal wieder in das ursprüngliche Datensignal zurückgewandelt wird. Dieser Schritt erfolgt
-vor dem ADC weil die Frequenz des Hochfrequenzsignals zu hoch ist um es direkt mit einem üblichen ADC zu digitalisieren. Die dafür notwendige
+vor dem ADC, weil die Frequenz des Hochfrequenzsignals zu hoch ist, um es direkt mit einem üblichen ADC zu digitalisieren. Die dafür notwendige
 Abtastrate wäre hierbei extrem hoch.
 Das Nyquist-Abtasttheorem besagt, dass ein Signal der maximalen Frequenz $f_\mathrm{max}$ nur dann verlustfrei rekonstruiert werden kann,
 wenn die Abtastfrequenz $f_\mathrm{s}$ mindestens doppelt so groß ist wie $f_\mathrm{max}$:
 \begin{equation}
     f_\mathrm{s} \geq 2 f_\mathrm{max}
 \end{equation}
-Die Trägerfrequenz unseres Modulators beträgt $f=1{,}25\,\mathrm{GHz}$. Das würde eine Abtastrate $f_{s} \geq 2{,}5\,\mathrm{GS/s}$ (S=Sampels) erfordern. ADC, die in der Lage sind, solch hohe Frequenzen
-zu verarbeiten sind kosten-, energie- und datenintensiv. Daher ist es nicht für unser Praktikum geeignet wegen spaaaaren ;)\\
+Die Trägerfrequenz unseres Modulators beträgt $f=1{,}25\,\mathrm{GHz}$. Das würde eine Abtastrate $f_{s} \geq 2{,}5\,\mathrm{GS/s}$ (S = Samples) erfordern. ADCs, die in der Lage sind, solch hohe Frequenzen
+zu verarbeiten, sind kosten-, energie- und datenintensiv. Dies würde unser Bugdetrahmen sprengen, weswegen es für unser Praktikum nicht geeignet ist.
 \\ 
 \begin{figure}[H]
     \centering
@@ -221,9 +221,9 @@ zu verarbeiten sind kosten-, energie- und datenintensiv. Daher ist es nicht für
 
 
 
-Die Abbildung 2.6 stellt den Demodulator dar. Der Transistor Q21 ist in Diodenschaltung betrieben. Dadurch werden nur postive Halbewelle des Signals 
-durchgelassen (=Gleichrichtung). Danach folgt ein Tiefpassfilter (bestehend aus einer Paralellschaltung aus R26 und C22) mit einer 10MHz Grenzfrequenz
-der die hochfrequente Trägerwelle unterdürckt und nur das Basisbandsignal $S_{BB}(t)$ (/modulierte Hüllkurve) durchlässt.
+Die Abbildung 2.6 stellt den Demodulator dar. Der Transistor Q21 ist in Diodenschaltung betrieben. Dadurch werden nur positive Halbwellen des Signals 
+durchgelassen (=Gleichrichtung). Danach folgt ein Tiefpassfilter (bestehend aus einer Parallelschaltung aus R26 und C22) mit einer 10-MHz-Grenzfrequenz,
+der die hochfrequente Trägerwelle unterdrückt und nur das Basisbandsignal $S_{BB}(t)$ (modulierte Hüllkurve) durchlässt.
 \[
 S_{RF,LNA}(t) \rightarrow S_{BB}(t)
 \]
@@ -231,8 +231,8 @@ S_{RF,LNA}(t) \rightarrow S_{BB}(t)
 
 
 \subsection{ADC}
-Nun muss das demodulisierte Signal wieder in ein digitales Signal umgewandelt werden, damit es weiterverarbeitet werden kann.
-Der Analog-Digital-Wandler (eng. analog-to-digital converter, ADC) besteht in unsere Schaltung aus zwei Komponenten: einem Analogverstärker und 
+Nun muss das demodulierte Signal wieder in ein digitales Signal umgewandelt werden, damit es weiterverarbeitet werden kann.
+Der Analog-Digital-Wandler (engl. analog-to-digital converter, ADC) besteht in unserer Schaltung aus zwei Komponenten: einem Analogverstärker und 
 einem Komparator.
 
 \begin{figure}[H]
@@ -245,19 +245,19 @@ einem Komparator.
 
 \subsubsection{Analogverstärker}
 Der linke Teil der in Abbildung 2.7 dargestellten Schaltung ist der Analogverstärker. Das geschwächte analoge Signal durchläuft den 
-Operationsverstärker U20 um den Pegel überhalb des festgelegten Schwellwerts für die Komperatorschaltung zu bringen.
+Operationsverstärker U20, um den Pegel oberhalb des festgelegten Schwellwerts für die Komparatorschaltung zu bringen.
 
 
-\subsubsection{Komperator}
-Die rechte Seite der Schaltung bildet der Komperator U21. Dieser vergleicht das demodulierte Signal $S_{BB}(t)$ mit einem festen Schwellwert von 0,79 V.
-Wird dieser Schwellwert überschritten gilt:
+\subsubsection{Komparator}
+Die rechte Seite der Schaltung bildet der Komparator U21. Dieser vergleicht das demodulierte Signal $S_{BB}(t)$ mit einem festen Schwellwert von 0,79 V.
+Wird dieser Schwellwert überschritten, gilt:
 \[
 S_{BB}(t) > 0{,}79\,\mathrm{V} \implies \text{HIGH}
 \]
 \[
 S_{BB}(t) < 0{,}79\,\mathrm{V} \implies \text{LOW}
 \]
-Dadurch wird ein binäres digitales Ausgangssignal erzeugt das von einem Computer weiterverarbeitet werden kann.
+Dadurch wird ein binäres digitales Ausgangssignal erzeugt, das von einem Computer weiterverarbeitet werden kann.
 \[
 S_{BB}(t) \rightarrow S_{RX}(t)
 \]
@@ -339,7 +339,7 @@ Der Verlauf der Fourier-Transformierten ist in folgender Abbildung dargestellt:
 \label{fig:fourier_rechteck}
 \end{figure}
 
-Die Rechteckfunktion ist in der digitalen Signalverarbeitung von Relevanz, da diese eine Basis für die Änderung des Signalpegels darstellt. Durch die Idealisierung lässt sich der High-Pegel (1) und Low-Pegel (0) des Signals gut darstellen. In der Praxis wird die Rechteckfunktion jedoch durch eine $\mathrm{sinc}$-Funktion approximiert, um Übertragungsfehler zu minimieren.
+Die Rechteckfunktion ist in der digitalen Signalverarbeitung von Relevanz, da sie eine Basis für die Änderung des Signalpegels darstellt. Durch die Idealisierung lässt sich der High-Pegel (1) und Low-Pegel (0) des Signals gut darstellen. In der Praxis wird die Rechteckfunktion jedoch durch eine $\mathrm{sinc}$-Funktion approximiert, um Übertragungsfehler zu minimieren.
 
 \subsection{Betrag und zeitlicher Verlauf von Sinusfunktion}
 Der Sinus ist eine wichtige Funktion in der Signalverarbeitung.
@@ -403,7 +403,7 @@ Die graphische Darstellung der Fourier-Transformierten der Sinusfunktion ist in 
 \label{fig:fourier_sinus_komplex}
 \end{figure}
 
-Die Sinusfunktion spielt eine immens wichtige Rolle in der digitalen Signalverarbeitung, da es der Grundstein der Fourier-Analyse (Fourier-Reihen und Fourier-Transformation) ist. Auch sind diese für lineare zeitinvariante Systeme (LTI) von Bedeutung. 
+Die Sinusfunktion spielt eine immens wichtige Rolle in der digitalen Signalverarbeitung, da sie der Grundstein der Fourier-Analyse (Fourier-Reihen und Fourier-Transformation) ist. Auch sind diese für lineare zeitinvariante Systeme (LTI) von Bedeutung. 
 Der Sinus ist eine elementare periodische Funktion, seine Periodizität ist das grundlegende Konzept in vielen Signalen. Er lässt auch unter anderem komplex erscheinende Funktionen in Sinuskomponenten zerlegen und somit sie einfacher und kompakter darstellen.
 Auch in der analogen Signalverarbeitung ist der Sinus von Bedeutung, da er die Basis für die Amplituden-, Frequenz- und Phasenmodulation bildet. Schließlich ist die Idealform der aus der Steckdose kommenden Netzspannung eine Sinuswelle, die in vielen Anwendungen als Referenzsignal dient. 
 

@@ -184,42 +184,79 @@ jedoch nicht mehr dem ursprünglichen Bandsignal, da es durch die Übertragungse
 und vielen weiteren Einflüssen gedämpft und gestört wurde.
 
 \subsection{LNA}
-Bei dem LNA (eng. low noise amplifier) handelt es sich um einen rauscharmen HF-Verstärker. Das empfangene Signal Sxx ist
+Bei dem LNA (eng. low noise amplifier) handelt es sich um einen rauscharmen HF-Verstärker. Das empfangene Signal $S_{RF,in}$ ist
 durch die bereits erwähnten Einflüsse sehr schwach und muss  zuerst verstärkt werden, um weiterverarbeitet werden. Daher
-ist eine Verstärkung des Signals unmittlbar nach der Antennen zwingend notwendig. Der Vorteil des LNA gegenüber zu
-anderen Verstärkern ist, dass er kein nennenswertes Rauschen hiinzufügt. Dies ist wichtig, da jedes zusätzliche Rauschen
-die folgende Demolution erheblich erschweren würde. Ebenfall ist durch die Postion des LNA das empfangene Signal noch 
-nicht durch andere elektrischen Komponenten verfälscht worden, was durch eine spätere Verstärkung zu rekonstruktionsproblemen
-des eigentlichen Signals führen könnte.
+ist eine Verstärkung des Signals unmittlbar nach den Antennen zwingend notwendig. Der Vorteil des LNA gegenüber zu
+anderen Verstärkern ist, dass er kein nennenswertes Rauschen hinzufügt. Dies ist wichtig, da jedes zusätzliche Rauschen
+die folgende Demodulation erheblich erschweren würde. Ebenfall ist durch die Postion des LNA das empfangene Signal noch 
+nicht durch andere elektrischen Komponenten verfälscht worden. Wäre dies nicht der Fall könnte es durch die spätere Verstärkung zu 
+Rekonstruktionsproblemen des eigentlichen Signals führen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Pictures/Vorverstärker.jpg}
+    \caption{HF-Vorverstärker}
+    \footnotesize{Quelle: \url{Schaltplan_PCB_V4}}
+    %\label{fig:link_budget}
+\end{figure}
+
+
+Beginnen wir nun die Koversion (=Frequenzumsetzung) vom HF-Signal in ein digitales Nutzsignal im Empfänger in unserer Schaltung. In Abbildung 2.5
+wird das empfangene Signal $S_{RF,in}(t)$ über den Kondensator C20 eingekoppelt. Q22 ist hierbei ein HF-Transistorverstärker.\\
+\[
+S_{RF,in}(t) \rightarrow S_{RF,LNA}(t)
+\]
 \subsection{Demodulation}
-Die Demodulation ist der Prozess, bei dem das modulierte Signal wieder in das ursprüngliche Bandsignal zurücgewandelt wird. Dieser Schritt erfolgt
+Die Demodulation ist der Prozess, bei dem das modulierte Signal wieder in das ursprüngliche Bandsignal zurückgewandelt wird. Dieser Schritt erfolgt
 vor dem ADC weil die Frequenz des Hochfrequenzsignals zu hoch ist um es direkt mit einem üblichen ADC zu digitalisieren. Die dafür notwendige
-Abtastrate wöre hierbei extrem hoch.
+Abtastrate wäre hierbei extrem hoch.
 Das Nyquist-Abtasttheorem besagt, dass ein Signal der maximalen Frequenz $f_\mathrm{max}$ nur dann verlustfrei rekonstruiert werden kann,
 wenn die Abtastfrequenz $f_\mathrm{s}$ mindestens doppelt so groß ist wie $f_\mathrm{max}$:
 \begin{equation}
     f_\mathrm{s} \geq 2 f_\mathrm{max}
 \end{equation}
-(Samplerate richtig? Die Trägerfrequenz unseres
-Modulators beträgt $f=1,25GHz$. Das würde mindestens 2,5 Gigasamples pro Sekunde erfordern.) ADC die in der Lage sind solch hohe Frequenzen
-zu verarbeiten sind kosten-, energie- und datenintensiv. -> Nicht für unser Praktikum geeignet wegen spaaaaaren xD.\\
-\\
-Schwierigerer Teil. CGPT cooken lassen (irgendwie schaltplan einfügen, nummern von andric genommen und evtl. noch in andere bereiche aufteilen). 
-Betrachten wir nun die Koversion (=Frequenzumsetzung) vom HF-Signal in ein digitales Nutzsignal im Empfänger in unserer Schaltung. In Teil 6
-unsere schlatung wird das empfangene Signal $S_{RF,in}(t)$ über den Kondensator C20 eingekoppelt. Q22 ist ein HF-Transistorverstärker.\\
-\[
-S_{RF,in}(t) \rightarrow S_{RF,LNA}(t)
-\]
-Block 7 ist der Demodulator. Q21 ist in Diodenschaltung betrieben. Dadurch werden nur postive Halbewelle des Signals durchgelassen (=Gleichrichtung).
-Danach folgt ein Tiefpassfilter (bestehend aus einer paralelschaltung aus R26 und C22) mit einer 10MHz Grenzfrequenz der die hochfrequente Trägerwelle unterdürckt und nur das Basisbandsignal $S_{BB}(t)$
-(/modulierte Hüllkurve) durchlässt.
+Die Trägerfrequenz unseres Modulators beträgt $f=1{,}25\,\mathrm{GHz}$. Das würde eine Abtastrate $f_{s} \geq 2{,}5\,\mathrm{GS/s}$ (S=Sampels) erfordern. ADC, die in der Lage sind, solch hohe Frequenzen
+zu verarbeiten sind kosten-, energie- und datenintensiv. Daher ist es nicht für unser Praktikum geeignet wegen spaaaaren ;)\\
+\\ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{Pictures/Demodulator.jpg}
+    \caption{Demodulator}
+    \footnotesize{Quelle: \url{Schaltplan_PCB_V4}}
+    %\label{fig:link_budget}
+\end{figure}
+
+
+
+Die Abbildung 2.6 stellt den Demodulator dar. Der Transistor Q21 ist in Diodenschaltung betrieben. Dadurch werden nur postive Halbewelle des Signals 
+durchgelassen (=Gleichrichtung). Danach folgt ein Tiefpassfilter (bestehend aus einer paralellschaltung aus R26 und C22) mit einer 10MHz Grenzfrequenz
+der die hochfrequente Trägerwelle unterdürckt und nur das Basisbandsignal $S_{BB}(t)$ (/modulierte Hüllkurve) durchlässt.
 \[
 S_{RF,LNA}(t) \rightarrow S_{BB}(t)
 \]
+(Sample rate richtig? Sollte eignetlich passen; gibts es solche ADCs die es könnten?;  )
 
-%Eigentlich ab hier ADC
-Es folgt in Teil 8 ein Analogversträker U20 der die das demodulierte Basisband signal auf (?) verstärkt.\\
-Der letzte Schritt (9) ist verleichung des demodulierten Signals mit einem festen Schwellwert durch den Komparator U21. Dieser ist hier U21.
+
+
+\subsection{ADC}
+Nun muss das demodulisierte Signal wieder in ein digitales Signal umgewandelt werden, damit es weiterverarbeitet werden kann.
+Der Analog-Digital-Wandler (eng. analog-to-digital converter, ADC) besteht in unsere Schaltung aus zwei Komponenten: einem Analogverstärker und 
+einem Komparator.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Pictures/ADC.jpg}
+    \caption{Analogverstärker und Komperator}
+    \footnotesize{Quelle: \url{Schaltplan_PCB_V4}}
+    %\label{fig:link_budget}
+\end{figure}
+
+\subsubsection{Analogverstärker}
+Der linke Teil der in Abbildung 2.7 dargestellten Schaltung ist der Analogverstärker. Das geschwächte analoge Signal durchläuft den 
+Operationsverstärker U20 um den Pegel überhalb des festgelegten Schwellwerts des Komperators U21 zu bringen.
+
+
+\subsubsection{Komperator}
+Die rechte Seite der Schaltung bildet der Komperator U21. Dieser vergleicht das demodulierte Signal $S_{BB}(t)$ mit einem festen Schwellwert von 0,79 V.
 Wird dieser Schwellwert überschritten gilt:
 \[
 S_{BB}(t) > 0{,}79\,\mathrm{V} \implies \text{HIGH}
@@ -227,15 +264,12 @@ S_{BB}(t) > 0{,}79\,\mathrm{V} \implies \text{HIGH}
 \[
 S_{BB}(t) < 0{,}79\,\mathrm{V} \implies \text{LOW}
 \]
-Dadurch wird ein binäres digitales Ausgangssignal erzeugt.
+Dadurch wird ein binäres digitales Ausgangssignal erzeugt das von einem Computer weiterverarbeitet werden kann.
 \[
 S_{BB}(t) \rightarrow S_{RX}(t)
 \]
-Hier bin ich mir unsicher ob ich die bennenung der Signale aus Schaltplan übernehmen soll oder nicht. Typische Aufbau stimmt j anicht genau überein
 
-\subsection{ADC}
-Nun muss das demodulisierte Signal wieder in ein digitales Signal umgewandelt werden, damit es weiterverarbeitet werden kann.
-In unsere Schaltung wird dafür ... verwendet. 
+(Eigene Bennenung der Signale oder wie im Schaltplan? Komperatpor U21 sagen erlaubt? USB Ports erwähnen)
 
 
 \section{Mathematische Grundlagen: Fourier-Transformation}

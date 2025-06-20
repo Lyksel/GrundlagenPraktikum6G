@@ -339,6 +339,7 @@ Die Sinusfunktion $x(t) = \sin(t)$ hat eine Periode von $2\pi$ und schwingt zwis
 \end{axis}
 \end{tikzpicture}
 \caption{Zeitverlauf des Sinussignals $s(t) = \sin(\omega_0 t)$ mit $\omega_0 = 4\pi$}
+\label{fig:sinus}
 \end{figure}
 
 
@@ -347,10 +348,7 @@ Die Fourier-Transformierte der Sinusfunktion $x(t) = \sin(t)$ ist gegeben durch:
 \[
 \mathcal{F}\{\sin(\omega_0 t)\} = \pi j \left[ \delta(\omega + \omega_0) - \delta(\omega - \omega_0) \right]
 \]
-Für $\omega_0 = 1$ ergibt sich:
-\[
-\mathcal{F}\{\sin(t)\} = \pi j \left[ \delta(\omega + 1) - \delta(\omega - 1) \right]
-\]
+
 Der Betrag der Fourier-Transformierten besteht also aus zwei Dirac-Impulsen bei $\omega = \pm 1$.
 
 Die graphische Darstellung der Fourier-Transformierten der Sinusfunktion ist in Abbildung \ref{fig:fourier_sinus_komplex} zu sehen.
@@ -373,6 +371,7 @@ Die graphische Darstellung der Fourier-Transformierten der Sinusfunktion ist in 
 \end{axis}
 \end{tikzpicture}
 \caption{Betragsspektrum eines Sinussignals $s(t) = \sin(\omega_0 t)$ mit $\omega_0 = 4\pi$}
+\label{fig:fourier_sinus_komplex}
 \end{figure}
 
 Die Sinusfunktion spielt eine immens wichtige Rolle in der digitalen Signalverarbeitung, da es der Grundstein der Fourier-Analyse (Fourier-Reihen und Fourier-Transformation) ist. Auch sind diese für lineare zeitinvariante Systeme (LTI) von Bedeutung. 
@@ -381,64 +380,89 @@ Auch in der analogen Signalverarbeitung ist der Sinus von Bedeutung, da er die B
 
 \subsection{Multiplikation der beiden Funktionen im Zeitbereich}
 Bei einer Multiplikation der beiden Funktionen im Zeitbereich, also der Rechteckfunktion $x(t)$ und der Sinusfunktion $y(t)$, ergibt sich eine neue Funktion $z(t) =  x(t) \cdot y(t)$, die in Abbildung \ref{fig:rechteck_sinus} dargestellt ist. Diese Funktion ist das Ergebnis der Punkt-für-Punkt-Multiplikation der beiden Funktionen.
-% \begin{figure}[H]
-%     \centering
-%     \begin{tikzpicture}
-%         \begin{axis}[
-%             width=0.8\textwidth,
-%             height=5cm,
-%             axis lines=middle,
-%             xlabel={$t$},
-%             ylabel={$z(t)$},
-%             domain=-2:2,
-%             samples=200,
-%             xtick={-2,-1,0,1,2},
-%             ytick={-1,0,1},
-%             ymin=-1.2, ymax=1.2,
-%             grid=both,
-%         ]
-%         % Rechteckfunktion
-%         \addplot[blue, thick, samples=2, domain=-2:-1] {0};
-%         \addplot[blue, thick, samples=2, domain=-1:1] {1};
-%         \addplot[blue, thick, samples=2, domain=1:2] {0};
-%         % Sinusfunktion
-%         \addplot[red, thick] {sin(deg(x))};
-%         % Multiplikation der beiden Funktionen
-%         \addplot[green, thick] {sin(deg(x)) * (x >= -1 && x <= 1)};
-%         \end{axis}
-%     \end{tikzpicture}
-%     \caption{Multiplikation der Rechteckfunktion $x(t)$ und der Sinusfunktion $y(t)$ im Zeitbereich}
-%     \label{fig:rechteck_sinus}
-% \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=0.8\textwidth,
+            height=5cm,
+            axis lines=box,
+            xlabel={$t$},
+            ylabel={$z(t)$},
+            domain=-2:2,
+            samples=500,
+            xtick={-2,-1,0,1,2},
+            ytick={-1,0,1},
+            ymin=-1.2, ymax=1.2,
+            grid=both,
+        ]
+            % Rechteckfunktion * Sinus im Intervall -1 < t < 1
+            \addplot [
+                thick,
+                blue,
+                domain=-1:1
+            ] {sin(deg(4*pi*x))};
+            % Null außerhalb des Rechtecks
+            \addplot[
+                thick,
+                blue,
+                domain=-2:-1
+            ] {0};
+            \addplot[
+                thick,
+                blue,
+                domain=1:2
+            ] {0};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Multiplikation der Rechteckfunktion $x(t)$ (Breite $T=2$) mit der Sinusfunktion $y(t) = \sin(4\pi t)$}
+    \label{fig:rechteck_sinus}
+\end{figure}
 
 Die Fourier-Transformierte der Multiplikation zweier Funktionen im Zeitbereich ist gegeben durch die Faltung ihrer Fourier-Transformierten im Frequenzbereich. Das bedeutet, dass die Fourier-Transformierte von $z(t)$, also $\mathcal{F}\{z(t)\}$, das Ergebnis der Faltung der Fourier-Transformierten von $x(t)$ und $y(t)$ ist:
 \[
 \mathcal{F}\{z(t)\} = \mathcal{F}\{x(t)\} * \mathcal{F}\{y(t)\}
 \]
 
-Es ergibt sich also eine neue Funktion im Frequenzbereich, die die Frequenzkomponenten der beiden ursprünglichen Funktionen kombiniert.
+Die analytische Form der Funktion aus dem Bild lautet:
+\[
+\left| \mathcal{F}\{z(t)\} \right| = \left| \frac{T}{2} \left( 
+\operatorname{sinc}\left(\frac{(\omega-\omega_0)T}{2}\right)
+- 
+\operatorname{sinc}\left(\frac{(\omega+\omega_0)T}{2}\right)
+\right) \right|
+\]
+
+% Plot der Funktion mit Beispielwerten T=2, \omega_0=4\pi
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}
-\begin{axis}[
+\begin{axis} [
     width=0.9\textwidth,
     height=5cm,
     xlabel={$\omega$},
-    ylabel={$|X(\omega)|$},
+    ylabel={$\left| \mathcal{F}\{z(t)\} \right|$},
     domain=-10*pi:10*pi,
     samples=1000,
     ymin=0, ymax=1.2,
     xtick={-12.56, -6.28, 0, 6.28, 12.56},
     xticklabels={$-4\pi$, $-2\pi$, $0$, $2\pi$, $4\pi$},
     grid=major,
+    declare function={
+        T=2;
+        omegaNull=4*pi;
+        sinc(\x) = (abs(\x)<0.0001) ? 1 : sin(deg(\x))/(\x);
+    },
 ]
-\addplot[orange, thick] {abs(sin(deg((x-4*pi))/2)/((x-4*pi)/2) - sin(deg((x+4*pi))/2)/((x+4*pi)/2))};
+\addplot[blue, thick] {abs(T/2 * (sinc((x-omegaNull)*T/2) - sinc((x+omegaNull)*T/2)))};
 \end{axis}
 \end{tikzpicture}
-\caption{Betragsspektrum der Fourier-Transformierten $\mathcal{F}\{z(t)\}$}
+\caption{Betragsspektrum von $\left| \mathcal{F}\{z(t)\} \right|$ für $T=2$, $\omega_0=4\pi$}
 \label{fig:fourier_rechteck_sinus}
 \end{figure}
+
+Somit ergibt sich eine Faltung der beiden $\mathrm{sinc}$-Funktionen, die in Abbildung \ref{fig:fourier_rechteck_sinus} dargestellt ist. Diese Faltung führt zu einem Frequenzspektrum, das die Eigenschaften beider Funktionen kombiniert.
 
 \section{Zusammenhang von Datenrate und Bandbreite}
 blabla

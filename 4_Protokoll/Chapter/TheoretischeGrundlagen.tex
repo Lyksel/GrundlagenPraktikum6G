@@ -118,7 +118,7 @@ und deren Zusammenspiel wird im Anschluss näher erläutert und auf ihre Realise
     \textbf{\large Funktion / Beschreibung}\\[2ex]
     \begin{itemize}
         \item $S_{\mathrm{TX}}(t)$: Digital erzeugtes Sendesignal
-        \item $S_{\mathrm{TX;DAC}}(t)$: Analoges Signal (Basisbandsignal)
+        \item $S_{\mathrm{TX,DAC}}(t)$: Analoges Signal (Basisbandsignal)
         \item $S_{\mathrm{LO}}(t)$: Sinusförmiges Trägersignal/ ungedämpfte hochfrequente Trägerschwingung
         \item $S_{\mathrm{RF}}(t)$: moduliertes analoges Hochfrequenzsignal
         \item $S_{\mathrm{RF,PA}}(t)$: Verstärkte Hochfrequenzsignal (durch PA)
@@ -184,40 +184,79 @@ jedoch nicht mehr dem ursprünglichen Bandsignal, da es durch die Übertragungse
 und vielen weiteren Einflüssen gedämpft und gestört wurde.
 
 \subsection{LNA}
-Bei dem LNA (eng. low noise amplifier) handelt es sich um einen rauscharmen HF-Verstärker. Das empfangene Signal Sxx ist
+Bei dem LNA (eng. low noise amplifier) handelt es sich um einen rauscharmen HF-Verstärker. Das empfangene Signal $S_{RF,in}$ ist
 durch die bereits erwähnten Einflüsse sehr schwach und muss  zuerst verstärkt werden, um weiterverarbeitet werden. Daher
-ist eine Verstärkung des Signals unmittlbar nach der Antennen zwingend notwendig. Der Vorteil des LNA gegenüber zu
-anderen Verstärkern ist, dass er kein nennenswertes Rauschen hiinzufügt. Dies ist wichtig, da jedes zusätzliche Rauschen
-die folgende Demolution erheblich erschweren würde. Ebenfall ist durch die Postion des LNA das empfangene Signal noch 
-nicht durch andere elektrischen Komponenten verfälscht worden, was durch eine spätere Verstärkung zu rekonstruktionsproblemen
-des eigentlichen Signals führen könnte.
+ist eine Verstärkung des Signals unmittlbar nach den Antennen zwingend notwendig. Der Vorteil des LNA gegenüber zu
+anderen Verstärkern ist, dass er kein nennenswertes Rauschen hinzufügt. Dies ist wichtig, da jedes zusätzliche Rauschen
+die folgende Demodulation erheblich erschweren würde. Ebenfall ist durch die Postion des LNA das empfangene Signal noch 
+nicht durch andere elektrischen Komponenten verfälscht worden. Wäre dies nicht der Fall könnte es durch die spätere Verstärkung zu 
+Rekonstruktionsproblemen des eigentlichen Signals führen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Pictures/Vorverstärker.jpg}
+    \caption{HF-Vorverstärker}
+    \footnotesize{Quelle: \url{Schaltplan_PCB_V4}}
+    %\label{fig:link_budget}
+\end{figure}
+
+
+Beginnen wir nun die Koversion (=Frequenzumsetzung) vom HF-Signal in ein digitales Nutzsignal im Empfänger in unserer Schaltung. In Abbildung 2.5
+wird das empfangene Signal $S_{RF,in}(t)$ über den Kondensator C20 eingekoppelt. Q22 ist hierbei ein HF-Transistorverstärker.\\
+\[
+S_{RF,in}(t) \rightarrow S_{RF,LNA}(t)
+\]
 \subsection{Demodulation}
-Die Demodulation ist der Prozess, bei dem das modulierte Signal wieder in das ursprüngliche Bandsignal zurücgewandelt wird. Dieser Schritt erfolgt
+Die Demodulation ist der Prozess, bei dem das modulierte Signal wieder in das ursprüngliche Bandsignal zurückgewandelt wird. Dieser Schritt erfolgt
 vor dem ADC weil die Frequenz des Hochfrequenzsignals zu hoch ist um es direkt mit einem üblichen ADC zu digitalisieren. Die dafür notwendige
-Abtastrate wöre hierbei extrem hoch.
+Abtastrate wäre hierbei extrem hoch.
 Das Nyquist-Abtasttheorem besagt, dass ein Signal der maximalen Frequenz $f_\mathrm{max}$ nur dann verlustfrei rekonstruiert werden kann,
 wenn die Abtastfrequenz $f_\mathrm{s}$ mindestens doppelt so groß ist wie $f_\mathrm{max}$:
 \begin{equation}
     f_\mathrm{s} \geq 2 f_\mathrm{max}
 \end{equation}
-(Samplerate richtig? Die Trägerfrequenz unseres
-Modulators beträgt $f=1,25GHz$. Das würde mindestens 2,5 Gigasamples pro Sekunde erfordern.) ADC die in der Lage sind solch hohe Frequenzen
-zu verarbeiten sind kosten-, energie- und datenintensiv. -> Nicht für unser Praktikum geeignet wegen spaaaaaren xD.\\
-\\
-Schwierigerer Teil. CGPT cooken lassen (irgendwie schaltplan einfügen, nummern von andric genommen und evtl. noch in andere bereiche aufteilen). 
-Betrachten wir nun die Koversion (=Frequenzumsetzung) vom HF-Signal in ein digitales Nutzsignal im Empfänger in unserer Schaltung. In Teil 6
-unsere schlatung wird das empfangene Signal $S_{RF,in}(t)$ über den Kondensator C20 eingekoppelt. Q22 ist ein HF-Transistorverstärker.\\
-\[
-S_{RF,in}(t) \rightarrow S_{RF,LNA}(t)
-\]
-Block 7 ist der Demodulator. Q21 ist in Diodenschaltung betrieben. Dadurch werden nur postive Halbewelle des Signals durchgelassen (=Gleichrichtung).
-Danach folgt ein Tiefpassfilter (bestehend aus einer paralelschaltung aus R26 und C22) mit einer 10MHz Grenzfrequenz der die hochfrequente Trägerwelle unterdürckt und nur das Basisbandsignal $S_{BB}(t)$
-(/modulierte Hüllkurve) durchlässt.
+Die Trägerfrequenz unseres Modulators beträgt $f=1{,}25\,\mathrm{GHz}$. Das würde eine Abtastrate $f_{s} \geq 2{,}5\,\mathrm{GS/s}$ (S=Sampels) erfordern. ADC, die in der Lage sind, solch hohe Frequenzen
+zu verarbeiten sind kosten-, energie- und datenintensiv. Daher ist es nicht für unser Praktikum geeignet wegen spaaaaren ;)\\
+\\ 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{Pictures/Demodulator.jpg}
+    \caption{Demodulator}
+    \footnotesize{Quelle: \url{Schaltplan_PCB_V4}}
+    %\label{fig:link_budget}
+\end{figure}
+
+
+
+Die Abbildung 2.6 stellt den Demodulator dar. Der Transistor Q21 ist in Diodenschaltung betrieben. Dadurch werden nur postive Halbewelle des Signals 
+durchgelassen (=Gleichrichtung). Danach folgt ein Tiefpassfilter (bestehend aus einer paralellschaltung aus R26 und C22) mit einer 10MHz Grenzfrequenz
+der die hochfrequente Trägerwelle unterdürckt und nur das Basisbandsignal $S_{BB}(t)$ (/modulierte Hüllkurve) durchlässt.
 \[
 S_{RF,LNA}(t) \rightarrow S_{BB}(t)
 \]
-Es folgt in Teil 8 ein Analogversträker U20 der die das demodulierte Basisband signal auf (?) verstärkt.\\
-Der letzte Schritt (9) ist verleichung des demodulierten Signals mit einem festen Schwellwert durch den Komparator U21. Dieser ist hier U21.
+(Sample rate richtig? Sollte eignetlich passen; gibts es solche ADCs die es könnten?;  )
+
+
+
+\subsection{ADC}
+Nun muss das demodulisierte Signal wieder in ein digitales Signal umgewandelt werden, damit es weiterverarbeitet werden kann.
+Der Analog-Digital-Wandler (eng. analog-to-digital converter, ADC) besteht in unsere Schaltung aus zwei Komponenten: einem Analogverstärker und 
+einem Komparator.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Pictures/ADC.jpg}
+    \caption{Analogverstärker und Komperator}
+    \footnotesize{Quelle: \url{Schaltplan_PCB_V4}}
+    %\label{fig:link_budget}
+\end{figure}
+
+\subsubsection{Analogverstärker}
+Der linke Teil der in Abbildung 2.7 dargestellten Schaltung ist der Analogverstärker. Das geschwächte analoge Signal durchläuft den 
+Operationsverstärker U20 um den Pegel überhalb des festgelegten Schwellwerts des Komperators U21 zu bringen.
+
+
+\subsubsection{Komperator}
+Die rechte Seite der Schaltung bildet der Komperator U21. Dieser vergleicht das demodulierte Signal $S_{BB}(t)$ mit einem festen Schwellwert von 0,79 V.
 Wird dieser Schwellwert überschritten gilt:
 \[
 S_{BB}(t) > 0{,}79\,\mathrm{V} \implies \text{HIGH}
@@ -225,18 +264,16 @@ S_{BB}(t) > 0{,}79\,\mathrm{V} \implies \text{HIGH}
 \[
 S_{BB}(t) < 0{,}79\,\mathrm{V} \implies \text{LOW}
 \]
-Dadurch wird ein binäres digitales Ausgangssignal erzeugt.
+Dadurch wird ein binäres digitales Ausgangssignal erzeugt das von einem Computer weiterverarbeitet werden kann.
 \[
 S_{BB}(t) \rightarrow S_{RX}(t)
 \]
-Hier bin ich mir unsicher ob ich die bennenung der Signale aus Schaltplan übernehmen soll oder nicht. Typische Aufbau stimmt j anicht genau überein
 
-\subsection{ADC}
-Nun muss das demodulisierte Signal wieder in ein digitales Signal umgewandelt werden, damit es weiterverarbeitet werden kann.
-In unsere Schaltung wird dafür ... verwendet. 
+(Eigene Bennenung der Signale oder wie im Schaltplan? Komperatpor U21 sagen erlaubt? USB Ports erwähnen)
 
 
 \section{Mathematische Grundlagen: Fourier-Transformation}
+Übersichtlichkeitshalber werden in diesem Abschnitt für die Fourier-Transformation die Werte $w_0 = 4\pi$ für Sinusfunktion und $T = 2$ für Rechteckfunktion angenommen. Dies ändert jedoch im Allgemeinen nichts an der Theorie, sondern vereinfacht lediglich die Darstellung der Grafiken.
 \subsection{Betrag und zeitlicher Verlauf von Rechteckfunktion}
 Der Rechteckimpuls ist eine wichtige Funktion in der Signalverarbeitung.
 Er wird häufig in der Kommunikationstechnik verwendet, um digitale Signale zu repräsentieren.
@@ -244,10 +281,10 @@ Der Verlauf der Rechteckfunktion $x(t)$ ist in Abbildung \ref{fig:rechteck} darg
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \begin{axis}[
+        \begin{axis} [
             width=0.8\textwidth,
             height=5cm,
-            axis lines=middle,
+            axis lines=box, % Rahmen um den Plot
             xlabel={$t$},
             ylabel={$x(t)$},
             domain=-2:2,
@@ -287,38 +324,26 @@ Die Fourier-Transformierte einer Rechteckfunktion der Breite $2T$ und Höhe $1$ 
 \]
 Der Verlauf der Fourier-Transformierten ist in folgender Abbildung dargestellt:
 
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis} [
-            width=0.8\textwidth,
-            height=5cm,
-            axis lines=middle,
-            xlabel={$\omega$},
-            ylabel={$\mathcal{F}\{x(t)\}$},
-            domain=-10:10,
-            samples=400,
-            xtick=\empty, % entfernt die Zahlen auf der x-Achse
-            ytick={-1,0,1},
-            ymin=-0.3, ymax=1.1,
-            grid=both,
-        ]
-        \addplot[blue, thick, samples=400, domain=-10:10] {sin(deg(x))/x};
-        % Markiere die Nullstellen bei x = -pi und x = pi (entspricht ±1/Δf)
-        \draw[dashed,gray] (axis cs:-3.1416,0) -- (axis cs:-3.1416,1);
-        \draw[dashed,gray] (axis cs:3.1416,0) -- (axis cs:3.1416,1);
-        \node[below] at (axis cs:-3.1416,0) {$-\frac{1}{\Delta f}$};
-        \node[below] at (axis cs:3.1416,0) {$\frac{1}{\Delta f}$};
-        % Einfache Striche für Vielfache von 1/Delta f
-        \foreach \k in {-3,-2,-1,1,2,3} {
-            \addplot[black, thick, mark=none, domain=0:0.03, samples=2] coordinates {({\k*3.1416},0.03) ({\k*3.1416},-0.03)};
-        }
-        % Optional: Nullstelle bei 0 markieren (falls gewünscht)
-        % \addplot[black, thick, mark=none, domain=0:0.03, samples=2] coordinates {(0,0.03) (0,-0.03)};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Verlauf der Fourier-Transformierten der Rechteckfunktion: $\mathrm{sinc}(\omega)$, Nullstellen bei Vielfachen von $\frac{1}{\Delta f}$}
-    \label{fig:fourier_rechteck}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.9\textwidth,
+    height=5cm,
+    xlabel={$\omega$},
+    ylabel={$|R(\omega)|$},
+    domain=-10*pi:10*pi,
+    samples=1000,
+    ymin=0, ymax=2.2,
+    xtick={-12.56, -6.28, 0, 6.28, 12.56},
+    xticklabels={$-4\pi$, $-2\pi$, $0$, $2\pi$, $4\pi$},
+    grid=major,
+]
+\addplot[red, thick] {2*abs(sin(deg(x))/x)};
+\end{axis}
+\end{tikzpicture}
+\caption{Betragsspektrum eines Rechteckpulses der Breite $T = 2$}
+\label{fig:fourier_rechteck}
 \end{figure}
 
 Die Rechteckfunktion ist in der digitalen Signalverarbeitung von Relevanz, da diese eine Basis für die Änderung des Signalpegels darstellt. Durch die Idealisierung lässt sich der High-Pegel (1) und Low-Pegel (0) des Signals gut darstellen. In der Praxis wird die Rechteckfunktion jedoch durch eine $\mathrm{sinc}$-Funktion approximiert, um Übertragungsfehler zu minimieren.
@@ -329,66 +354,60 @@ Er beschreibt eine harmonische Schwingung und ist in der Fourier-Analyse von Bed
 Die Sinusfunktion $x(t) = \sin(t)$ hat eine Periode von $2\pi$ und schwingt zwischen -1 und 1. Sie ist punktsymmetrisch um den Koordinatenursprung, was bedeutet, dass $x(-t) = -x(t)$ gilt. Dies ist eine Eigenschaft der ungeraden Funktion.
 
 \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            width=0.8\textwidth,
-            height=5cm,
-            axis lines=middle,
-            xlabel={$t$},
-            ylabel={$x(t)$},
-            domain=-2*pi:2*pi,
-            samples=200,
-            xtick={-6.2832,-3.1416,0,3.1416,6.2832},
-            xticklabels={$-2\pi$,$-\pi$,$0$,$\pi$,$2\pi$},
-            ytick={-1,0,1},
-            ymin=-1.2, ymax=1.2,
-            grid=both,
-        ]
-        \addplot[blue, thick] {sin(deg(x))};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Verlauf der Sinusfunktion $x(t) = \sin(t)$ über zwei Perioden}
-    \label{fig:sinus}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.9\textwidth,
+    height=5cm,
+    xlabel={$t$},
+    ylabel={$s(t)$},
+    domain=0:2,
+    samples=500,
+    grid=major,
+    xtick={0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2},
+    xticklabels={$0$, , $0.5$, , $1$, , $1.5$, , $2$},
+    ymin=-1.2, ymax=1.2,
+    declare function={
+        omegaNull = 4*pi;
+    },
+]
+\addplot[blue, thick] {sin(deg(omegaNull * x))};
+\end{axis}
+\end{tikzpicture}
+\caption{Zeitverlauf des Sinussignals $s(t) = \sin(\omega_0 t)$ mit $\omega_0 = 4\pi$}
+\label{fig:sinus}
 \end{figure}
+
+
 
 Die Fourier-Transformierte der Sinusfunktion $x(t) = \sin(t)$ ist gegeben durch:
 \[
 \mathcal{F}\{\sin(\omega_0 t)\} = \pi j \left[ \delta(\omega + \omega_0) - \delta(\omega - \omega_0) \right]
 \]
-Für $\omega_0 = 1$ ergibt sich:
-\[
-\mathcal{F}\{\sin(t)\} = \pi j \left[ \delta(\omega + 1) - \delta(\omega - 1) \right]
-\]
+
 Der Betrag der Fourier-Transformierten besteht also aus zwei Dirac-Impulsen bei $\omega = \pm 1$.
 
 Die graphische Darstellung der Fourier-Transformierten der Sinusfunktion ist in Abbildung \ref{fig:fourier_sinus_komplex} zu sehen.
 \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            width=0.8\textwidth,
-            height=5cm,
-            axis lines=middle,
-            xlabel={$\omega$},
-            ylabel={$\mathcal{F}\{\sin(\omega_0 t)\}$},
-            xtick={-1,0,1},
-            xticklabels={$-\omega_0$,$0$,$\omega_0$},
-            ytick=\empty,
-            ymin=-1.2, ymax=1.2,
-            xmin=-1.5, xmax=1.5,
-            grid=both,
-            clip=false,
-        ]
-        % Dirac impulses: +1 at -omega0, -1 at +omega0
-        \addplot+[ycomb, thick, blue, mark=*, samples at={-1}] {1};
-        \addplot+[ycomb, thick, red, mark=*, samples at={1}] {-1};
-        \node[above] at (axis cs:-1,1) {$\pi j\,\delta(\omega + \omega_0)$};
-        \node[below] at (axis cs:1,-1) {$-\pi j\,\delta(\omega - \omega_0)$};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Graphische Darstellung der Fourier-Transformierten der Sinusfunktion.}
-    \label{fig:fourier_sinus_komplex}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.9\textwidth,
+    height=5cm,
+    xlabel={$\omega$},
+    ylabel={$|S(\omega)|$},
+    domain=-15:15,
+    samples=1000,
+    ymin=0, ymax=4,
+    xtick={-12.56, -6.28, 0, 6.28, 12.56},
+    xticklabels={$-4\pi$, $-2\pi$, $0$, $2\pi$, $4\pi$},
+    grid=major,
+]
+\addplot[blue, ycomb, thick, mark=*] coordinates {(-4*pi, 3.14) (4*pi, 3.14)};
+\end{axis}
+\end{tikzpicture}
+\caption{Betragsspektrum eines Sinussignals $s(t) = \sin(\omega_0 t)$ mit $\omega_0 = 4\pi$}
+\label{fig:fourier_sinus_komplex}
 \end{figure}
 
 Die Sinusfunktion spielt eine immens wichtige Rolle in der digitalen Signalverarbeitung, da es der Grundstein der Fourier-Analyse (Fourier-Reihen und Fourier-Transformation) ist. Auch sind diese für lineare zeitinvariante Systeme (LTI) von Bedeutung. 
@@ -397,33 +416,43 @@ Auch in der analogen Signalverarbeitung ist der Sinus von Bedeutung, da er die B
 
 \subsection{Multiplikation der beiden Funktionen im Zeitbereich}
 Bei einer Multiplikation der beiden Funktionen im Zeitbereich, also der Rechteckfunktion $x(t)$ und der Sinusfunktion $y(t)$, ergibt sich eine neue Funktion $z(t) =  x(t) \cdot y(t)$, die in Abbildung \ref{fig:rechteck_sinus} dargestellt ist. Diese Funktion ist das Ergebnis der Punkt-für-Punkt-Multiplikation der beiden Funktionen.
+
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
         \begin{axis}[
             width=0.8\textwidth,
             height=5cm,
-            axis lines=middle,
+            axis lines=box,
             xlabel={$t$},
             ylabel={$z(t)$},
             domain=-2:2,
-            samples=200,
+            samples=500,
             xtick={-2,-1,0,1,2},
             ytick={-1,0,1},
             ymin=-1.2, ymax=1.2,
             grid=both,
         ]
-        % Rechteckfunktion
-        \addplot[blue, thick, samples=2, domain=-2:-1] {0};
-        \addplot[blue, thick, samples=2, domain=-1:1] {1};
-        \addplot[blue, thick, samples=2, domain=1:2] {0};
-        % Sinusfunktion
-        \addplot[red, thick] {sin(deg(x))};
-        % Multiplikation der beiden Funktionen
-        \addplot[green, thick] {sin(deg(x)) * (x >= -1 && x <= 1)};
+            % Rechteckfunktion * Sinus im Intervall -1 < t < 1
+            \addplot [
+                thick,
+                blue,
+                domain=-1:1
+            ] {sin(deg(4*pi*x))};
+            % Null außerhalb des Rechtecks
+            \addplot[
+                thick,
+                blue,
+                domain=-2:-1
+            ] {0};
+            \addplot[
+                thick,
+                blue,
+                domain=1:2
+            ] {0};
         \end{axis}
     \end{tikzpicture}
-    \caption{Multiplikation der Rechteckfunktion $x(t)$ und der Sinusfunktion $y(t)$ im Zeitbereich}
+    \caption{Multiplikation der Rechteckfunktion $x(t)$ (Breite $T=2$) mit der Sinusfunktion $y(t) = \sin(4\pi t)$}
     \label{fig:rechteck_sinus}
 \end{figure}
 
@@ -432,35 +461,45 @@ Die Fourier-Transformierte der Multiplikation zweier Funktionen im Zeitbereich i
 \mathcal{F}\{z(t)\} = \mathcal{F}\{x(t)\} * \mathcal{F}\{y(t)\}
 \]
 
-Es ergibt sich also eine neue Funktion im Frequenzbereich, die die Frequenzkomponenten der beiden ursprünglichen Funktionen kombiniert. Diese sieht folgendermaßen aus:
+Die analytische Form der Funktion aus dem Bild lautet:
+\[
+\left| \mathcal{F}\{z(t)\} \right| = \left| \frac{T}{2} \left( 
+\operatorname{sinc}\left(\frac{(\omega-\omega_0)T}{2}\right)
+- 
+\operatorname{sinc}\left(\frac{(\omega+\omega_0)T}{2}\right)
+\right) \right|
+\]
+
+% Plot der Funktion mit Beispielwerten T=2, \omega_0=4\pi
 \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            width=0.8\textwidth,
-            height=5cm,
-            axis lines=middle,
-            xlabel={$\omega$},
-            ylabel={$\mathcal{F}\{z(t)\}$},
-            domain=-10:10,
-            samples=400,
-            xtick=\empty, % entfernt die Zahlen auf der x-Achse
-            ytick={-1,0,1},
-            ymin=-0.3, ymax=1.1,
-            grid=both,
-        ]
-        % Rechteckfunktion im Frequenzbereich
-        \addplot[blue, thick, samples=400, domain=-10:10] {sin(deg(x))/x};
-        % Sinusfunktion im Frequenzbereich (wird durch Dirac-Impulse dargestellt)
-        % Faltung der beiden Funktionen im Frequenzbereich: Zwei Impulse bei -w_0 und w_0
-        \addplot+[ycomb, thick, green!70!black, mark=*, samples at={-1,1}] {1};
-        \node[above] at (axis cs:-1,1) {$2T\,\mathrm{sinc}(T(\omega+\omega_0))$};
-        \node[above] at (axis cs:1,1) {$2T\,\mathrm{sinc}(T(\omega-\omega_0))$};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Faltung der Fourier-Transformierten der Rechteckfunktion und der Sinusfunktion im Frequenzbereich}
-    \label{fig:faltung_rechteck_sinus}
+\centering
+\begin{tikzpicture}
+\begin{axis} [
+    width=0.9\textwidth,
+    height=5cm,
+    xlabel={$\omega$},
+    ylabel={$\left| \mathcal{F}\{z(t)\} \right|$},
+    domain=-10*pi:10*pi,
+    samples=1000,
+    ymin=0, ymax=1.2,
+    xtick={-12.56, -6.28, 0, 6.28, 12.56},
+    xticklabels={$-4\pi$, $-2\pi$, $0$, $2\pi$, $4\pi$},
+    grid=major,
+    declare function={
+        T=2;
+        omegaNull=4*pi;
+        sinc(\x) = (abs(\x)<0.0001) ? 1 : sin(deg(\x))/(\x);
+    },
+]
+\addplot[blue, thick] {abs(T/2 * (sinc((x-omegaNull)*T/2) - sinc((x+omegaNull)*T/2)))};
+\end{axis}
+\end{tikzpicture}
+\caption{Betragsspektrum von $\left| \mathcal{F}\{z(t)\} \right|$ für $T=2$, $\omega_0=4\pi$}
+\label{fig:fourier_rechteck_sinus}
 \end{figure}
+
+Somit ergibt sich eine Faltung der beiden $\mathrm{sinc}$-Funktionen, die in Abbildung \ref{fig:fourier_rechteck_sinus} dargestellt ist. Diese Faltung führt zu einem Frequenzspektrum, das die Eigenschaften beider Funktionen kombiniert.
+
 \section{Zusammenhang von Datenrate und Bandbreite}
 blabla
 \clearpage

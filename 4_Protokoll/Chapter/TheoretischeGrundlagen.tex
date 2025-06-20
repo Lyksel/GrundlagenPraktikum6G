@@ -239,6 +239,7 @@ In unsere Schaltung wird dafür ... verwendet.
 
 
 \section{Mathematische Grundlagen: Fourier-Transformation}
+Übersichtlichkeitshalber werden in diesem Abschnitt für die Fourier-Transformation die Werte $w_0 = 4\pi$ für Sinusfunktion und $T = 2$ für Rechteckfunktion angenommen. Dies ändert jedoch im Allgemeinen nichts an der Theorie, sondern vereinfacht lediglich die Darstellung der Grafiken.
 \subsection{Betrag und zeitlicher Verlauf von Rechteckfunktion}
 Der Rechteckimpuls ist eine wichtige Funktion in der Signalverarbeitung.
 Er wird häufig in der Kommunikationstechnik verwendet, um digitale Signale zu repräsentieren.
@@ -246,10 +247,10 @@ Der Verlauf der Rechteckfunktion $x(t)$ ist in Abbildung \ref{fig:rechteck} darg
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \begin{axis}[
+        \begin{axis} [
             width=0.8\textwidth,
             height=5cm,
-            axis lines=middle,
+            axis lines=box, % Rahmen um den Plot
             xlabel={$t$},
             ylabel={$x(t)$},
             domain=-2:2,
@@ -289,38 +290,26 @@ Die Fourier-Transformierte einer Rechteckfunktion der Breite $2T$ und Höhe $1$ 
 \]
 Der Verlauf der Fourier-Transformierten ist in folgender Abbildung dargestellt:
 
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis} [
-            width=0.8\textwidth,
-            height=5cm,
-            axis lines=middle,
-            xlabel={$\omega$},
-            ylabel={$\mathcal{F}\{x(t)\}$},
-            domain=-10:10,
-            samples=400,
-            xtick=\empty, % entfernt die Zahlen auf der x-Achse
-            ytick={-1,0,1},
-            ymin=-0.3, ymax=1.1,
-            grid=both,
-        ]
-        \addplot[blue, thick, samples=400, domain=-10:10] {sin(deg(x))/x};
-        % Markiere die Nullstellen bei x = -pi und x = pi (entspricht ±1/Δf)
-        \draw[dashed,gray] (axis cs:-3.1416,0) -- (axis cs:-3.1416,1);
-        \draw[dashed,gray] (axis cs:3.1416,0) -- (axis cs:3.1416,1);
-        \node[below] at (axis cs:-3.1416,0) {$-\frac{1}{\Delta f}$};
-        \node[below] at (axis cs:3.1416,0) {$\frac{1}{\Delta f}$};
-        % Einfache Striche für Vielfache von 1/Delta f
-        \foreach \k in {-3,-2,-1,1,2,3} {
-            \addplot[black, thick, mark=none, domain=0:0.03, samples=2] coordinates {({\k*3.1416},0.03) ({\k*3.1416},-0.03)};
-        }
-        % Optional: Nullstelle bei 0 markieren (falls gewünscht)
-        % \addplot[black, thick, mark=none, domain=0:0.03, samples=2] coordinates {(0,0.03) (0,-0.03)};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Verlauf der Fourier-Transformierten der Rechteckfunktion: $\mathrm{sinc}(\omega)$, Nullstellen bei Vielfachen von $\frac{1}{\Delta f}$}
-    \label{fig:fourier_rechteck}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.9\textwidth,
+    height=5cm,
+    xlabel={$\omega$},
+    ylabel={$|R(\omega)|$},
+    domain=-10*pi:10*pi,
+    samples=1000,
+    ymin=0, ymax=2.2,
+    xtick={-12.56, -6.28, 0, 6.28, 12.56},
+    xticklabels={$-4\pi$, $-2\pi$, $0$, $2\pi$, $4\pi$},
+    grid=major,
+]
+\addplot[red, thick] {2*abs(sin(deg(x))/x)};
+\end{axis}
+\end{tikzpicture}
+\caption{Betragsspektrum eines Rechteckpulses der Breite $T = 2$}
+\label{fig:fourier_rechteck}
 \end{figure}
 
 Die Rechteckfunktion ist in der digitalen Signalverarbeitung von Relevanz, da diese eine Basis für die Änderung des Signalpegels darstellt. Durch die Idealisierung lässt sich der High-Pegel (1) und Low-Pegel (0) des Signals gut darstellen. In der Praxis wird die Rechteckfunktion jedoch durch eine $\mathrm{sinc}$-Funktion approximiert, um Übertragungsfehler zu minimieren.
@@ -331,28 +320,30 @@ Er beschreibt eine harmonische Schwingung und ist in der Fourier-Analyse von Bed
 Die Sinusfunktion $x(t) = \sin(t)$ hat eine Periode von $2\pi$ und schwingt zwischen -1 und 1. Sie ist punktsymmetrisch um den Koordinatenursprung, was bedeutet, dass $x(-t) = -x(t)$ gilt. Dies ist eine Eigenschaft der ungeraden Funktion.
 
 \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            width=0.8\textwidth,
-            height=5cm,
-            axis lines=middle,
-            xlabel={$t$},
-            ylabel={$x(t)$},
-            domain=-2*pi:2*pi,
-            samples=200,
-            xtick={-6.2832,-3.1416,0,3.1416,6.2832},
-            xticklabels={$-2\pi$,$-\pi$,$0$,$\pi$,$2\pi$},
-            ytick={-1,0,1},
-            ymin=-1.2, ymax=1.2,
-            grid=both,
-        ]
-        \addplot[blue, thick] {sin(deg(x))};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Verlauf der Sinusfunktion $x(t) = \sin(t)$ über zwei Perioden}
-    \label{fig:sinus}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.9\textwidth,
+    height=5cm,
+    xlabel={$t$},
+    ylabel={$s(t)$},
+    domain=0:2,
+    samples=500,
+    grid=major,
+    xtick={0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2},
+    xticklabels={$0$, , $0.5$, , $1$, , $1.5$, , $2$},
+    ymin=-1.2, ymax=1.2,
+    declare function={
+        omegaNull = 4*pi;
+    },
+]
+\addplot[blue, thick] {sin(deg(omegaNull * x))};
+\end{axis}
+\end{tikzpicture}
+\caption{Zeitverlauf des Sinussignals $s(t) = \sin(\omega_0 t)$ mit $\omega_0 = 4\pi$}
 \end{figure}
+
+
 
 Die Fourier-Transformierte der Sinusfunktion $x(t) = \sin(t)$ ist gegeben durch:
 \[
@@ -366,31 +357,24 @@ Der Betrag der Fourier-Transformierten besteht also aus zwei Dirac-Impulsen bei 
 
 Die graphische Darstellung der Fourier-Transformierten der Sinusfunktion ist in Abbildung \ref{fig:fourier_sinus_komplex} zu sehen.
 \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            width=0.8\textwidth,
-            height=5cm,
-            axis lines=middle,
-            xlabel={$\omega$},
-            ylabel={$\mathcal{F}\{\sin(\omega_0 t)\}$},
-            xtick={-1,0,1},
-            xticklabels={$-\omega_0$,$0$,$\omega_0$},
-            ytick=\empty,
-            ymin=-1.2, ymax=1.2,
-            xmin=-1.5, xmax=1.5,
-            grid=both,
-            clip=false,
-        ]
-        % Dirac impulses: +1 at -omega0, -1 at +omega0
-        \addplot+[ycomb, thick, blue, mark=*, samples at={-1}] {1};
-        \addplot+[ycomb, thick, red, mark=*, samples at={1}] {-1};
-        \node[above] at (axis cs:-1,1) {$\pi j\,\delta(\omega + \omega_0)$};
-        \node[below] at (axis cs:1,-1) {$-\pi j\,\delta(\omega - \omega_0)$};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Graphische Darstellung der Fourier-Transformierten der Sinusfunktion.}
-    \label{fig:fourier_sinus_komplex}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.9\textwidth,
+    height=5cm,
+    xlabel={$\omega$},
+    ylabel={$|S(\omega)|$},
+    domain=-15:15,
+    samples=1000,
+    ymin=0, ymax=4,
+    xtick={-12.56, -6.28, 0, 6.28, 12.56},
+    xticklabels={$-4\pi$, $-2\pi$, $0$, $2\pi$, $4\pi$},
+    grid=major,
+]
+\addplot[blue, ycomb, thick, mark=*] coordinates {(-4*pi, 3.14) (4*pi, 3.14)};
+\end{axis}
+\end{tikzpicture}
+\caption{Betragsspektrum eines Sinussignals $s(t) = \sin(\omega_0 t)$ mit $\omega_0 = 4\pi$}
 \end{figure}
 
 Die Sinusfunktion spielt eine immens wichtige Rolle in der digitalen Signalverarbeitung, da es der Grundstein der Fourier-Analyse (Fourier-Reihen und Fourier-Transformation) ist. Auch sind diese für lineare zeitinvariante Systeme (LTI) von Bedeutung. 
@@ -399,70 +383,65 @@ Auch in der analogen Signalverarbeitung ist der Sinus von Bedeutung, da er die B
 
 \subsection{Multiplikation der beiden Funktionen im Zeitbereich}
 Bei einer Multiplikation der beiden Funktionen im Zeitbereich, also der Rechteckfunktion $x(t)$ und der Sinusfunktion $y(t)$, ergibt sich eine neue Funktion $z(t) =  x(t) \cdot y(t)$, die in Abbildung \ref{fig:rechteck_sinus} dargestellt ist. Diese Funktion ist das Ergebnis der Punkt-für-Punkt-Multiplikation der beiden Funktionen.
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            width=0.8\textwidth,
-            height=5cm,
-            axis lines=middle,
-            xlabel={$t$},
-            ylabel={$z(t)$},
-            domain=-2:2,
-            samples=200,
-            xtick={-2,-1,0,1,2},
-            ytick={-1,0,1},
-            ymin=-1.2, ymax=1.2,
-            grid=both,
-        ]
-        % Rechteckfunktion
-        \addplot[blue, thick, samples=2, domain=-2:-1] {0};
-        \addplot[blue, thick, samples=2, domain=-1:1] {1};
-        \addplot[blue, thick, samples=2, domain=1:2] {0};
-        % Sinusfunktion
-        \addplot[red, thick] {sin(deg(x))};
-        % Multiplikation der beiden Funktionen
-        \addplot[green, thick] {sin(deg(x)) * (x >= -1 && x <= 1)};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Multiplikation der Rechteckfunktion $x(t)$ und der Sinusfunktion $y(t)$ im Zeitbereich}
-    \label{fig:rechteck_sinus}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \begin{tikzpicture}
+%         \begin{axis}[
+%             width=0.8\textwidth,
+%             height=5cm,
+%             axis lines=middle,
+%             xlabel={$t$},
+%             ylabel={$z(t)$},
+%             domain=-2:2,
+%             samples=200,
+%             xtick={-2,-1,0,1,2},
+%             ytick={-1,0,1},
+%             ymin=-1.2, ymax=1.2,
+%             grid=both,
+%         ]
+%         % Rechteckfunktion
+%         \addplot[blue, thick, samples=2, domain=-2:-1] {0};
+%         \addplot[blue, thick, samples=2, domain=-1:1] {1};
+%         \addplot[blue, thick, samples=2, domain=1:2] {0};
+%         % Sinusfunktion
+%         \addplot[red, thick] {sin(deg(x))};
+%         % Multiplikation der beiden Funktionen
+%         \addplot[green, thick] {sin(deg(x)) * (x >= -1 && x <= 1)};
+%         \end{axis}
+%     \end{tikzpicture}
+%     \caption{Multiplikation der Rechteckfunktion $x(t)$ und der Sinusfunktion $y(t)$ im Zeitbereich}
+%     \label{fig:rechteck_sinus}
+% \end{figure}
+
 
 Die Fourier-Transformierte der Multiplikation zweier Funktionen im Zeitbereich ist gegeben durch die Faltung ihrer Fourier-Transformierten im Frequenzbereich. Das bedeutet, dass die Fourier-Transformierte von $z(t)$, also $\mathcal{F}\{z(t)\}$, das Ergebnis der Faltung der Fourier-Transformierten von $x(t)$ und $y(t)$ ist:
 \[
 \mathcal{F}\{z(t)\} = \mathcal{F}\{x(t)\} * \mathcal{F}\{y(t)\}
 \]
 
-Es ergibt sich also eine neue Funktion im Frequenzbereich, die die Frequenzkomponenten der beiden ursprünglichen Funktionen kombiniert. Diese sieht folgendermaßen aus:
+Es ergibt sich also eine neue Funktion im Frequenzbereich, die die Frequenzkomponenten der beiden ursprünglichen Funktionen kombiniert.
 \begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        \begin{axis}[
-            width=0.8\textwidth,
-            height=5cm,
-            axis lines=middle,
-            xlabel={$\omega$},
-            ylabel={$\mathcal{F}\{z(t)\}$},
-            domain=-10:10,
-            samples=400,
-            xtick=\empty, % entfernt die Zahlen auf der x-Achse
-            ytick={-1,0,1},
-            ymin=-0.3, ymax=1.1,
-            grid=both,
-        ]
-        % Rechteckfunktion im Frequenzbereich
-        \addplot[blue, thick, samples=400, domain=-10:10] {sin(deg(x))/x};
-        % Sinusfunktion im Frequenzbereich (wird durch Dirac-Impulse dargestellt)
-        % Faltung der beiden Funktionen im Frequenzbereich: Zwei Impulse bei -w_0 und w_0
-        \addplot+[ycomb, thick, green!70!black, mark=*, samples at={-1,1}] {1};
-        \node[above] at (axis cs:-1,1) {$2T\,\mathrm{sinc}(T(\omega+\omega_0))$};
-        \node[above] at (axis cs:1,1) {$2T\,\mathrm{sinc}(T(\omega-\omega_0))$};
-        \end{axis}
-    \end{tikzpicture}
-    \caption{Faltung der Fourier-Transformierten der Rechteckfunktion und der Sinusfunktion im Frequenzbereich}
-    \label{fig:faltung_rechteck_sinus}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.9\textwidth,
+    height=5cm,
+    xlabel={$\omega$},
+    ylabel={$|X(\omega)|$},
+    domain=-10*pi:10*pi,
+    samples=1000,
+    ymin=0, ymax=1.2,
+    xtick={-12.56, -6.28, 0, 6.28, 12.56},
+    xticklabels={$-4\pi$, $-2\pi$, $0$, $2\pi$, $4\pi$},
+    grid=major,
+]
+\addplot[orange, thick] {abs(sin(deg((x-4*pi))/2)/((x-4*pi)/2) - sin(deg((x+4*pi))/2)/((x+4*pi)/2))};
+\end{axis}
+\end{tikzpicture}
+\caption{Betragsspektrum der Fourier-Transformierten $\mathcal{F}\{z(t)\}$}
+\label{fig:fourier_rechteck_sinus}
 \end{figure}
+
 \section{Zusammenhang von Datenrate und Bandbreite}
 blabla
 \clearpage

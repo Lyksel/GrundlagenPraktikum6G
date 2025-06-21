@@ -187,7 +187,7 @@ nicht durch andere elektrische Komponenten verfälscht worden. Wäre dies nicht 
 Rekonstruktionsproblemen des eigentlichen Signals führen.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{Pictures/Vorverstärker.jpg}
+    \includegraphics[width=0.4\textwidth]{Pictures/Vorverstärker.jpg}
     \caption{HF-Vorverstärker}
     \footnotesize{Quelle: \url{Schaltplan_PCB_V4}}
     %\label{fig:link_budget}
@@ -209,7 +209,7 @@ wenn die Abtastfrequenz $f_\mathrm{s}$ mindestens doppelt so groß ist wie $f_\m
     f_\mathrm{s} \geq 2 f_\mathrm{max}
 \end{equation}
 Die Trägerfrequenz unseres Modulators beträgt $f=1{,}25\,\mathrm{GHz}$. Das würde eine Abtastrate $f_{s} \geq 2{,}5\,\mathrm{GS/s}$ (S = Samples) erfordern. ADCs, die in der Lage sind, solch hohe Frequenzen
-zu verarbeiten, sind kosten-, energie- und datenintensiv. Dies würde unser Bugdetrahmen sprengen, weswegen es für unser Praktikum nicht geeignet ist.
+zu verarbeiten, sind kosten-, energie- und datenintensiv. 
 \\ 
 \begin{figure}[H]
     \centering
@@ -318,28 +318,13 @@ Die Fourier-Transformierte einer Rechteckfunktion der Breite $2T$ und Höhe $1$ 
 Der Verlauf der Fourier-Transformierten ist in folgender Abbildung dargestellt:
 
 \begin{figure}[h]
-\centering
-\begin{tikzpicture}
-\begin{axis}[
-    width=0.9\textwidth,
-    height=5cm,
-    xlabel={$\omega$},
-    ylabel={$|R(\omega)|$},
-    domain=-10*pi:10*pi,
-    samples=1000,
-    ymin=0, ymax=2.2,
-    xtick={-12.56, -6.28, 0, 6.28, 12.56},
-    xticklabels={$-4\pi$, $-2\pi$, $0$, $2\pi$, $4\pi$},
-    grid=major,
-]
-\addplot[red, thick] {2*abs(sin(deg(x))/x)};
-\end{axis}
-\end{tikzpicture}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Pictures/rechteckFourier.png}
 \caption{Betragsspektrum eines Rechteckpulses der Breite $T = 2$}
 \label{fig:fourier_rechteck}
 \end{figure}
 
-Die Rechteckfunktion ist in der digitalen Signalverarbeitung von Relevanz, da sie eine Basis für die Änderung des Signalpegels darstellt. Durch die Idealisierung lässt sich der High-Pegel (1) und Low-Pegel (0) des Signals gut darstellen. In der Praxis wird die Rechteckfunktion jedoch durch eine $\mathrm{sinc}$-Funktion approximiert, um Übertragungsfehler zu minimieren.
+Die Rechteckfunktion ist in der digitalen Signalverarbeitung von Relevanz, da sie eine Basis für die Änderung des Signalpegels darstellt. Durch die Idealisierung lässt sich der High-Pegel (1) und Low-Pegel (0) des Signals gut darstellen. In der Praxis wird die Rechteckfunktion durch eine $\mathrm{sinc}$-Funktion approximiert, um Übertragungsfehler zu minimieren.
 
 \subsection{Betrag und zeitlicher Verlauf von Sinusfunktion}
 Der Sinus ist eine wichtige Funktion in der Signalverarbeitung.
@@ -375,10 +360,10 @@ Die Sinusfunktion $x(t) = \sin(t)$ hat eine Periode von $2\pi$ und schwingt zwis
 
 Die Fourier-Transformierte der Sinusfunktion $x(t) = \sin(t)$ ist gegeben durch:
 \[
-\mathcal{F}\{\sin(\omega_0 t)\} = \pi j \left[ \delta(\omega + \omega_0) - \delta(\omega - \omega_0) \right]
+\mathcal{F}\{\sin(\omega_0 t)\} = \pi j \left[ \delta(\omega + \omega_0) + \delta(\omega - \omega_0) \right]
 \]
 
-Der Betrag der Fourier-Transformierten besteht also aus zwei Dirac-Impulsen bei $\omega = \pm 1$.
+Der Betrag der Fourier-Transformierten besteht also aus zwei Dirac-Impulsen bei $\omega = \pm \omega_0$.
 
 Die graphische Darstellung der Fourier-Transformierten der Sinusfunktion ist in Abbildung \ref{fig:fourier_sinus_komplex} zu sehen.
 \begin{figure}[H]
@@ -458,7 +443,7 @@ Die analytische Form der Funktion aus dem Bild lautet:
 \[
 \left| \mathcal{F}\{z(t)\} \right| = \left| \frac{T}{2} \left( 
 \operatorname{sinc}\left(\frac{(\omega-\omega_0)T}{2\pi}\right)
-- 
++ 
 \operatorname{sinc}\left(\frac{(\omega+\omega_0)T}{2\pi}\right)
 \right) \right|
 \]
@@ -486,7 +471,7 @@ Die analytische Form der Funktion aus dem Bild lautet:
     },
 ]
 \addplot[orange, thick, domain=-10*pi:10*pi] 
-    {abs( (T/2)*(sinc((x - omegaNull)*T/2) - sinc((x + omegaNull)*T/2)) )};
+    {abs( (T/2)*(sinc((x - omegaNull)*T/2) + sinc((x + omegaNull)*T/2)) )};
 \end{axis}
 \end{tikzpicture}
 \caption{Allgemeines Betragsspektrum $|X(\omega)|$ des Produkts mit variabler Frequenz $\omega_0$ und Rechteckbreite $T$}

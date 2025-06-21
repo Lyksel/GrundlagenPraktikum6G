@@ -11,10 +11,32 @@
 \usepackage{verbatim}  % Needed for the "comment" environment to make LaTeX comments
 \usepackage{vector}  % Allows "\bvec{}" and "\buvec{}" for "blackboard" style bold vectors in maths
 \usepackage{graphicx} 
+\usepackage{wrapfig} % in der Präambel hinzufügen
+\usepackage{lipsum}  % optional, nur für Blindtext
+
+\usepackage{pdfpages}
+\usepackage{float}  % Required for the [H] option in figures
+\usepackage{acronym} % Required for the acronym environment
+\usepackage[autostyle,german=quotes]{csquotes} % Required for the \enquote command
+\usepackage{amsmath}  % Required for the \text command in maths mode
+\usepackage{subfigure}
+\usepackage{subcaption} % Add this line to your preamble
+\usepackage[ngerman]{datetime2} % For date formatting in German
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{amsmath}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 \hypersetup{urlcolor=blue, colorlinks=true}  % Colours hyperlinks in blue, but this can be distracting if there are many links.
 %
 \pagestyle{fancy}
 \fancyhf{}  % Alle Kopfzeilen löschen
+%% ----------------------------------------------------------------
+\renewcommand{\chaptername}{Kapitel}
+\renewcommand{\tablename}{Tabelle}
+\renewcommand{\bibname}{Literaturverzeichnis}
+\renewcommand{\figurename}{Abbildung}
 %% ----------------------------------------------------------------
 \begin{document}
 \begin{titlepage}
@@ -43,7 +65,7 @@
 
 \textsc{\LARGE \bfseries Fachpraktikum (Bachelor)}\\[0.2cm] % Name of your university/college
 \textsc{\LARGE 6G Hardwarelabor - Design und Implementierung eines HF Transceivers}\\[0.2cm] 
-%\textsc{\LARGE Design}\\[0.5cm]  
+%\textsc{\LARGE Design}\\[0.5cm] 
 %\textsc{\Large ILH}\\[0.5cm] % Major heading such as course name
 %\textsc{\large PuL-Analog Microwave Frontend Design}\\[0.5cm] % Minor heading such as course title
 
@@ -52,27 +74,32 @@
 %----------------------------------------------------------------------------------------
 
 \HRule \\[0.4cm]
-{ \huge \bfseries Modulierte Daten, Mod., Demod und Trägerfrequenz}\\[0.4cm] % Title of your document
+{ \huge \bfseries Versuch 5: Signalverarbeitung im Empfänger}\\[0.4cm] % Title of your document
 \HRule \\[1.5cm]
  
 %----------------------------------------------------------------------------------------
 %	AUTHOR SECTION
 %----------------------------------------------------------------------------------------
 \textbf{Protokollführer}\\
-{\large\ Lukas Müller}\\[0.5cm]
-{\large\ Erik Zimmerman}\\[0.2cm]
-{\large\ Farhad Valizada}\\[0.2cm]
+{\large\ Lukas Müller}\\[0.2cm]
+{\large\ Erik Zimmermann}\\[0.2cm]
+{\large\ Farhad Valizada}\\[0.7cm]
 
 \textbf{Betreuer}\\
 {\large\ Simon Haussmann}\\[0.2cm]
 
 
 
+
 %----------------------------------------------------------------------------------------
 %	DATE SECTION
 %----------------------------------------------------------------------------------------
-\textbf{Eingereicht}\\
-{\large \today} % Date, change the \today to a set date if you want to be precise
+\textbf{Eingereicht am}\\
+
+\DTMdate{\the\year-\ifnum\month<10 0\fi\the\month-\ifnum\day<10 0\fi\the\day} % Zeigt das aktuelle Datum im deutschen Format, z.B. 4. Juni 2024
+% Nur das Datum ohne Uhrzeit anzeigen
+% \DTMnow gibt Datum und Uhrzeit aus, \DTMdate{YYYY-MM-DD} nur das Datum
+% Für das aktuelle Datum:
 
  
 %----------------------------------------------------------------------------------------
@@ -85,6 +112,19 @@
 %\vfill\vfill\vfill\vfill\vfill\vfill\null
 \clearpage  % Funny Quote page ended, start a new page
 %% ----------------------------------------------------------------
+
+\clearpage
+
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage} % Seitenzahl unten zentriert
+\renewcommand{\headrulewidth}{0pt}
+
+% Ensure every chapter resets the pagestyle to fancy
+\let\oldchapter\chapter
+\renewcommand{\chapter}{\clearpage\pagestyle{fancy}\oldchapter}
+
 
 % The Abstract Page
 
@@ -112,6 +152,19 @@
 \tableofcontents
 \newpage
 
+\chapter*{Abkürzungsverzeichnis}
+\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+\begin{acronym}[XXXXXX] % Adjust the width of the longest acronym
+    \acro{ADS}{Advanced Design System}
+    \acro{HF}{Hochfrequenz}
+    \acro{6G}{Sixth Generation}
+    \acro{SMA}{SubMiniature version A}
+    \acro{PCB}{Printed Circuit Board}
+    \acro{MIMO}{Multiple Input Multiple Output}
+\end{acronym}
+\clearpage  % End of the Abkürzungsverzeichnis
+%% ----------------------------------------------------------------
+
 \chapter{Einleitung}
 \input{Chapter/Einleitung}
 
@@ -126,18 +179,12 @@
 \input{Chapter/Durchführung}
 
 
-
-
 \chapter{Fazit}
 \input{Chapter/Fazit}
 
-\chapter{Literaturverzeichnis}
-\input{Chapter/Literaturverzeichnis}
-
-
-
-
-
-
+\renewcommand{\bibname}{Literaturverzeichnis}
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\input{Chapter/literaturverzeichnis}
+%% ----------------------------------------------------------------
 \end{document}  % The End
 %% ----------------------------------------------------------------

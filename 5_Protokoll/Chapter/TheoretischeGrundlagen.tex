@@ -86,7 +86,29 @@ Der Operationsverstärker der im PCB des Praktkium verbaut ist hier zu sehen:
     \caption{Operationsverstärkerschaltung}
     \label{fig:opamp_schaltung}
 \end{figure}
-Es Handelt sich um eine nichtinvertierenden Operationsverstärker,
+Es Handelt sich um eine nichtinvertierenden Operationsverstärker.
+Für die Übertragung eines generellen nichtinvertierenden Operationsverstärkers gilt:
+\begin{equation}
+    \frac{U_{out}}{U_{in}} = 1 + \frac{R_f}{R_{in}}
+\end{equation}
+Für die Schaltung in Abbildung \ref{fig:opamp_schaltung} gilt:
+\begin{itemize}
+    \item $R_f$: Widerstand zwischen Ausgang und invertierendem Eingang ($R_{31}$)
+    \item $R_{in}$: Paralleler Ersatzwiderstand $R_{29}$ und $R_{30}$ ($R_{29}\parallel R_{30}$), da sie den Spannungsteiler am invertierenden Eingang bilden
+    \item $R_{29}$= $11 \mathrm{k}\Omega$
+    \item $R_{30}$= $1,1 \mathrm{k}\Omega$
+    \item $R_{31}$= $6,8 \mathrm{k}\Omega$
+\end{itemize}
+Somit ergibt sich die Transferfuntion von:
+\begin{equation}
+    \frac{U_{out}}{U_{in}} = 1 + \frac{R_f}{R_{int}} = 1 + \frac{R_{31}}{R_{29}\parallel R_{30}}=\frac{(R_{29} \parallel R_{30}+R_{31})}{R_{29}\parallel R_{30}}
+\end{equation}
+Die eingesetzten Widerstandswerte ergeben den Übertragungsfaktor::
+\begin{equation}
+    \frac{U_{out}}{U_{in}} = 1 + \frac{6,8\,\mathrm{k}\Omega}{(11\,\mathrm{k}\Omega \parallel 1,1\,\mathrm{k}\Omega)} = 7,8
+\end{equation}
+R29 ist wichtig zum einen für die DC-Arbeitspunkteinstellung des OPs wenn kein Signal angelegt ist, da er dort mit R30 ein Spannungsteiler bildet.
+Wird ein Signal angelegt, so ist R29 vorallem wichtig für das einstellen der Verstärkung.
 
 \section{Komparatorschaltung} %Erik 6 a und b
 

@@ -1,4 +1,26 @@
 \section{Analyse des Schaltplans vom Empfänger} %Erik
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Pictures/Schaltbild.jpg}
+    \caption{Schaltplan des Empfängers}
+    \label{fig:opamp_schaltung}
+\end{figure}
+Der Empfänger setzt sich aus mehreren Funktionsblöcken zusammen, die das hochfrequente analoge Signal empfangen, vorversträrken,
+demodulieren, die niederfrequenten Anteile verstärken und anschließend in ein digitales Signal umwandeln. Da in Versuch 4 bereits auf den
+Schaltplan des Empfängers eingegangen wurde, werden hier nur grob die Funktionblöcke erläutert und hiermit auf das zuvor abgegebene Protokoll verwiesen.
+Es folgt jedoch im Rahmen des Versuches noch eine genauere Betrachtung von einzelnen Komponenten. 
+\clearpage
+Der erste Funktionsblock ist der Hochfrequenzvorverstärker. Er besteht aus einer einfachen Transistorschaltung (u.a)um das durch die Übertragung
+geschwächte Signal auf ein nutzbares Niveau zu bringen. \\\\
+Der zweite Funktionsblock ist der Downkonverter. Er besteht aus einem HF-Gleichrichter (besthend aus? Transistor u.a ) und einem RC-Tiefpass. Der Zweck ist
+die Umwandlung des hochfrequenten Signals in ein niederfrequentes Signal und der folgende Tiefpass unterdückt die hochfrequenten
+Anteile. \\\\
+Es folgt der Analogverstärker bestehend aus einem Operationsverstärker (und anderen Bauteilen). Er dient dazu das niederfrequente Signal
+auf ein geeignetes Niveau zu digitalen weiterverarbeitung zu bringen.\\ \\
+Der letzte Funktionsblock ist der Komparator. Er setzt sich zusammen aus einem Operationsverstärker und einem Spannungsteiler. 
+Der Komparator wandelt das analoge Signal in ein digitales Signal um, welches von einem Computer weiterverarbeitet werden kann. 
+
+
 
 \section{Vorverstärkung des Signals} %Lukas
 \subsection{Friis-Formel}
@@ -76,7 +98,7 @@ Es Handelt sich um eine nichtinvertierenden Operationsverstärker,
 \end{figure}
 
 Die Abbildung 2.4 stellt den Komparator dar, der dazu dient das analoge verstärkte Signal $S_{BB}(t)$ in ein digitales Signal umzuwandeln, für
-eine nachfolgende Verarbeitung. Der Komparator besteht aus einem Operationsverstärker (Typ NCX2200GW), einem Spannungsteiler aus zwei Widerständen
+eine nachfolgendedigitale Verarbeitung. Der Komparator besteht aus einem Operationsverstärker (Typ NCX2200GW), einem Spannungsteiler aus zwei Widerständen
 R27 und R28 und wird mit einer Betriebspannung von 3,3V betrieben. Die am nichtinvertierende Eingang anliegende Signalspannung $S_{BB}(t)$ wird mit
 einer Referenzspannung $U_{Ref}$ am invertierenden Eingang verglichen. Diese Referenzspannung ergibt sich wie folgt:  Schwllewert?
 \\
@@ -96,4 +118,4 @@ Dadurch wird ein binäres digitales Ausgangssignal erzeugt, das von einem Comput
 \[
 S_{BB}(t) \rightarrow S_{RX}(t)
 \]
-Der Schwellwert ist $U_{Ref}$ wurde so gewählt das groß genuge Signale sicher erkannt werden. Dabei werden jedoch Rauschen und Störsignale ignoriert.
+Der Schwellwert $U_{Ref}$ wurde so gewählt das groß genuge Signale sicher erkannt werden. Dabei werden jedoch Rauschen und Störsignale ignoriert.

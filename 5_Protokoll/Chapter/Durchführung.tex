@@ -1,7 +1,55 @@
 Jetzt wird es zur praktischen Umsetzung der Signalverarbeitung im Empfänger übergegangen. Der Versuch besteht aus mehreren Teilen, die jeweils verschiedene Aspekte der Signalverarbeitung behandeln.
+
 \section{Vermessung der Sensitivität des Empfängers} %Farhad
-Als erstes wird die Sensitivität des Empfängers vermessen. Dazu wird eine zweite Platine (Senderplatine) verwendet, die lediglich als ein single-Tone Sender fungiert. Die Ausgansleistung des Senders wird mit dem Spektrumanalysator als Referenz gemessen. Diese beträgt 
+\subsection{Vermessung der Ausgangsleistung des Empfängers}
+Eine groben Veranschaulichung des Versuchsaufbaus für die Vermessung der Leistung ist in Abbildung \ref{fig:versuchsaufbau} zu sehen. 
+Als erstes wird die Sensitivität des Empfängers vermessen. Dazu wird eine zweite Platine (Senderplatine) verwendet, die lediglich als ein single-Tone Sender fungiert. Die Ausgansleistung des Senders wird mit dem Spektrumanalysator als Referenz gemessen. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Pictures/VersuchsaufbauLeistung.jpg}
+    \caption{Versuchsaufbau zur Vermessung der Ausgangsleistung des Empfängers}
+    \label{fig:versuchsaufbau}
+\end{figure}
+
+Insgesamt wurde ein Leistungsspektrum des Senders gemessen, welches in Abbildung \ref{fig:sender} zu sehen ist. Zur genauen Vermessung sind die Werte bei den Harminischen von 1,25 GHz mit Markern versehen, um die genaue Leistung zu bestimmen.
+
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{Pictures/Sender.png}
+%    \caption{Leistungsspektrum des Senders}
+%    \label{fig:sender}
+%\end{figure}
+
+\subsection{Vermessung der Spannung am Kondensator C22}
+Die DC-Spannung am Kondensator C22 wird jetzt auf der Empfängerplatine gemessen. Hierbei werden verschiedene Dämpfungsglieder verwenden, um die Leistung des Senders zu variieren. Eine grobe Veranschaulichung des Versuchaufbaus dafür ist in Abbildung \ref{fig:versuchsaufbau2} zu sehen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Pictures/VesuchsaufbauSpannung.jpg}
+    \caption{Versuchsaufbau zur Vermessung der Spannung am Kondensator C22}
+    \label{fig:versuchsaufbau2}
+\end{figure}
+Die Spannung am Kondensator C22 wird mit einem Multimeter gemessen. Die Ergebnisse sind in Tabelle \ref{tab:spannung} zu sehen.
+\begin{table}[H]
+    \centering
+    \caption{Messwerte der Spannung am Kondensator C22}
+    \begin{tabular}{|c|c|}
+        \hline
+        Dämpfungsglied & Spannung am C22 [mV] \\ \hline
+        0 dB            & 386,47                 \\ \hline
+        3 dB            & 383,20                 \\ \hline
+        6 dB            & 379,85                 \\ \hline
+        10 dB           & 375,10                 \\ \hline
+        13 dB           & 372,90                 \\ \hline
+        20 dB           & 368,90                 \\ \hline
+        26 dB           & 368,27                 \\ \hline
+    \end{tabular}
+    \label{tab:spannung}
+\end{table}
+
+Wie man der Tabelle \ref{tab:spannung} entnehmen kann, fällt die Spannung am Kondensator C22 mit zunehmender Dämpfung des Senders ab. Dies ist zu erwarten, da die Leistung des Senders mit zunehmender Dämpfung verringert wird, was zu einer geringeren Spannung am Kondensator führt.
+
 \section{Operationsverstärkerschaltung} %Lukas
+
 
 \section{Komparatorschaltung} %Erik
 blabla

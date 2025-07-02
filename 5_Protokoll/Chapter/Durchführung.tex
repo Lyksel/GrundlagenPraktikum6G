@@ -121,8 +121,26 @@ unter Berücksichtigung aller Messwerte erstellt.\\
 
 
 \section{Komparatorschaltung} %Erik
-Zuletzt wird überpfüft ob der Komperator beim angelgen des HF-Tones durchschaltet und damit das übertragen der digitalen Daten funktioniert.
-Unsere Messwerte müssen hier nicht betrachtet werden da der Schaltschwellwert des Kompaarators von
-$U_{ref}= 0,79V$ nicht überschritten wird und somit der Komparator nicht schaltet.
-Die folgende Tabelle 
-\clearpage
+Zuletzt wird überpfüft ob der Komperator beim angelgen des HF-Tones durchschaltet und somit das übertragen der digitalen Daten funktioniert.
+Unsere Messwerte müssen hier nicht betrachtet werden, da der Schaltschwellwert des Kompaarators von
+$U_{ref}= 0,79V$ nicht überschritten wird und somit der Komparator nicht schaltet und es auchhhh keinnenS Sinn macht?
+Wir beziehen uns hier wieder auf ein Messreihe unserer Komilitonen. In der folgende Tabelle wird die gemessene Spannung 
+aufgetragen die vor dem Komparator ankommt und wie sich der Komperator verhält. Das bedeutet welche Ausgangsspannung
+der Komparator in Abhängigkeit von der Eingangsspannung hat (LOW und HIGH)
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cc}
+\textbf{Eingangsspannung} & \textbf{Ausgangsspannung} \\
+\hline
+0{,}811 & 0{,}242 \\
+0{,}812 & 0{,}243 \\
+0{,}816 & 0{,}244 \\
+0{,}820 & 0{,}244 \\
+0{,}821 & 0{,}245 \\
+0{,}822 & 3{,}298 \\
+\end{tabular}
+\caption{Messwerte für Eingangsspannung und Ausgangsspannung}
+\end{table}
+
+Anhand der Tabelle kann man erkennen, dass der Komparator für Eingangsspannungen unterhalb von 0{,}822\,V auf LOW bleibt. Sobald die Eingangsspannung von 0{,}822\,V überschritten wird, schaltet der Ausgang auf HIGH. Die gemessene Schaltschwelle liegt somit etwas höher als der theoretische Wert $U_{ref} = 0{,}798$\,V bzw. der im Schaltplan angegebene Wert von 0{,}79\,V. Dies kann auf verschiedene Faktoren wie Bauteiltoleranzen oder Messungenauigkeiten zurückzuführen sein. 

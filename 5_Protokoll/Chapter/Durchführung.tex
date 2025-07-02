@@ -61,7 +61,7 @@ Die Übertragungsfunktion des Empfängers kann also wie folgt dargestellt werden
 wobei \( V_\text{offset} \) die Spannung am Widerstand R26 ist, die den Arbeitspunkt des Transistors Q21 festlegt. 
 
 \section{Operationsverstärkerschaltung} %Lukas
-Der DC-Arbeitspunkt, wenn kein Signal anliegt, konnte messtechnisch auf etwa $358mV$ bestimmt werden.
+Der DC-Arbeitspunkt, wenn kein Signal anliegt, konnte messtechnisch auf etwa $365mV$ bestimmt werden.
 \\
 Nun wird mit einer zweiten Spannungsquelle vor der Diode eine Spannung eingespeist und dabei die Transferfunktion
 $V_{out}/V_{in}$ vermessen. Der Spannungsbereich dieser Hilfsspannungsquelle $V_{in}$ wird von 0,9V in 0,01V-Schritten bis 1,4V erhöht.
@@ -83,7 +83,6 @@ $V_{\text{in}}$ (V) & $V_{\text{out}}$ (mV) \\
 \end{tabular}
 \caption{Messwerte von $V_{\text{in}}$ und $V_{\text{out}}$ ohne Verstärkung}
 \end{table}
-\clearpage
 Bei genauer Betrachtung der Messwerte wurde offensichtlich, dass die Platine beschädigt ist. Es findet keine Verstärkung
 statt. Daher werden nun im weiteren Verlauf zwei Messungen betrachtet. Eine Messung ohne Verstärkung und eine Messung mit Verstärkung, die von 
 unseren Kommilitonen durchgeführt wurde. Hier werden etwas mehr Messwerte zu einer groben Veranschaulichung benötigt. \\
@@ -106,27 +105,28 @@ $V_{\text{in}}$ (V) & $V_{\text{out}}$ (mV) \\
 \end{tabular}
 \caption{Messwerte von $V_{\text{in}}$ und $V_{\text{out}}$ mit Verstärkung}
 \end{table}
-In Abbildung 4.3 ist die Transferfunktion $V_{out}/V_{in}$ dargestellt. Die geplotete Transferfunktion wurde
+\clearpage
+In Abbildung 4.4 ist die Transferfunktion $V_{out}/V_{in}$ dargestellt. Die geplotete Transferfunktion wurde
 unter Berücksichtigung aller Messwerte erstellt.\\
-(Eingehen auf 7,36 ungefähr 7,8V)
-
-
-
-
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{Pictures/Transferfunktion.jpf.png}
-    \caption{Schaltplan des Empfängers}
+    \caption{Transferfunktion}
     \label{fig:opamp_schaltung}
 \end{figure}
-
+In der Praxis bekommen wir ein Übertragungsverhältnis von 7,36.
+In der Theorie liegt das Verhältnis höher, etwa bei 7,8. 
+Dies kann auf verschiedene Faktoren wie Bauteiltoleranzen, Messungenauigkeiten und Verluste zurückzuführen sein.
+\\
+Bei der kaputten Platine spiegelt sich die fehlende Verstärkung schön wider, da der Übertragungsfaktor etwa bei eins liegt,
+leicht darunter aufgrund von Verlusten und den vorher genannten Faktoren.
 
 \section{Komparatorschaltung} %Erik
 Zuletzt wird überprüft, ob der Komparator beim Anliegen des HF-Tones durchschaltet und somit die Übertragung der digitalen Daten funktioniert.
 Unsere Messwerte müssen hier nicht betrachtet werden, da der Schaltschwellwert des Komparators von
-$U_{ref}= 0,79V$ nicht überschritten wird und somit der Komparator nicht schaltet und es auch keinen Sinn macht.
-Wir beziehen uns hier wieder auf eine Messreihe unserer Kommilitonen. In der folgenden Tabelle wird die gemessene Spannung 
+$U_{ref}= 0,79V$ nicht überschritten wird und somit der Komparator nicht schaltet. Deshalb hat es keinen weiteren Sinn, die Messung auszuwerten, da daraus keine Schlüsse gezogen werden können.
+Wir beziehen uns anschließend wieder auf eine Messreihe unserer Kommilitonen. In der folgenden Tabelle wird die gemessene Spannung
 aufgetragen, die vor dem Komparator ankommt und wie sich der Komparator verhält. Das bedeutet, welche Ausgangsspannung
 der Komparator in Abhängigkeit von der Eingangsspannung hat (LOW und HIGH).
 
@@ -135,14 +135,14 @@ der Komparator in Abhängigkeit von der Eingangsspannung hat (LOW und HIGH).
 \begin{tabular}{cc}
 \textbf{Eingangsspannung} & \textbf{Ausgangsspannung} \\
 \hline
-0{,}811 & 0{,}242 \\
-0{,}812 & 0{,}243 \\
-0{,}816 & 0{,}244 \\
-0{,}820 & 0{,}244 \\
-0{,}821 & 0{,}245 \\
-0{,}822 & 3{,}298 \\
+0{,}811 & 0{,}242 (LOW) \\
+0{,}812 & 0{,}243 (LOW) \\
+0{,}816 & 0{,}244 (LOW) \\
+0{,}820 & 0{,}244 (LOW) \\
+0{,}821 & 0{,}245 (LOW) \\
+0{,}822 & 3{,}298 (HIGH) \\
 \end{tabular}
 \caption{Messwerte für Eingangsspannung und Ausgangsspannung}
 \end{table}
 
-Anhand der Tabelle kann man erkennen, dass der Komparator für Eingangsspannungen unterhalb von 0{,}822\,V auf LOW bleibt. Sobald die Eingangsspannung von 0{,}822\,V überschritten wird, schaltet der Ausgang auf HIGH. Die gemessene Schaltschwelle liegt somit etwas höher als der theoretische Wert $U_{ref} = 0{,}798$\,V bzw. der im Schaltplan angegebene Wert von 0{,}79\,V. Dies kann auf verschiedene Faktoren wie Bauteiltoleranzen oder Messungenauigkeiten zurückzuführen sein.
+Anhand der Tabelle kann man erkennen, dass der Komparator für Eingangsspannungen unterhalb von 0{,}822\,V auf LOW bleibt. Sobald die Eingangsspannung von 0{,}822\,V überschritten wird, schaltet der Ausgang auf HIGH. Die gemessene Schaltschwelle liegt somit etwas höher als der theoretische Wert $U_{ref} = 0{,}798$\,V bzw. der im Schaltplan angegebene Wert von 0{,}79\,V. Dies kann auf die zuvor genannten Faktoren zurückgeführt werden.

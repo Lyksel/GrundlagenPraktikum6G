@@ -48,6 +48,18 @@ Die Spannung am Kondensator C22 wird mit einem Multimeter gemessen. Die Ergebnis
 
 Wie man der Tabelle \ref{tab:spannung} entnehmen kann, fällt die Spannung am Kondensator C22 mit zunehmender Dämpfung des Senders ab. Dies ist zu erwarten, da die Leistung des Senders mit zunehmender Dämpfung verringert wird, was zu einer geringeren Spannung am Kondensator führt.
 
+\subsection{Übertragungsfunktion des Empfängers (Ausgangsspannung/Eingangsleistung)}
+Insgesamt stellt es sich heraus, dass diese Schaltung sich wie ein HF-Detektor (Schwellenwertdetektor) funktioniert. Der eingehende Hochfrequenzsignal wird gleichgerichtet und die DC-Spannung am Kondensator C22 ist proportional zur Leistung des eingehenden Signals. 
+, also \( P \propto V_\text{in}^2 \), wobei \( V_\text{in} \) die Eingangsspannung ist. 
+
+Hier sind jedoch einige Effekte zu beachten, die die Übertragungsfunktion beeinflussen können. Erstens fleißt aufgrund der Arbeitspunkteinstellung des Transistors Q21 ein Strom durch den Widerstand R26. Die entsprechende Spannung beträgt ungefähr $368,27~mV$ und muss aus der Beziehung herausgerechnet werden, um die Übertragungsfunktion zu erhalten. Außerdem ist ein den Bauteilen der Schaltung charakteristische Konstante \( k \) zu berücksichtigen, die die Übertragungsfunktion beeinflusst. Diese Konstante kann experimentell bestimmt werden.
+
+Die Übertragungsfunktion des Empfängers kann also wie folgt dargestellt werden:
+\begin{equation}
+    V_\text{out} = k \cdot \sqrt{P_\text{in}} - V_\text{offset}
+\end{equation}
+wobei \( V_\text{offset} \) die Spannung am Widerstand R26 ist, die den Arbeitspunkt des Transistors Q21 festlegt.
+
 \section{Operationsverstärkerschaltung} %Lukas
 
 

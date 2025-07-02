@@ -50,7 +50,7 @@ Wie man der Tabelle \ref{tab:spannung} entnehmen kann, fällt die Spannung am Ko
 
 \subsection{Übertragungsfunktion des Empfängers (Ausgangsspannung/Eingangsleistung)}
 Insgesamt stellt es sich heraus, dass diese Schaltung sich wie ein HF-Detektor (Schwellenwertdetektor) funktioniert. Der eingehende Hochfrequenzsignal wird gleichgerichtet und die DC-Spannung am Kondensator C22 ist proportional zur Leistung des eingehenden Signals. 
-, also \( P \propto V_\text{in}^2 \), wobei \( V_\text{in} \) die Eingangsspannung ist. 
+, also \( P \propto V_\text{in}^2 \), wobei \( V_\text{in} \) die Eingangsspannung ist. Die Beziehung zwischen der Spannung am Kondensator und der Leistung des eingehenden Signals ist quadratisch. Das liegt daran, dass der Eingangssignal des Empfängers hoch genug dafür ist, dass er insgesamt im linearen Bereich arbeitet. 
 
 Hier sind jedoch einige Effekte zu beachten, die die Übertragungsfunktion beeinflussen können. Erstens fleißt aufgrund der Arbeitspunkteinstellung des Transistors Q21 ein Strom durch den Widerstand R26. Die entsprechende Spannung beträgt ungefähr $368,27~mV$ und muss aus der Beziehung herausgerechnet werden, um die Übertragungsfunktion zu erhalten. Außerdem ist ein den Bauteilen der Schaltung charakteristische Konstante \( k \) zu berücksichtigen, die die Übertragungsfunktion beeinflusst. Diese Konstante kann experimentell bestimmt werden.
 
@@ -58,11 +58,71 @@ Die Übertragungsfunktion des Empfängers kann also wie folgt dargestellt werden
 \begin{equation}
     V_\text{out} = k \cdot \sqrt{P_\text{in}} - V_\text{offset}
 \end{equation}
-wobei \( V_\text{offset} \) die Spannung am Widerstand R26 ist, die den Arbeitspunkt des Transistors Q21 festlegt.
+wobei \( V_\text{offset} \) die Spannung am Widerstand R26 ist, die den Arbeitspunkt des Transistors Q21 festlegt. 
 
 \section{Operationsverstärkerschaltung} %Lukas
+Nun wird mit einer zweiten Spannungsquelle vor der Diode eine Spannung eingespeist und dabei die Transferfunktion
+$V_{out}/V_ {in}$ vermessen. Der Spanungsbereich dieser Hilfsspannungsquelle $V_{in}$ wird von 0.9V in 0,01V-Schritten bis 1.4V erhöht.
+Da das Protokoll so übersichtlich wie möglich gehalten werden soll, wird in der folgenden Tabelle nur ein kleiner Ausschnitt der
+Messwerte gezeigt.
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+$V_{\text{in}}$ (V) & $V_{\text{out}}$ (mV) \\
+\hline
+0{,}9 & 0{,}15571 \\
+1{,}0 & 0{,}24478 \\
+1{,}1 & 0{,}33307 \\
+1{,}2 & 0{,}42666 \\
+1{,}3 & 0{,}52090 \\
+1{,}4 & 0{,}61620 \\
+\hline
+\end{tabular}
+\caption{Messwerte von $V_{\text{in}}$ und $V_{\text{out}}$ ohne Verstärkung}
+\end{table}
+\clearpage
+Bei genauer Betrachtung der Messwerte wurde offensichtlich das die Platine beschädigt ist. Es findet keine Verstärkung
+statt. Daher werden nun im weiteren Verlauf zwei Messungen betrachtet. Eine Messung ohne Verstärkung und eine Messung mit Verstärkung, die von 
+unseren Komilitonen (Name?) durchgeführt wurde. Hier werden etwas mehr Messwerte zu einer groben Veranschaulichung benötigt. \\
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+$V_{\text{in}}$ (V) & $V_{\text{out}}$ (mV) \\
+\hline
+0{,}9 & 0{,}039 \\
+1{,}0 & 0{,}047\\
+1{,}03 & 0{,}077 \\
+1{,}06 & 0{,}242 \\
+1{,}1 & 0{,}531 \\
+1{,}2 & 1{,}258 \\
+1{,}3 & 1{,}994 \\
+1{,}4 & 2{,}741 \\
+\hline
+\end{tabular}
+\caption{Messwerte von $V_{\text{in}}$ und $V_{\text{out}}$ mit Verstärkung}
+\end{table}
+In Abbildung 4.3 ist die Transferfunktion $V_{out}/V_ {in}$ dargestellt. Die geplottete Transferfunktion wurde
+unter Berücksichtigung aller Messwerte erstellt.\\
+(Eingehen auf 7,36 ungefähr 7,8V)
+
+
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Pictures/Transferfunktion.png}
+    \caption{Schaltplan des Empfängers}
+    \label{fig:opamp_schaltung}
+\end{figure}
 
 
 \section{Komparatorschaltung} %Erik
-blabla
+Zuletzt wird überpfüft ob der Komperator beim angelgen des HF-Tones durchschaltet und damit das übertragen der digitalen Daten funktioniert.
+Unsere Messwerte müssen hier nicht betrachtet werden da der Schaltschwellwert des Kompaarators von
+$U_{ref}= 0,79V$ nicht überschritten wird und somit der Komparator nicht schaltet.
+Die folgende Tabelle 
 \clearpage

@@ -90,7 +90,7 @@ Für die Übertragung eines generellen nichtinvertierenden Operationsverstärker
 \begin{equation}
     \frac{U_{out}}{U_{in}} = 1 + \frac{R_f}{R_{in}}
 \end{equation}
-Für die Schaltung in Abbildung \ref{fig:opamp_schaltung} gilt:
+Für die gegebene Schaltung in Abbildung 2.4 gilt:
 \begin{itemize}
     \item $R_f$: Widerstand zwischen Ausgang und invertierendem Eingang ($R_{31}$)
     \item $R_{in}$: Paralleler Ersatzwiderstand $R_{29}$ und $R_{30}$ ($R_{29}\parallel R_{30}$), da sie den Spannungsteiler am invertierenden Eingang bilden
@@ -118,7 +118,7 @@ Wird ein Signal angelegt, so ist R29 vor allem wichtig für das Einstellen der V
     \label{fig:opamp_schaltung}
 \end{figure}
 
-Die Abbildung 2.4 stellt den Komparator dar, der dazu dient, das analoge verstärkte Signal $S_{BB}(t)$ in ein digitales Signal umzuwandeln für
+Die Abbildung 2.5 stellt den Komparator dar, der dazu dient, das analoge verstärkte Signal $S_{BB}(t)$ in ein digitales Signal umzuwandeln für
 eine nachfolgende digitale Verarbeitung. Der Komparator besteht aus einem Operationsverstärker (Typ NCX2200GW), einem Spannungsteiler aus zwei Widerständen
 R27 und R28 und wird mit einer Betriebspannung von 3,3V betrieben. Die am nichtinvertierenden Eingang anliegende Signalspannung $S_{BB}(t)$ wird mit
 einer Referenzspannung $U_{Ref}$ am invertierenden Eingang verglichen. Dieser Schaltschwellwert ergibt sich wie folgt:
@@ -130,13 +130,13 @@ einer Referenzspannung $U_{Ref}$ am invertierenden Eingang verglichen. Dieser Sc
 \end{equation}\\
 In Abhängigkeit von der Signalspannung $S_{BB}(t)$ wird der Ausgang des Komparators auf High oder Low gesetzt.
 \[
-S_{BB}(t) > 0{,}79\,\mathrm{V} \implies \text{HIGH}
+S_{BB}(t) > 0{,}798\,\mathrm{V} \implies \text{HIGH}
 \]
 \[
-S_{BB}(t) < 0{,}79\,\mathrm{V} \implies \text{LOW}
+S_{BB}(t) < 0{,}798\,\mathrm{V} \implies \text{LOW}
 \]
 Dadurch wird ein binäres digitales Ausgangssignal erzeugt, das von einem Computer weiterverarbeitet werden kann.
 \[
 S_{BB}(t) \rightarrow S_{RX}(t)
 \]
-Der Schwellwert $U_{Ref}$ wurde so gewählt, dass groß genug Signale sicher erkannt werden. Dabei werden jedoch Rauschen und Störsignale ignoriert.
+Der Schaltschwellwert $U_{Ref}$ wurde so gewählt, dass groß genug Signale sicher erkannt werden. Dabei werden jedoch Rauschen und Störsignale ignoriert.

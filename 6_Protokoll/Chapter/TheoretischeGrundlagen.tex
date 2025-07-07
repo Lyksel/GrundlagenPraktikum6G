@@ -4,6 +4,23 @@
 \subsubsection{J2}
 \subsection{Serielles Protokoll UART}
 Hier RF-Signalübertragung bei einer digitalen 1.
+\subsection{BER}
+Bit Error Rate (BER) oder in Deutsch Bitfehlerrate ist eine angabe die die
+Anzahl der falsch empfangenen Bits ins Verhältnis zu den gesamt empfangenen Bits setzt.
+\begin{equation}
+    BER = \frac{N_{Anzahl fehlerhaft empfangener Bits}}{N_{Anzahl empfangener Bits}}
+\end{equation}
+\subsection{Beispiel}
+Wir betrachten ein Beispiel, folgende Sequenz wird gesendet:
+\begin{equation}
+    10111001
+\end{equation}
+Empfangen wurde aber:
+\begin{equation}
+      %1\textcolor{red}{0}01\textcolor{red}{1}0\textcolor{red}{1}1
+      232
+
+\end{equation}
 
 \section{Pegelplanrechnung}
 \subsection{Rekapitulation des Link-Budgets}

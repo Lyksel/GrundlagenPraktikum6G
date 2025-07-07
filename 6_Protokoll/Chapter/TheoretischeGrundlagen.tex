@@ -1,6 +1,14 @@
 \section{Analyse der Tranceiver-Platinen}
 Zu Verfügung steht eine Tranceiver-Platine. Ein Tranceiver ist eine Platine, die sowohl als Sender (Transmitter) als auch als Empfänger (Receiver) fungieren kann. Dafür ist diese Platine mit einem Transceiver-Chip ausgestattet, der Funktion teilweise abgeschaltet werden kann, sodass die Platine zu einem reinen Transmitter oder zu einem reinen Receiver wird.  
 Hierfür stehen zwei Jumper zur Verfügung, die auf der Tranceiver-Platine platziert sind. Diese Jumper können gesteckt oder abgezogen werden, um die Funktionalität der Platine zu ändern. Hierbei ist der Platinenbeschriftung zu entnehmen, dass der TX (Transmitter) nur dann funktioniert, wenn man sowohl J1 und J2 ausgesteckt hat (eine Eingangsspannung liegt dann an dem Transceiver-Chip auf beiden Teilmodulen an)
+
+Die Jumpers sind auf der Abbildung \ref{fig:Tranceiver-Platine} zu sehen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Pictures/Jumper.jpg}
+    \caption{Tranceiver-Platine mit Jumpern J1 und J2 Quelle: vgl. Litertaturverzeichnis \cite{SchaltplanPCBV4}: Schaltpläne der Platine V4}
+    \label{fig:Tranceiver-Platine}
+\end{figure}
 \subsection{Funktion der Jumper auf der Tranceiver-Platine}
 \subsubsection{J1}
 Der J1 hat die Funktion, den Trasmitter abzuschalten. Wenn der Jumper J1 gesteckt ist, wird der Modul des Transmitters überbrückt.

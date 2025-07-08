@@ -67,24 +67,62 @@ Aus dieser Position aus wird die Übertragungsstrecke schrittweis in 1chm Schrit
 \begin{table}[h!]
     \centering
         \begin{tabular}{c|c|c}
-             & BER A $\rightarrow$ B & BER A $\rightarrow$ B \\
+            Abstand [cm] & BER A $\rightarrow$ B & BER B $\rightarrow$ A \\
             \hline
-             &  &  \\
+             0 & 0.00 & 1.00 \\
             \hline
-             &  &  \\
+             1 & 0.00 & 1.00 \\
             \hline
-             &  &  \\
+             2 & 0.64 & 1.00 \\
             \hline
-             &  &  \\
+             3 &  1.00    & 1.00 \\
             \hline
-             &  &  \\
+             4 &   1.00  & 1.00 \\
             \hline
-             &  &  \\
+             5 & 1.00 & 1.00 \\
             \hline
-             &  &  \\
+             6 & 1.00 & 1.00 \\
         \end{tabular}
-        \caption{Tabelle mit 3 Spalten und 7 Zeilen}
+        \caption{Übertragung mit Platine A als Sender und Platine B als Empfänger}
     \end{table}
+In der Messreihe Tabelle 4.2 wurde die Platine A Sender und Platine B als Empfänger konfiguriert.
+Es ist gut zu erkennen dass die BER für einen Abstand von 0-1cm null ist. Im nächsten Zentimeter
+steigt sie auf 0.64 an und ist bereits 1cm später auf 1.00 angestiegen. Das bedeutet eine
+hundertprozentige Fehlerbitrate.\\
+
+Nun wurde die Messung mit den Platinen getauscht, sodass Platine B als Sender und Platine A als Empfänger fungiert. Die Ergebnisse
+sind in der Tabelle 4.3 zu sehen.
+\begin{table}[h!]
+    \centering
+        \begin{tabular}{c|c|c}
+            Abstand [cm] & BER A $\rightarrow$ B & BER A $\rightarrow$ B \\
+            \hline
+             0 & 1.00 & 0.00 \\
+            \hline
+             1 & 1.00 & 0.00 \\
+            \hline
+             2 & 1.00 & 0.00 \\
+            \hline
+             3 &  1.00    & 0.00 \\
+            \hline
+             4 &   1.00  & 0.03 \\
+            \hline
+             5 & 1.00 & 1.00 \\
+            \hline
+             6 & 1.00 & 1.00 \\
+        \end{tabular}
+        \caption{Übertragung mit Platine B als Sender und Platine A als Empfänger}
+    \end{table}
+    \\
+    
+Hier ist der Bitratefehler bis zu einem Abstand von 3cm null. Steigt bei 4cm auf 0.03 an und ist
+danach auf hundertprozent angestiegen.
+Der BER von der Empfänger- zu der Senderplatine ist hierbei immer ein hundertprozentiger Fehler, da nichts übertragen wird.
+Man kann erkennen, dass beide Platinen alles andere als optimal sind für die Datenübertragung sind und
+das sie auch untereinander erhebliche unterschiede aufweisen. Die Konfiguration mit Platine B als Sender und A als Antenne erreicht jedoch
+das bestmöglichste Ergebnis. isch kann so net arbeita zefix nommol iafüsdkafsdfjaskfas
+
+
 \section{Platinen am Computer anschließen}
 Nun wurde eine Platine an den Computer angeschlossen und die andere Platine an den Laptop.
 Mithilfe von Hterm werden Daten in Form von ASCII-Zeichen von der einen Platine an die andere gesendet

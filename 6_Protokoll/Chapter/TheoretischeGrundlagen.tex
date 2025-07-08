@@ -77,9 +77,32 @@ Die Bitfehlerrate beträgt in diesem Fall:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{Pictures/einlesenMatlab.png}
-    \caption{Beispiel für MATLAB-Code}
+    \caption{Senden/Empfangen}
     \label{fig:matlab_example}
 \end{figure}
+In diesem Code wird zuerst eine random zahl erzeugt die bis 255 geht.
+Um diese in Binärer form daszustellen werden 8Bit benötigt.
+\\
+Nachdem die Daten gesendet wurden, werden sie vom empfänger und auch Sender eingelesen.
+Danach werden sie in die Variable rec\_A\_fb für den Sender selbst und rec\_B für den Empfänger gespeichert.
+\\
+Nun wird genauer betrachtet wie die Bitfehlerrate berrechnet wird:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Pictures/vergleich.png}
+    \caption{Bitfehlerrate berrechnung}
+    \label{fig:bitfehler}
+\end{figure}
+Wir iterrieren über jedes Bit also insgesamt acht mal.
+Die fehler anzahl werden in err\_cnt\_A\_fb und err\_cnt\_B gespeichert.
+Konnten gar keine Daten empfangen werden wird jeweilger Counter auf 8 hochgezählt.
+Der intressantere Part ist das vergleichen der gesendeten und empfangenen Daten.
+Stimmen diese nicht überein wird ebenfalls der error Counter hochgezählt.
+Zum Schluss wird der BER berrechnet und ausgegeben.
+Um die genauigkeit zu erhöhen wird das mehrfach wiederholt ebenso wird auch der Sender und Empfänger vertauscht.
+Das wurde hier der Übersichtshabler und symmetrie nicht genauer betrachtet.
+
+
 
 \section{Pegelplanrechnung}
 \subsection{Rekapitulation des Link-Budgets}

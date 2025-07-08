@@ -1,8 +1,7 @@
-\section{Task 2}
-Für diesen Versuch werden zwei identische Tranceiver Platinen verwendet, die bereits im Verlauf dieses Praktikums genauer betrachtet wurden.
-Die beiden Platinen haben folgende Spezifikationen:
-
-\usepackage{pifont,xcolor} % Fügen Sie dies in die Präambel ein, falls noch nicht geschehen
+\section{Platine A als Single-Tone Sender}
+Für den ersten Teil des Versuchs werden zwei identische Tranceiver Platinen verwendet, die bereits im Verlauf dieses Praktikums genauer betrachtet wurden.
+Die beiden Platinen haben folgende Spezifikationen (\textcolor{red}{X} steht hierbei dafür das der Jumper enfernt ist, 
+\textcolor{green}{\checkmark} das der Jumper gesetzt ist):
 
 \begin{table}[h!]
     \centering
@@ -10,9 +9,31 @@ Die beiden Platinen haben folgende Spezifikationen:
         \hline
          & J1 & J2 & Funktion \\
         \hline
-        Platine A &  &  & GHz \\
-        Platine B & 100 & 100 & m \\
+        Platine A & \textcolor{red}{X} & \textcolor{green}{\checkmark} & Sender \\
+        Platine B &\textcolor{red}{X} & \textcolor{red}{\textbf{X}} & Empfänger \\
         \hline
     \end{tabular}
     \caption{Spezifikationen der beiden Platinen}
-\end{table}
+    \end{table}
+Die folgenden Abbildungen 4.1 und 4.2 zeigen auf der linken Seite die Platine B als Empfänger und auf der rechten Seite
+die Platine A als Sender. Die (äußeren Lampen an USB Port) beiden Lampen XX leuchten sobald eine Versorgungsspannung
+anliegt. Ist der Sender und Empfänger innerhalb der Funkreichweite, so leuchtet weder die Lampe TX (Transmitting), noch die Lampe RX () am Sender und Empfänger.
+Ist die Funkreichweite überschritten, so leuchtet die Lampe RX am Sender, die Lampe TX leuchtet nicht. Die Lampen
+TX und RX am Empfänger sind unverändert.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Pictures/Task2a.png}
+    \caption{Sender und Empfänger innerhalb der Funkreichweite}
+    \label{fig:Task2a}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Pictures/Task2aa.png}
+    \caption{Sender und Empfänger außerhalb der Funkreichweite}
+    \label{fig:Task2aa}
+\end{figure}
+s
+\section{Versendeung ASCII-Zeichen}
+sdaf

@@ -10,11 +10,17 @@ Die Jumpers sind auf der Abbildung \ref{fig:Tranceiver-Platine} zu sehen.
     \caption{Tranceiver-Platine mit Jumpern J1 und J2. Quelle: vgl. Litertaturverzeichnis \cite{SchaltplanPCBV4}: Schaltpläne der Platine V4}
     \label{fig:Tranceiver-Platine}
 \end{figure}
-\subsection{Funktion der Jumper auf der Tranceiver-Platine}
-\subsubsection{J1}
-Der J1 hat die Funktion, den Trasmitter abzuschalten. Wenn der Jumper J1 gesteckt ist, wird der Modul des Transmitters überbrückt.
-\subsubsection{J2}
-Der J2 hat die Funktion, den Receiver abzuschalten. Wenn der Jumper J2 gesteckt ist, wird der Modul des Receivers überbrückt. 
+\subsection{Funktion der Jumper}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Pictures/JumperSchaltung.png}
+    \caption{Jumper auf der Tranceiver-Platine}
+    \label{fig:Jumper}
+\end{figure}
+\subsection{J1}
+Der Jumper J1 ist wie im Schaltplan zu sehen, der Schalter der den Oszilator enabled und disabled.
+\subsection{J2}
+Der Jumper J2 ist wie im Schaltplan zu sehen, der Schalter für die Versorgungsspannung des Oszilators.
 
 Es ist auch wichtig zu beachten, dass ohne den Receiver der Transmitter nicht funktionieren kann. Das bedeutet, dass der Jumper J2 immer abgezogen sein muss, damit der Transmitter funktioniert. Dies ist auf die eingeschaften des zur Verfügung stehenden Transceiver-Chips zurückzuführen.
 

@@ -60,6 +60,18 @@ Zuletzt sollte man noch erwähnen, dass manchmal ein Paritätsbit zur Verwendung
 Das Paritätsbit kann jedoch nur ein einziges gekipptes (also falsch übertragenes) Bit erkennen, aber nicht korrigieren. Es kann auch nicht erkennen, ob zwei oder mehr Bits gekippt wurden. Daher ist es in der Praxis nicht sehr verbreitet und wird oft weggelassen.\footnote{Vgl. ebenda}
 
 Bei unserer tatsächlichen Schaltung liegt auch ein Standard-UART-Protokoll vor, das eine Baudrate von 115200 Baud und eine Datenübertragung von 8 Datenbits, 1 Stoppbit und ohne Paritätsbit verwendet. Man erkennt auch den Ruhezustand daran, dass bei einem fehlenden Sendesignal die an der Schaltung Diode für "TX" leuchtet, also den HIGH-Pegel anzeigt.
+
+\subsubsection{Betriebsarten von UART}
+Es gibt insgesamt drei Arten vom Betrieb des UART-Protokolls:
+\begin{enumerate}
+    \item \textbf{Simplex-Betrieb}: die Daten werden nur in eine Richtung gesendet.
+    \item \textbf{Halbduplex-Betrieb}: jede Seite sendet, aber nicht zur selben Zeit.
+    \item \textbf{Vollduplex-Betrieb}: beide Seiten können gleichzeitig senden.
+\end{enumerate}
+
+Theoretisch wäre bei dem vorliegenden Versuchaufbau ein Vollduplex-Betrieb zwar möglich, jedoch ist das in der Praxis für die Anwendung nicht sinnvoll gewesen, weswegen das UART-Protokoll im Simplex-Betrieb ausgeführt wurde.
+Trotzdem muss man erwähnen, dass der Sender die Sendedaten aufgrund der Jumperkonfiguration auch die Daten selbst empfangen kann.
+
 \subsection{BER}
 Bit Error Rate (BER) oder auf Deutsch Bitfehlerrate ist eine Angabe, die die
 Anzahl der falsch empfangenen Bits ins Verhältnis zu den insgesamt empfangenen Bits setzt.

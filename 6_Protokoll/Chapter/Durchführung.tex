@@ -9,8 +9,8 @@ Die beiden Platinen haben folgende Spezifikationen (\textcolor{red}{X} steht hie
         \hline
          & J1 & J2 & Funktion \\
         \hline
-        Platine A & \textcolor{red}{X} & \textcolor{red}{X} & Sender \\
-        Platine B &\textcolor{red}{X} & \textcolor{green}{\textbf{\checkmark}} & Empfänger \\
+        Platine A & \textcolor{red}{X} & \textcolor{green}{\checkmark} & Sender \\
+        Platine B &\textcolor{red}{X} & \textcolor{red}{x} & Empfänger \\
         \hline
     \end{tabular}
     \caption{Spezifikationen der beiden Platinen}
@@ -56,8 +56,35 @@ Und mit Hterm wieder ausgelesen.
 Wichtig in dieser Prozedur war das verbinden beider Jumper an der Sender Platine und das entfernen beider
 Jumper an der Empfänger Platine. 
 Wären die Jumper bei der Empfänger Platine verbunden gewesen, wäre das problem das die Platine auch 
-ein Signal gesendet hätte und dieses auch wieder empfangen hätte
+ein Signal gesendet hätte und dieses auch wieder empfangen hätte.
 
+\section{BER-Messung}
+Nun werden beide Platinen mit einem Computer verbunden. Anschließend wird das zur Verfügung gestellte
+Matlab-Skript \texttt{BER\_Measurement.m} genutzt um eine Bit-Error-Analyse der Verbindung durchzuführen.
+Zuerst werden die Platinen so ausgerichtet, dass sich die Antennen parallel zueinander befinden und sich berühren.
+Aus dieser Position aus wird die Übertragungsstrecke schrittweis in 1chm Schritten inkremenitert und die BER dokumentiert.
+
+\begin{table}[h!]
+    \centering
+        \begin{tabular}{c|c|c}
+             & BER A $\rightarrow$ B & BER A $\rightarrow$ B \\
+            \hline
+             &  &  \\
+            \hline
+             &  &  \\
+            \hline
+             &  &  \\
+            \hline
+             &  &  \\
+            \hline
+             &  &  \\
+            \hline
+             &  &  \\
+            \hline
+             &  &  \\
+        \end{tabular}
+        \caption{Tabelle mit 3 Spalten und 7 Zeilen}
+    \end{table}
 
 
 \section{Bildübertragung über Funkverbindung}

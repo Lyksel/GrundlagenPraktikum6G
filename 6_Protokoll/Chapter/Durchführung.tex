@@ -1,7 +1,7 @@
 \section{Platine A als Single-Tone Sender}
 Für den ersten Teil des Versuchs werden zwei identische Tranceiver Platinen verwendet, die bereits im Verlauf dieses Praktikums genauer betrachtet wurden.
 Die beiden Platinen haben folgende Spezifikationen (\textcolor{red}{X} steht hierbei dafür das der Jumper enfernt ist, 
-\textcolor{green}{\checkmark} das der Jumper gesetzt ist):
+\textcolor{green}{\checkmark} das der Jumper gesetzt ist):\\ 
 
 \begin{table}[h!]
     \centering
@@ -17,23 +17,37 @@ Die beiden Platinen haben folgende Spezifikationen (\textcolor{red}{X} steht hie
     \end{table}
 Die folgenden Abbildungen 4.1 und 4.2 zeigen auf der linken Seite die Platine B als Empfänger und auf der rechten Seite
 die Platine A als Sender. Die (äußeren Lampen an USB Port) beiden Lampen XX leuchten sobald eine Versorgungsspannung
-anliegt. Ist der Sender und Empfänger innerhalb der Funkreichweite, so leuchtet weder die Lampe TX (Transmitting), noch die Lampe RX () am Sender und Empfänger.
+anliegt. Sind Sender und Empfänger innerhalb der Funkreichweite, so leuchtet weder die Lampe TX (eng. transmitting: senden), noch die Lampe RX (eng. receiving: empfangen) am Sender und Empfänger.
 Ist die Funkreichweite überschritten, so leuchtet die Lampe RX am Sender, die Lampe TX leuchtet nicht. Die Lampen
-TX und RX am Empfänger sind unverändert.
+TX und RX am Empfänger leuchten weiterhin nicht. Der Versuch bestätigt hiermit unser Grundlegendes Verständnis 
+der Schaltung.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{Pictures/Task2a.png}
+    \includegraphics[width=0.8\textwidth]{Pictures/Task2aa.jpg}
     \caption{Sender und Empfänger innerhalb der Funkreichweite}
-    \label{fig:Task2a}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{Pictures/Task2aa.png}
-    \caption{Sender und Empfänger außerhalb der Funkreichweite}
     \label{fig:Task2aa}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Pictures/Task2a.jpg}
+    \caption{Sender und Empfänger außerhalb der Funkreichweite}
+    \label{fig:Task2a}
+\end{figure}
+Nun betrachten wir die Funkreichweite der Platinen genauer. Diese Messung führen wir auf zwei unterschiedliche
+Arten durch. Einmal wird der Abstand der beiden Antennen innerhalb der Funkreichweiter erhöht bis der Kontakt
+abbricht. Dann wird der Abstand der Antennen außerhalb der Funkreichweite verringert bis der Kontakt wieder
+hergestellt ist. Zuerst wurd eine Funkreichweite von $d_{TR,1}=9cm$ gemessen. Auf die zweite Art wurde eine
+Funkreichweite von $d_{TR,2}=8cm$ gemessen. Dies kann auf das Schwellverhalten des Empfängers (Hysterese-Effekt)
+zurückzuführen sein (Evtl. erwähnung in Grundlagen). 
+Ein schwaches Signal kann noch von der Platine B empfangen werden, wobei die Verbindung zu unzureichend ist um 
+initial erkannt zu werden.\\
+Die maximale Funkreichweite der Platinen um Signale sicher auszuwerten beträgt somit $d_{TR,max}=8cm$.
+\\
+Nun wird der Versuch wiederholt, jeodoch wird die Funktion der Platinen getauscht. Wie zu erwarten ist das Ergbenis
+im Rahmen der Messungenauigkeit identisch. Die Funkreichweite beträgt enfalls $d_{TR,1}=9cm$ und $d_{TR,2}=8cm$ und 
+hat somit ebenfalls eine maximale Funkreichweite der Platinen um sicher Signale auszuwerten von $d_{TR,max}=8cm$.
 
 \subsection{Plantinen am Computer anschließen}
 Nur wurde die Eine Platine am Computer angeschlossen und die andere Platine an den Laptop.

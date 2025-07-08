@@ -53,6 +53,33 @@ Zuletzt sollte man noch erwähnen, dass manchmal ein Paritätsbit zur Verwendung
 Das Paritätsbit kann jedoch nur ein einziges gekipptes (also falsch übertragenes) Bit erkennen, aber nicht korrigieren. Es kann auch nicht erkennen, ob zwei oder mehr Bits gekippt wurden. Daher ist es in der Praxis nicht sehr verbreitet und wird oft weggelassen.\footnote{Vgl. ebenda}
 
 Bei unserer tatsächlichen Schaltung liegt auch ein Standard-UART-Protokoll vor, das eine Baudrate von 115200 Baud und eine Datenübertragung von 8 Datenbits, 1 Stoppbit und ohne Paritätsbit verwendet. Man erkennt auch den Ruhezustand daran, dass bei einem fehlenden Sendesignal die an der Schaltung Diode für "TX" leuchtet, also den HIGH-Pegel anzeigt.
+\subsection{BER}
+Bit Error Rate (BER) oder auf Deutsch Bitfehlerrate ist eine Angabe, die die
+Anzahl der falsch empfangenen Bits ins Verhältnis zu den insgesamt empfangenen Bits setzt.
+\begin{equation}
+    BER = \frac{N_{\text{Anzahl fehlerhaft empfangener Bits}}}{N_{\text{Anzahl empfangener Bits}}}
+\end{equation}
+\subsection{Beispiel}
+Wir betrachten ein Beispiel: Folgende Sequenz wird gesendet:
+\begin{equation}
+    10111001
+\end{equation}
+Empfangen wurde aber:
+\begin{equation}
+      10\textcolor{red}{0}1\textcolor{red}{0}0\textcolor{red}{1}1
+\end{equation}
+Es ist schnell zu erkennen, dass hier drei Bit Falsch empfangen  wurden.
+Die Bitfehlerrate beträgt in diesem Fall:
+\begin{equation}
+    BER = \frac{3}{8} = 0,375
+\end{equation}
+\subsubsection{Matlab}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Pictures/einlesenMatlab.png}
+    \caption{Beispiel für MATLAB-Code}
+    \label{fig:matlab_example}
+\end{figure}
 
 \section{Pegelplanrechnung}
 \subsection{Rekapitulation des Link-Budgets}

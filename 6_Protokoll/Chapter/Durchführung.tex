@@ -85,6 +85,28 @@ Aus dieser Position aus wird die Übertragungsstrecke schrittweis in 1chm Schrit
         \end{tabular}
         \caption{Tabelle mit 3 Spalten und 7 Zeilen}
     \end{table}
+\section{Platinen am Computer anschließen}
+Nun wurde eine Platine an den Computer angeschlossen und die andere Platine an den Laptop.
+Mithilfe von Hterm werden Daten in Form von ASCII-Zeichen von der einen Platine an die andere gesendet
+und mit Hterm wieder ausgelesen.
+Wichtig in dieser Prozedur war das Verbinden beider Jumper an der Sender-Platine und das Entfernen beider
+Jumper an der Empfänger-Platine. 
+Wären die Jumper bei der Empfänger-Platine verbunden gewesen, wäre das Problem gewesen, dass die Platine auch 
+ein Signal gesendet hätte und dieses auch wieder empfangen hätte, was unerwünscht ist.
+In der Praxis konnten wir mit diesem Setup eine nutzbare Reichweite von etwa 7,5 cm erreichen.
+
+\section{Interessante/Witzige Beobachtung}
+Als wir die Messung von Task4 durchgeführt haben und dann bei größeren Entfernungen kein Signal mehr erfasst hatten,
+haben wir aus Spaß einen Samsung-Pen auf beide Antennen gelegt und aufeinmal konnten wir wieder Signale empfangen.
+Ein möglicher Grund dafür könnte sein, dass der Samsung-Pen metallische Bestandteile enthält,
+die die EM-Welle besser leiten als Luft.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{Pictures/stift.png}
+    \caption{Samsung Pen auf Antenne}
+\end{figure}
+
 
 
 \section{Bildübertragung über Funkverbindung}

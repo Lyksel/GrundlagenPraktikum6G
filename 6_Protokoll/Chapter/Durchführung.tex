@@ -9,8 +9,8 @@ Die beiden Platinen haben folgende Spezifikationen (\textcolor{red}{X} steht hie
         \hline
          & J1 & J2 & Funktion \\
         \hline
-        Platine A & \textcolor{red}{X} & \textcolor{green}{\checkmark} & Sender \\
-        Platine B &\textcolor{red}{X} & \textcolor{red}{\textbf{X}} & Empfänger \\
+        Platine A & \textcolor{red}{X} & \textcolor{red}{X} & Sender \\
+        Platine B &\textcolor{red}{X} & \textcolor{green}{\textbf{\checkmark}} & Empfänger \\
         \hline
     \end{tabular}
     \caption{Spezifikationen der beiden Platinen}
@@ -69,3 +69,82 @@ die die EM-Welle besser leiten als Luft.
     \includegraphics[width=0.4\textwidth]{Pictures/stift.png}
     \caption{Samsung Pen auf Antenne}
 \end{figure}
+
+
+
+\section{Bildübertragung über Funkverbindung}
+Zu guter Letzt wird eine Bildübertragung eine sehr kurze Funkstrecke durchgeführt. Das folgende Originalbild wird hierbei übertragen:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Pictures/meme.jpg}
+    \caption{Das zu übertragende Originalbild}
+    \label{fig:Task2b}
+\end{figure}
+
+Das Bild wird als eine Ansammlung von ASCII-Zeichen übertragen, da eine Übertragung als Bild im Originalformat (.png) aus technischen Gründen nicht möglich ist.
+Ein eher verbreiteter Format der binären Bilderübertragung ist das Base64-Format. Jedoch kann dieses nicht hier verwendet werden, das es nicht zur Verfügung steht.
+
+\subsection{Übertragung bei sehr kurzer Funkstrecke}
+Ein Ausschnitt aus der Sammlung der ASCII-Zeichen, die übertragen wurde, ist in Abbildung \ref{fig:Task2c} zu sehen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Pictures/memeASCII.png}
+    \caption{Das übertragene Bild in ASCII-Darstellung}
+    \label{fig:Task2c}
+\end{figure}
+
+In dem Format ist die Datei für den Menschen nicht lesbar, da sie aus einer Vielzahl von Zeichen besteht, die nicht direkt interpretiert werden können. 
+Die Änderung der Dateierweiterung in .png stellt sicher, dass das Bild tatsächlich als ein Bild dargestellt wird. 
+
+Die Datei lässt sich hierbei bei einer sehr kurzen Funkstrecke problemlos öffnen, was davon überzeugt, dass die Fehlerbitrate bei einer geringen bzw. gar nicht vohandenden Distanz zwischen Sender und Empfänger sehr gering ist.
+
+\subsection{Übertragung bei größerer Funkstrecke}
+Wird jetzt aber einge längere Funkstrecke zwischen Sender und Empfänger gewählt, so ändert sich das Verhalten der Übertragung. 
+
+Es stellte sich in der Praxis heraus, dass die Übertragungsqualität bei einer größeren Funkstrecke deutlich abnimmt, nämlich quadratisch mit der Entfernung.
+
+In der Abbildung \ref{fig:Task2d} sind die Bilder zu sehen, die mit kleiner werdender Funkstrecke übertragen wurden.
+\begin{figure}[H]
+    \begin{minipage}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Pictures/grosserAbstand.jpg}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Pictures/wenigergrosserabstand.jpg}
+        \end{minipage}
+
+        \vspace{0.5cm}
+
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Pictures/nochwenigergrosserabstand.jpg}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Pictures/kleinerabstand.jpg}  
+        \end{minipage}   
+    \caption{Das übertragene Bild bei verschiendenen Funkstrecken}
+    \label{fig:Task2d} 
+    \end{figure}
+
+
+Man sieht deutlich, dass die Übertragung bei größerer Funkstrecke zu Störungen führt, die sich in Form von fehlenden Pixeln im Bild äußern. 
+In der Praxis war die Änderung des Abstands im Bild 4 relativ zu Bild 3 vegleichsweise klein, hatte jedoch eine massive Verbesserung der Übertragungsqualität zur Folge, 
+welche sich mathematisch durch den Gewinn $G$ ausdrücken lässt: 
+\begin{equation}
+    G = \frac{P_\text{TX}}{P_\text{RX}}
+\end{equation}
+wobei $P_\text{TX}$ die von der Antenne auf der Senderseite abgestrahlte Leistung und $P_\text{RX}$ die der Antenne auf der Empfängerseite zugeführte Leistung ist.
+\clearpage
+Bewegt man die Platinen während der Übertragung, so kann es zu Störungen kommen, die die Übertragung beeinträchtigen. Das Ergebnis der Bildübertragung ist dann das folgende:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Pictures/memeASCIIbewegt.jpg}
+    \caption{Das übertragene Bild in ASCII bei bewegten Platinen}
+    \label{fig:Task2e}
+\end{figure}
+Bei der oberen Darstellung ist zu beachten, dass aufgrund der LaTeX-Formatierung das Bild im unteren Teil, das nicht korrekt übertragen wurde, schwarz gefärbt ist. Der untere Teil müsste aber weiß sein, da dies die automatische Hintergrundfarbe von inkorrekt übertragenen Zeichen ist. 

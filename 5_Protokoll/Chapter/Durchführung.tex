@@ -34,7 +34,6 @@ bei etwas $0,45~dB$, daraus ergibt sich eine Sendeleistung von $-6,25,~dBm$.
 Die Spannung am Kondensator C22 wird mit einem Multimeter gemessen. Die Ergebnisse in Abhängigkeit der Dämpfung und Empfangsleistung sind in Tabelle \ref{tab:spannung} zu sehen.
 \begin{table}[H]
     \centering
-    \caption{Messwerte der Spannung am Kondensator C22}
     \begin{tabular}{|c|c|c|}
         \hline
         Dämpfungsglied  & Empfangene Leistung [dBm] & Spannung am C22 [mV] \\ \hline
@@ -46,6 +45,7 @@ Die Spannung am Kondensator C22 wird mit einem Multimeter gemessen. Die Ergebnis
         20 dB + Kabel   & -26,683 & 368,90                 \\ \hline
         26 dB + Kabel   & -32,683 & 368,27                 \\ \hline
     \end{tabular}
+    \caption{Messwerte der Spannung am Kondensator C22}
     \label{tab:spannung}
 \end{table}
 
@@ -55,14 +55,44 @@ Wie man der Tabelle \ref{tab:spannung} entnehmen kann, fällt die Spannung am Ko
 Insgesamt stellt es sich heraus, dass diese Schaltung wie ein HF-Detektor (Schwellenwertdetektor) funktioniert. Das eingehende Hochfrequenzsignal wird gleichgerichtet und die DC-Spannung am Kondensator C22 ist proportional zur Leistung des eingehenden Signals,
 also \( P \propto V_\text{in}^2 \), wobei \( V_\text{in} \) die Eingangsspannung ist. Die Beziehung zwischen der Spannung am Kondensator und der Leistung des eingehenden Signals ist quadratisch. Das liegt daran, dass das Eingangssignal des Empfängers hoch genug dafür ist, dass er insgesamt im linearen Bereich arbeitet. 
 
-Hier sind jedoch einige Effekte zu beachten, die die Übertragungsfunktion beeinflussen können. Erstens fließt aufgrund der Arbeitspunkteinstellung des Transistors Q21 ein Strom durch den Widerstand R26. Die entsprechende Spannung beträgt ungefähr $368,27~mV$ und muss aus der Beziehung herausgerechnet werden, um die Übertragungsfunktion zu erhalten. Außerdem ist eine den Bauteilen der Schaltung charakteristische Konstante \( k \) zu berücksichtigen, die die Übertragungsfunktion beeinflusst. Diese Konstante kann experimentell bestimmt werden.
+Hier sind jedoch einige Effekte zu beachten, die die Übertragungsfunktion beeinflussen können. Erstens fließt aufgrund der Arbeitspunkteinstellung des Transistors Q21 ein Strom durch den Widerstand R26. Die entsprechende Spannung \textbf{$V_\text{offset}$} beträgt ungefähr $368,27~mV$ und muss aus der Beziehung herausgerechnet werden, um die Übertragungsfunktion zu erhalten. Außerdem ist eine den Bauteilen der Schaltung charakteristische Konstante \( k \) zu berücksichtigen, die die Übertragungsfunktion beeinflusst. Diese Konstante kann experimentell bestimmt werden.
 
 Die Übertragungsfunktion des Empfängers kann also wie folgt dargestellt werden:
 \begin{equation}
     V_\text{out} = k \cdot \sqrt{P_\text{in}} - V_\text{offset}
+    \label{eq:uebertragungsfunktion}
 \end{equation}
 wobei \( V_\text{offset} \) die Spannung am Widerstand R26 ist, die den Arbeitspunkt des Transistors Q21 festlegt. 
 
+Hier möchten wir den Wert von $k$ für unterschiedliche Eingangsleistungen und dadurch auch Ausgangsspannungen ausrechnen. Dafür stellen wir die Gleichung \ref{eq:uebertragungsfunktion} nach $k$ um. Es ergibt sich die folgende Gleichung:
+\begin{equation}
+    k = \frac{V_\text{out} + V_\text{offset}}{\sqrt{P_\text{in}}}
+    \label{eq:k}
+\end{equation}
+
+Setzt man die in der Tabelle \ref{tab:spannung} berechneten werte in die Gleichung \ref{eq:k} ein, so ergeben sich folgende Werte:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Dämpfungsglied  & Empfangene Leistung [mW] & Spannung am C22 [mV] & k [$\frac{V}{\sqrt{mW}}$] \\ \hline
+        0 dB + Kabel   & 0,215 & 386,47 & 1,63\\ \hline
+        3 dB + Kabel   & 0,107 & 383,20 & 2,30\\ \hline
+        6 dB + Kabel   & 0,054 & 379,85 & 3,22\\ \hline
+        10 dB + Kabel  & 0,021 & 375,10 & 5,13\\ \hline
+        13 dB + Kabel  & 0,011 & 372,90 & 7,07\\ \hline
+        20 dB + Kabel  & 0,0022 & 368,90 & 15,72\\ \hline
+        26 dB + Kabel  & 0,0005 & 368,27 & 32,94\\ \hline
+    \end{tabular}
+    \caption{Messwerte der Spannung am Kondensator C22}
+    \label{tab:spannung}
+\end{table}
+
+Rechnet man den das arithmetische Mittel von $k$ aus, ergibt sich der folgende Wert:
+\begin{equation}
+    k = 9,72 \frac{V}{\sqrt{mW}}
+\end{equation}
 \section{Operationsverstärkerschaltung} %Lukas
 Der DC-Arbeitspunkt, wenn kein Signal anliegt, konnte messtechnisch auf etwa $365mV$ bestimmt werden.
 \\

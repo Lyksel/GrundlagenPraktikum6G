@@ -28,20 +28,23 @@ Die DC-Spannung am Kondensator C22 wird jetzt auf der Empfängerplatine gemessen
     \caption{Versuchsaufbau zur Vermessung der Spannung am Kondensator C22}
     \label{fig:versuchsaufbau2}
 \end{figure}
-Die Spannung am Kondensator C22 wird mit einem Multimeter gemessen. Die Ergebnisse sind in Tabelle \ref{tab:spannung} zu sehen.
+Um die Spannung am Kondensator C22 in Abhängigkeit der Eingangsleistung zu bestimmen, benötigen wir die Sendeleistung des Senders,
+aus Abbildung \ref{fig:sender} ist die Leistung bei 1.25 GHz bei etwa $-6,7~dBm$.Nach Versuch 1 ist die Dämpfung des Koaxialkabels
+bei etwas $0,45~dB$, daraus ergibt sich eine Sendeleistung von $-6,25,~dBm$.
+Die Spannung am Kondensator C22 wird mit einem Multimeter gemessen. Die Ergebnisse in Abhängigkeit der Dämpfung und Empfangsleistung sind in Tabelle \ref{tab:spannung} zu sehen.
 \begin{table}[H]
     \centering
     \caption{Messwerte der Spannung am Kondensator C22}
-    \begin{tabular}{|c|c|}
+    \begin{tabular}{|c|c|c|}
         \hline
-        Dämpfungsglied & Spannung am C22 [mV] \\ \hline
-        0 dB            & 386,47                 \\ \hline
-        3 dB            & 383,20                 \\ \hline
-        6 dB            & 379,85                 \\ \hline
-        10 dB           & 375,10                 \\ \hline
-        13 dB           & 372,90                 \\ \hline
-        20 dB           & 368,90                 \\ \hline
-        26 dB           & 368,27                 \\ \hline
+        Dämpfungsglied  & Empfangene Leistung [dBm] & Spannung am C22 [mV] \\ \hline
+        0 dB + Kabel    & -6,7 & 386,47                 \\ \hline
+        3 dB + Kabel    & -9,7 & 383,20                 \\ \hline
+        6 dB + Kabel    & -12,7 & 379,85                 \\ \hline
+        10 dB + Kabel   & -16,7 & 375,10                 \\ \hline
+        13 dB + Kabel   & -19,7 & 372,90                 \\ \hline
+        20 dB + Kabel   & -26,7 & 368,90                 \\ \hline
+        26 dB + Kabel   & -32,7 & 368,27                 \\ \hline
     \end{tabular}
     \label{tab:spannung}
 \end{table}

@@ -123,7 +123,37 @@ Das wurde hier der Übersichtshabler und symmetrie nicht genauer betrachtet.
 
 
 
+
 \section{Pegelplanrechnung}
+Die Idee: Wir wollen schauen wann der abstand noch Reicht um die Daten zu empfangen.
+Das heißt am ender der empfänger Kette muss ein stark genuges Signal ankommen, damit der Komperator schalten kann.
+Damit könnnen wir von hinten nach vorne Rechnen, und herausfinden welche Leistung am empfänge anliegen muss,
+damit der Komperator schalten kann.
+
+Aus Versuch fünf ist die Komperator Schwellspannung die bei etwa $V_{Schwell} = 0,822~V$ liegt bekannt.
+
+Als nächstes können wir mithilfe der Analogverstärker kennlinie bzw. der Übertragungsfunktion die Spannung am Kondensator C22 berechnen.
+Wenn wir ein Ausgangssignal von $V_{out} = 0,822~V$ annehmen, können wir die Eingangsspannung $V_{in}$ berechnen.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{Pictures/memeASCII.png}
+    \caption{Analogverstärker Kennlinie}
+    \label{fig:AnalogverstärkerKennlinie}
+\end{figure}
+Die Formel der Sensititvität des Analogverstärker lautet:
+\begin{equation}
+    V_\text{out} = k \cdot \sqrt{P_\text{in}} - V_\text{offset}
+\end{equation}
+Umgestellt nach $P_\text{in}$ ergibt sich:
+\begin{equation}
+    P_\text{in} = \left(\frac{V_\text{out} + V_\text{offset}}{k}\right)^2
+\end{equation}
+Mit den Empirisch bestimmten Werten:
+\begin{equation}
+    P_\text{in} = \left(\frac{xxxxxxxxxxxxxxxxxxxxxxx~V + 368,27~mV}{9,72~\frac{V}{\sqrt{mW}}}\right)^2
+\end{equation}
+Somit wissen wir nun Welche Leistung am Eingang des Empfängers anliegen muss, damit ein gesendet Signal auch empfangen werden kann.
 \begin{equation}
     P_{TX} = P_{RX} + G_{Antenne} + G_{Antenne}
 \end{equation}

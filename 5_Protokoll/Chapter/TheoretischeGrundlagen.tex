@@ -102,14 +102,41 @@ Für die gegebene Schaltung in Abbildung 2.4 gilt:
 \end{itemize}
 Somit ergibt sich die Transferfunktion von:
 \begin{equation}
-    \frac{U_{out}}{U_{in}} = 1 + \frac{R_f}{R_{in}} = 1 + \frac{R_{31}}{R_{29}\parallel R_{30}}=\frac{(R_{29} \parallel R_{30}+R_{31})}{R_{29}\parallel R_{30}}
+    V = \frac{U_{out}}{U_{in}} = 1 + \frac{R_f}{R_{in}} = 1 + \frac{R_{31}}{R_{29}\parallel R_{30}}=\frac{(R_{29} \parallel R_{30}+R_{31})}{R_{29}\parallel R_{30}}
 \end{equation}
 Die eingesetzten Widerstandswerte ergeben den Übertragungsfaktor:
 \begin{equation}
-    \frac{U_{out}}{U_{in}} = 1 + \frac{6,8\,\mathrm{k}\Omega}{(11\,\mathrm{k}\Omega \parallel 1,1\,\mathrm{k}\Omega)} = 7,8
+    V = \frac{U_{out}}{U_{in}} = 1 + \frac{6,8\,\mathrm{k}\Omega}{(11\,\mathrm{k}\Omega \parallel 1,1\,\mathrm{k}\Omega)} = 7,8
 \end{equation}
+Für den weiteren Verlauf Versuches wird die Ausgangsspannung in Abhängigkeit der der Eingangsspannung
+benötigt. Diese lautet:
+
+\begin{equation}
+    U_{\text{out}}(U_{\text{in}}) = V \cdot U_{\text{in}} - U_{\text{offset}}
+\end{equation}
+
+Das Offset ergibt sich wie folgt:
+
+\begin{equation}
+    U_{\text{offset}} = U_{\text{offset,Quelle}} \cdot \left( \frac{R_{30} \parallel R_{31} + R_{29}}{R_{30} \parallel R_{31}} \right) \cdot \left( \frac{R_{29} \parallel R_{30}}{R_{29} \parallel R_{30} + R_{31}} \right)
+\end{equation}
+
+mit $U_{\text{offset, Quelle}}$= 3,3V erhält man durch Einsetzten der Widerstandswerte:
+\begin{equation}
+    U_{\text{offset}} = 2{,}04\,\mathrm{V}
+\end{equation}
+Somit erhält man für die Ausgangsspannung in Abhängigkeit der Eingangsspannung:
+\begin{equation}
+    U_{\text{out}}(U_{\text{in}}) = 7{,}8 \cdot U_{\text{in}} - 2{,}04\,\mathrm{V}
+\end{equation}
+
+
+
+
+
 R29 ist wichtig zum einen für die DC-Arbeitspunkteinstellung des OPs, wenn kein Signal angelegt ist, da er dort mit R30 einen Spannungsteiler bildet.
 Wird ein Signal angelegt, so ist R29 vor allem wichtig für das Einstellen der Verstärkung.
+
 
 \section{Komparatorschaltung} %Erik 6 a und b
 

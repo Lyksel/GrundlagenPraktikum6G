@@ -111,7 +111,7 @@ Messwerte gezeigt.
 \centering
 \begin{tabular}{|c|c|}
 \hline
-$V_{\text{in}}$ (V) & $V_{\text{out}}$ (mV) \\
+$V_{\text{in}}$ (V) & $V_{\text{out}}$ (V) \\
 \hline
 0{,}9 & 0{,}15571 \\
 1{,}0 & 0{,}24478 \\
@@ -127,11 +127,12 @@ Bei genauer Betrachtung der Messwerte wurde offensichtlich, dass die Platine bes
 statt. Daher werden nun im weiteren Verlauf zwei Messungen betrachtet. Eine Messung ohne Verstärkung und eine Messung mit Verstärkung, die von 
 unseren Kommilitonen durchgeführt wurde. Hier werden etwas mehr Messwerte zu einer groben Veranschaulichung benötigt. \\
 
+
 \begin{table}[h]
 \centering
 \begin{tabular}{|c|c|}
 \hline
-$V_{\text{in}}$ (V) & $V_{\text{out}}$ (mV) \\
+$V_{\text{in}}$ (V) & $V_{\text{out}}$ (V) \\
 \hline
 0{,}9 & 0{,}039 \\
 1{,}0 & 0{,}047\\
@@ -145,6 +146,16 @@ $V_{\text{in}}$ (V) & $V_{\text{out}}$ (mV) \\
 \end{tabular}
 \caption{Messwerte von $V_{\text{in}}$ und $V_{\text{out}}$ mit Verstärkung}
 \end{table}
+Neu: Diese Messwerte sind jedoch in dieser Form noch nicht weiter verwertbar für den weiteren Verlauf 
+des Praktikums. Wenn wir die über die Diode Q21 abfallende Spannung $U_{\text{D}}$ von der gemessenen
+Spannung abziehen, erhalten wir die Spannung die am Eingang unseres Operationsverstärkers anliegt.
+Diese erhält man wenn man den DC-Arbeitspunkt, wenn kein Signal anliegt, in die Formel zur Ausgangsspannung
+in Ábhängigkeit von der Eingangsspannung einsetzt.
+Die Ausgangsspannung $U_\text{out}$ ohne Signal berechnet sich zu:
+\[
+U_\text{out,0} = 7{,}8 \cdot 0{,}365\,\text{V} - 2{,}04\,\text{V} = 0{,}807\]
+Dies ist genauer als die Spannung $U_\text{D'}$ die 
+Dies liegt nahe an der in der Aufgabenstellung angenommenen Dioden-Flussspannung $U_\text{D'} = 0,8V$,
 \clearpage
 In Abbildung 4.4 ist die Transferfunktion $V_{out}/V_{in}$ dargestellt. Die geplotete Transferfunktion wurde
 unter Berücksichtigung aller Messwerte erstellt.\\

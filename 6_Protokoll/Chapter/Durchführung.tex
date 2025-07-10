@@ -1,7 +1,7 @@
 \section{Platine A als Single-Tone Sender}
-Für den ersten Teil des Versuchs werden zwei identische Tranceiver Platinen verwendet, die bereits im Verlauf dieses Praktikums genauer betrachtet wurden.
-Die beiden Platinen haben folgende Spezifikationen (\textcolor{red}{X} steht hierbei dafür das der Jumper enfernt ist, 
-\textcolor{green}{\checkmark} das der Jumper gesetzt ist):\\ 
+Für den ersten Teil des Versuchs werden zwei identische Transceiver-Platinen verwendet, die bereits im Verlauf dieses Praktikums genauer betrachtet wurden.
+Die beiden Platinen haben folgende Spezifikationen (\textcolor{red}{X} steht hierbei dafür, dass der Jumper entfernt ist, 
+\textcolor{green}{\checkmark} dass der Jumper gesetzt ist):\\ 
 
 \begin{table}[h!]
     \centering
@@ -16,10 +16,10 @@ Die beiden Platinen haben folgende Spezifikationen (\textcolor{red}{X} steht hie
     \caption{Spezifikationen der beiden Platinen}
     \end{table}
 Die folgenden Abbildungen 4.1 und 4.2 zeigen auf der linken Seite die Platine B als Empfänger und auf der rechten Seite
-die Platine A als Sender. Die (äußeren Lampen an USB Port) beiden Lampen XX leuchten sobald eine Versorgungsspannung
-anliegt. Sind Sender und Empfänger innerhalb der Funkreichweite, so leuchtet weder die Lampe TX (eng. transmitting: senden), noch die Lampe RX (eng. receiving: empfangen) am Sender und Empfänger.
+die Platine A als Sender. Die (äußeren Lampen am USB-Port) beiden Lampen XX leuchten, sobald eine Versorgungsspannung
+anliegt. Befinden sich Sender und Empfänger innerhalb der Funkreichweite, so leuchtet weder die Lampe TX (engl. transmitting: senden) noch die Lampe RX (engl. receiving: empfangen) am Sender und Empfänger.
 Ist die Funkreichweite überschritten, so leuchtet die Lampe RX am Sender, die Lampe TX leuchtet nicht. Die Lampen
-TX und RX am Empfänger leuchten weiterhin nicht. Der Versuch bestätigt hiermit unser Grundlegendes Verständnis 
+TX und RX am Empfänger leuchten weiterhin nicht. Der Versuch bestätigt hiermit unser grundlegendes Verständnis 
 der Schaltung.
 
 \begin{figure}[H]
@@ -36,33 +36,33 @@ der Schaltung.
     \label{fig:Task2a}
 \end{figure}
 Nun betrachten wir die Funkreichweite der Platinen genauer. Diese Messung führen wir auf zwei unterschiedliche
-Arten durch. Einmal wird der Abstand der beiden Antennen innerhalb der Funkreichweiter erhöht bis der Kontakt
-abbricht. Dann wird der Abstand der Antennen außerhalb der Funkreichweite verringert bis der Kontakt wieder
-hergestellt ist. Zuerst wurd eine Funkreichweite von $d_{TR,1}=9cm$ gemessen. Auf die zweite Art wurde eine
-Funkreichweite von $d_{TR,2}=8cm$ gemessen. Dies kann auf das Schwellverhalten des Empfängers (Hysterese-Effekt)
-zurückzuführen sein (Evtl. erwähnung in Grundlagen). 
-Ein schwaches Signal kann noch von der Platine B empfangen werden, wobei die Verbindung zu unzureichend ist um 
+Arten durch. Einmal wird der Abstand der beiden Antennen innerhalb der Funkreichweite erhöht, bis der Kontakt
+abbricht. Dann wird der Abstand der Antennen außerhalb der Funkreichweite verringert, bis der Kontakt wieder
+hergestellt ist. Zuerst wurde eine Funkreichweite von $d_{TR,1}=9\,\text{cm}$ gemessen. Auf die zweite Art wurde eine
+Funkreichweite von $d_{TR,2}=8\,\text{cm}$ gemessen. Dies kann auf das Schwellverhalten des Empfängers (Hysterese-Effekt)
+zurückzuführen sein (evtl. Erwähnung in Grundlagen). 
+Ein schwaches Signal kann noch von der Platine B empfangen werden, wobei die Verbindung zu unzureichend ist, um 
 initial erkannt zu werden.\\
-Die maximale Funkreichweite der Platinen um Signale sicher auszuwerten beträgt somit $d_{TR,max}=8cm$.
+Die maximale Funkreichweite der Platinen, um Signale sicher auszuwerten, beträgt somit $d_{TR,max}=8\,\text{cm}$.
 \\
-Nun wird der Versuch wiederholt, jeodoch wird die Funktion der Platinen getauscht. Wie zu erwarten ist das Ergbenis
-im Rahmen der Messungenauigkeit identisch. Die Funkreichweite beträgt enfalls $d_{TR,1}=9cm$ und $d_{TR,2}=8cm$ und 
-hat somit ebenfalls eine maximale Funkreichweite der Platinen um sicher Signale auszuwerten von $d_{TR,max}=8cm$.
+Nun wird der Versuch wiederholt, jedoch wird die Funktion der Platinen getauscht. Wie zu erwarten, ist das Ergebnis
+im Rahmen der Messungenauigkeit identisch. Die Funkreichweite beträgt ebenfalls $d_{TR,1}=9\,\text{cm}$ und $d_{TR,2}=8\,\text{cm}$ und 
+hat somit ebenfalls eine maximale Funkreichweite der Platinen, um sicher Signale auszuwerten, von $d_{TR,max}=8\,\text{cm}$.
 
-\subsection{Plantinen am Computer anschließen}
-Nur wurde die Eine Platine am Computer angeschlossen und die andere Platine an den Laptop.
-Mithilfe von Hterm werden Daten in Form von ASCII von der einen Platine an die andere gesendet.
-Und mit Hterm wieder ausgelesen.
-Wichtig in dieser Prozedur war das verbinden beider Jumper an der Sender Platine und das entfernen beider
-Jumper an der Empfänger Platine. 
-Wären die Jumper bei der Empfänger Platine verbunden gewesen, wäre das problem das die Platine auch 
+\subsection{Platinen am Computer anschließen}
+Nun wurde die eine Platine am Computer angeschlossen und die andere Platine am Laptop.
+Mithilfe von Hterm werden Daten in Form von ASCII von der einen Platine an die andere gesendet
+und mit Hterm wieder ausgelesen.
+Wichtig in dieser Prozedur war das Verbinden beider Jumper an der Sender-Platine und das Entfernen beider
+Jumper an der Empfänger-Platine. 
+Wären die Jumper bei der Empfänger-Platine verbunden gewesen, wäre das Problem gewesen, dass die Platine auch 
 ein Signal gesendet hätte und dieses auch wieder empfangen hätte.
 
 \section{BER-Messung}
 Nun werden beide Platinen mit einem Computer verbunden. Anschließend wird das zur Verfügung gestellte
-Matlab-Skript \texttt{BER\_Measurement.m} genutzt um eine Bit-Error-Analyse der Verbindung durchzuführen.
+Matlab-Skript \texttt{BER\_Measurement.m} genutzt, um eine Bit-Error-Analyse der Verbindung durchzuführen.
 Zuerst werden die Platinen so ausgerichtet, dass sich die Antennen parallel zueinander befinden und sich berühren.
-Aus dieser Position aus wird die Übertragungsstrecke schrittweis in 1chm Schritten inkremenitert und die BER dokumentiert.
+Aus dieser Position heraus wird die Übertragungsstrecke schrittweise in 1-cm-Schritten inkrementiert und die BER dokumentiert.
 
 \begin{table}[h!]
     \centering
@@ -85,13 +85,13 @@ Aus dieser Position aus wird die Übertragungsstrecke schrittweis in 1chm Schrit
         \end{tabular}
         \caption{Übertragung mit Platine A als Sender und Platine B als Empfänger}
     \end{table}
-In der Messreihe Tabelle 4.2 wurde die Platine A Sender und Platine B als Empfänger konfiguriert.
-Es ist gut zu erkennen dass die BER für einen Abstand von 0-1cm null ist. Im nächsten Zentimeter
-steigt sie auf 0.64 an und ist bereits 1cm später auf 1.00 angestiegen. Das bedeutet eine
+In der Messreihe Tabelle 4.2 wurde die Platine A als Sender und Platine B als Empfänger konfiguriert.
+Es ist gut zu erkennen, dass die BER für einen Abstand von 0–1\,cm null ist. Im nächsten Zentimeter
+steigt sie auf 0,64 an und ist bereits 1\,cm später auf 1,00 angestiegen. Das bedeutet eine
 hundertprozentige Fehlerbitrate.\\
 
 Nun wurde die Messung mit den Platinen getauscht, sodass Platine B als Sender und Platine A als Empfänger fungiert. Die Ergebnisse
-sind in der Tabelle 4.3 zu sehen.
+sind in Tabelle 4.3 zu sehen.
 \begin{table}[h!]
     \centering
         \begin{tabular}{c|c}
@@ -115,8 +115,8 @@ sind in der Tabelle 4.3 zu sehen.
     \end{table}
     \\
     
-Hier ist der Bitratefehler bis zu einem Abstand von 3cm null. Steigt bei 4cm auf 0.03 an und ist
-danach auf hundertprozent angestiegen.\\
+Hier ist der Bitfehler bis zu einem Abstand von 3\,cm null. Er steigt bei 4\,cm auf 0,03 an und ist
+danach auf hundert Prozent angestiegen.\\
 Zum besseren Vergleich sind die Messwerte zusätzlich in Abbildung 4.3 grafisch dargestellt.
 
 \begin{figure}[H]
@@ -125,12 +125,11 @@ Zum besseren Vergleich sind die Messwerte zusätzlich in Abbildung 4.3 grafisch 
     \caption{Vergleich BER-Messung der Platinen}
 \end{figure}
 
-Der BER von der Empfänger- zu der Senderplatine wird ebenfalls aufgezeichnet. Dieser ist jedoch
-immer ein hundertprozentiger Fehler, da nichts übertragen????? wird.
-Man kann erkennen, dass beide Platinen alles andere als optimal sind für die Datenübertragung sind und
-das sie auch untereinander erhebliche unterschiede aufweisen. Die Konfiguration mit Platine B als Sender und A als Antenne erreicht jedoch
-das bestmöglichste Ergebnis. isch kann so net arbeita zefix nommol iafüsdkafsdfjaskfas
-
+Der BER von der Empfänger- zur Senderplatine wird ebenfalls aufgezeichnet. Dieser ist jedoch
+immer ein hundertprozentiger Fehler, da nichts übertragen wird.
+Man kann erkennen, dass beide Platinen alles andere als optimal für die Datenübertragung sind und
+dass sie auch untereinander erhebliche Unterschiede aufweisen. Die Konfiguration mit Platine B als Sender und A als Empfänger erreicht jedoch
+das bestmögliche Ergebnis.
 
 \section{Platinen am Computer anschließen}
 Nun wurde eine Platine an den Computer angeschlossen und die andere Platine an den Laptop.
@@ -140,11 +139,11 @@ Wichtig in dieser Prozedur war das Verbinden beider Jumper an der Sender-Platine
 Jumper an der Empfänger-Platine. 
 Wären die Jumper bei der Empfänger-Platine verbunden gewesen, wäre das Problem gewesen, dass die Platine auch 
 ein Signal gesendet hätte und dieses auch wieder empfangen hätte, was unerwünscht ist.
-In der Praxis konnten wir mit diesem Setup eine nutzbare Reichweite von etwa 7,5 cm erreichen.
+In der Praxis konnten wir mit diesem Setup eine nutzbare Reichweite von etwa 7,5\,cm erreichen.
 
 \section{Interessante/Witzige Beobachtung}
-Als wir die Messung von Task4 durchgeführt haben und dann bei größeren Entfernungen kein Signal mehr erfasst hatten,
-haben wir aus Spaß einen Samsung-Pen auf beide Antennen gelegt und aufeinmal konnten wir wieder Signale empfangen.
+Als wir die Messung von Task 4 durchgeführt haben und dann bei größeren Entfernungen kein Signal mehr erfasst hatten,
+haben wir aus Spaß einen Samsung-Pen auf beide Antennen gelegt und auf einmal konnten wir wieder Signale empfangen.
 Ein möglicher Grund dafür könnte sein, dass der Samsung-Pen metallische Bestandteile enthält,
 die die EM-Welle besser leiten als Luft.
 
@@ -157,7 +156,7 @@ die die EM-Welle besser leiten als Luft.
 
 
 \section{Bildübertragung über Funkverbindung}
-Zu guter Letzt wird eine Bildübertragung eine sehr kurze Funkstrecke durchgeführt. Das folgende Originalbild wird hierbei übertragen:
+Zu guter Letzt wird eine Bildübertragung über eine sehr kurze Funkstrecke durchgeführt. Das folgende Originalbild wird hierbei übertragen:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{Pictures/meme.jpg}
@@ -166,10 +165,10 @@ Zu guter Letzt wird eine Bildübertragung eine sehr kurze Funkstrecke durchgefü
 \end{figure}
 
 Das Bild wird als eine Ansammlung von ASCII-Zeichen übertragen, da eine Übertragung als Bild im Originalformat (.png) aus technischen Gründen nicht möglich ist.
-Ein eher verbreiteter Format der binären Bilderübertragung ist das Base64-Format. Jedoch kann dieses nicht hier verwendet werden, das es nicht zur Verfügung steht.
+Ein eher verbreitetes Format der binären Bilderübertragung ist das Base64-Format. Jedoch kann dieses hier nicht verwendet werden, da es nicht zur Verfügung steht.
 
 \subsection{Übertragung bei sehr kurzer Funkstrecke}
-Ein Ausschnitt aus der Sammlung der ASCII-Zeichen, die übertragen wurde, ist in Abbildung \ref{fig:Task2c} zu sehen.
+Ein Ausschnitt aus der Sammlung der ASCII-Zeichen, die übertragen wurden, ist in Abbildung \ref{fig:Task2c} zu sehen.
 
 \begin{figure}[H]
     \centering
@@ -181,14 +180,14 @@ Ein Ausschnitt aus der Sammlung der ASCII-Zeichen, die übertragen wurde, ist in
 In dem Format ist die Datei für den Menschen nicht lesbar, da sie aus einer Vielzahl von Zeichen besteht, die nicht direkt interpretiert werden können. 
 Die Änderung der Dateierweiterung in .png stellt sicher, dass das Bild tatsächlich als ein Bild dargestellt wird. 
 
-Die Datei lässt sich hierbei bei einer sehr kurzen Funkstrecke problemlos öffnen, was davon überzeugt, dass die Fehlerbitrate bei einer geringen bzw. gar nicht vohandenden Distanz zwischen Sender und Empfänger sehr gering ist.
+Die Datei lässt sich hierbei bei einer sehr kurzen Funkstrecke problemlos öffnen, was davon überzeugt, dass die Fehlerbitrate bei einer geringen bzw. gar nicht vorhandenen Distanz zwischen Sender und Empfänger sehr gering ist.
 
 \subsection{Übertragung bei größerer Funkstrecke}
-Wird jetzt aber einge längere Funkstrecke zwischen Sender und Empfänger gewählt, so ändert sich das Verhalten der Übertragung. 
+Wird jetzt aber eine längere Funkstrecke zwischen Sender und Empfänger gewählt, so ändert sich das Verhalten der Übertragung. 
 
 Es stellte sich in der Praxis heraus, dass die Übertragungsqualität bei einer größeren Funkstrecke deutlich abnimmt, nämlich quadratisch mit der Entfernung.
 
-In der Abbildung \ref{fig:Task2d} sind die Bilder zu sehen, die mit kleiner werdender Funkstrecke übertragen wurden.
+In Abbildung \ref{fig:Task2d} sind die Bilder zu sehen, die mit kleiner werdender Funkstrecke übertragen wurden.
 \begin{figure}[H]
     \begin{minipage}{0.45\textwidth}
             \centering
@@ -211,13 +210,13 @@ In der Abbildung \ref{fig:Task2d} sind die Bilder zu sehen, die mit kleiner werd
             \centering
             \includegraphics[width=\linewidth]{Pictures/kleinerabstand.jpg}  
         \end{minipage}   
-    \caption{Das übertragene Bild bei verschiendenen Funkstrecken}
+    \caption{Das übertragene Bild bei verschiedenen Funkstrecken}
     \label{fig:Task2d} 
     \end{figure}
 
 
 Man sieht deutlich, dass die Übertragung bei größerer Funkstrecke zu Störungen führt, die sich in Form von fehlenden Pixeln im Bild äußern. 
-In der Praxis war die Änderung des Abstands im Bild 4 relativ zu Bild 3 vegleichsweise klein, hatte jedoch eine massive Verbesserung der Übertragungsqualität zur Folge, 
+In der Praxis war die Änderung des Abstands im Bild 4 relativ zu Bild 3 vergleichsweise klein, hatte jedoch eine massive Verbesserung der Übertragungsqualität zur Folge, 
 welche sich mathematisch durch den Gewinn $G$ ausdrücken lässt: 
 \begin{equation}
     G = \frac{P_\text{TX}}{P_\text{RX}}
@@ -236,4 +235,4 @@ Bei der oberen Darstellung ist zu beachten, dass aufgrund der LaTeX-Formatierung
 \subsection{Abhilfemaßnahmen zur Verbesserung trotz Bitfehler}
 Eine Möglichkeit zur besseren Signalübertragung wäre MIMO (Multiple Input Multiple Output). MIMO nutzt mehrere Antennen zur Datenübertragung und -empfang. Dadurch wird eine erhöhte Diversität des Signals und somit eine höhere Robustheit gegenüber Fehlern erreicht.\footnote{Vgl. Wikipedia. Online:\url{https://de.wikipedia.org/wiki/MIMO_(Nachrichtentechnik)} (abgerufen am 08.07.2025).}
 
-Die zweite Möglichkeit wäre es, denselben Information mehrfach zu senden (zeitlich oder räumlich). Empfänger kombiniert die Signale und stellt somit eine robuste Decodierung sicher.\footnote{Vgl. Diversity scheme. In: Wikipedia. Online:\url{https://en.wikipedia.org/wiki/Diversity_scheme?utm_source=chatgpt.com} (abgerufen am 08.07.2025)}
+Die zweite Möglichkeit wäre es, dieselbe Information mehrfach zu senden (zeitlich oder räumlich). Der Empfänger kombiniert die Signale und stellt somit eine robuste Decodierung sicher.\footnote{Vgl. Diversity scheme. In: Wikipedia. Online:\url{https://en.wikipedia.org/wiki/Diversity_scheme?utm_source=chatgpt.com} (abgerufen am 08.07.2025)}

@@ -2,7 +2,7 @@
 Im Versuch werden folgende Geräte verwendet:
 \begin{itemize}
     \item \textbf{Sendeplatine}: Die Sendeplatine wird verwendet, um die Trägerfrequenz zu erzeugen und modulierte Signale zu generieren.
-    \item \textbf{Empfängerplatine}: Die Empfängerplatine empfängt die modulierten Signale und demoduliert sie, um die ursprünglichen Daten wiederherzustellen. Sie wird an den FieldFox Network Analyzer N9918A angeschlossen, um die S-Parameter zu messen.
+    \item \textbf{Empfängerplatine}: Die Empfängerplatine empfängt die modulierten Signale und demoduliert sie, um die ursprünglichen Daten wiederherzustellen.
     \item \textbf{2× Antennen AN\_Master\_003\_2-SMA}: Antennen zum Aufbau einer Funkverbindung.
     \item \textbf{Rechner mit der Anwendung "`HTerm (HyperTerminal)"'}: Zur Steuerung der Sendeplatine und ggf. zum Empfang der Daten von der Empfängerplatine.
 \end{itemize}
@@ -11,6 +11,7 @@ Wie man später in der Versuchsbeschreibung erfahren wird, besteht die Messung a
 \begin{enumerate}
     \item Zuerst werden sowohl die Sendeplatine als auch die Empfängerplatine an einen PC mittels USB-Port angeschlossen, um beide zu aktivieren.
     \item Die Jumper J1 und J2 (P40 und P41) werden entsprechend gesteckt, damit eine der Platinen als Sender und die andere als Empfänger fungiert.
+    \item Zuerst wird ein Single-Tone verschickt um die Reichweite zu testen.
     \item Es wird mehrmals eine Bitfolge vom PC mittels Funkverbindung von einer Platine zur anderen gesendet. Dies wird in HTerm an beiden PCs durchgeführt.
     \item Zum Schluss wird auch ein Bild mehrmals vom Sender zum Empfänger geschickt, um dabei die Abstände und die Sendequalität zu prüfen.
 \end{enumerate}

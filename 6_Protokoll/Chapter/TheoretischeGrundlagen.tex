@@ -1,31 +1,31 @@
-\section{Analyse der Tranceiver-Platinen}
-Zu Verfügung steht eine Tranceiver-Platine. Ein Tranceiver ist eine Platine, die sowohl als Sender (Transmitter) als auch als Empfänger (Receiver) fungieren kann. Dafür ist diese Platine mit einem Transceiver-Chip ausgestattet, der Funktion teilweise abgeschaltet werden kann, sodass die Platine zu einem reinen Transmitter oder zu einem reinen Receiver wird.  
-Hierfür stehen zwei Jumper zur Verfügung, die auf der Tranceiver-Platine platziert sind. Diese Jumper können gesteckt oder abgezogen werden, um die Funktionalität der Platine zu ändern. Hierbei ist der Platinenbeschriftung zu entnehmen, dass der TX (Transmitter) nur dann funktioniert, wenn man sowohl J1 und J2 ausgesteckt hat (eine Eingangsspannung liegt dann an dem Transceiver-Chip auf beiden Teilmodulen an). Jedoch ist das tatsächlich nicht der Fall,
-wie es sich bei der Versuchsdurchführung herausstellt und lässt folgern, dass diese Beschriftung falsch ist.
+\section{Analyse der Transceiver-Platinen}
+Zur Verfügung steht eine Transceiver-Platine. Ein Transceiver ist eine Platine, die sowohl als Sender (Transmitter) als auch als Empfänger (Receiver) fungieren kann. Dafür ist diese Platine mit einem Transceiver-Chip ausgestattet, dessen Funktionen teilweise abgeschaltet werden können, sodass die Platine zu einem reinen Transmitter oder zu einem reinen Receiver wird.  
+Hierfür stehen zwei Jumper zur Verfügung, die auf der Transceiver-Platine platziert sind. Diese Jumper können gesteckt oder abgezogen werden, um die Funktionalität der Platine zu ändern. Hierbei ist der Platinenbeschriftung zu entnehmen, dass der TX (Transmitter) nur dann funktioniert, wenn man sowohl J1 als auch J2 ausgesteckt hat (eine Eingangsspannung liegt dann an dem Transceiver-Chip auf beiden Teilmodulen an). Jedoch ist das tatsächlich nicht der Fall,
+wie es sich bei der Versuchsdurchführung herausstellt, und lässt folgern, dass diese Beschriftung falsch ist.
 
-Die Jumpers sind auf der Abbildung \ref{fig:Tranceiver-Platine} zu sehen.
+Die Jumper sind in Abbildung \ref{fig:Tranceiver-Platine} zu sehen.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Pictures/Jumper.jpg}
-    \caption{Tranceiver-Platine mit Jumpern J1 und J2. Quelle: vgl. Litertaturverzeichnis \cite{SchaltplanPCBV4}: Schaltpläne der Platine V4}
+    \caption{Transceiver-Platine mit Jumpern J1 und J2. Quelle: vgl. Literaturverzeichnis \cite{SchaltplanPCBV4}: Schaltpläne der Platine V4}
     \label{fig:Tranceiver-Platine}
 \end{figure}
 \subsection{Funktion der Jumper}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Pictures/JumperSchaltung.png}
-    \caption{Jumper auf der Tranceiver-Platine}
+    \caption{Jumper auf der Transceiver-Platine}
     \label{fig:Jumper}
 \end{figure}
 \subsection{J1}
-Der Jumper J1 ist wie im Schaltplan zu sehen, der Schalter der den Oszilator enabled und disabled.
+Der Jumper J1 ist, wie im Schaltplan zu sehen, der Schalter, der den Oszillator aktiviert und deaktiviert.
 \subsection{J2}
-Der Jumper J2 ist wie im Schaltplan zu sehen, der Schalter für die Versorgungsspannung des Oszilators.
+Der Jumper J2 ist, wie im Schaltplan zu sehen, der Schalter für die Versorgungsspannung des Oszillators.
 
-Es ist auch wichtig zu beachten, dass ohne den Receiver der Transmitter nicht funktionieren kann. Das bedeutet, dass der Jumper J2 immer abgezogen sein muss, damit der Transmitter funktioniert. Dies ist auf die eingeschaften des zur Verfügung stehenden Transceiver-Chips zurückzuführen.
+Es ist auch wichtig zu beachten, dass ohne den Receiver der Transmitter nicht funktionieren kann. Das bedeutet, dass der Jumper J2 immer abgezogen sein muss, damit der Transmitter funktioniert. Dies ist auf die Eigenschaften des zur Verfügung stehenden Transceiver-Chips zurückzuführen.
 
 \subsection{Serielles Protokoll UART}
-Universal Asynchronous Receiver/Transmitter (UART) stellt ein serielles Protokoll dar, also einen Regelsatz für den Austausch von Daten zwischen zwei Geräten. Das Protokoll ist asynchron, was bedeutet, dass es kein gemeinsamer Taktsignal zwischen dem Sender und dem Empfänger gibt. Stattdessen müssen beide Seite auf dieselbe Bit- und Baudrate eingestellt
+Universal Asynchronous Receiver/Transmitter (UART) stellt ein serielles Protokoll dar, also einen Regelsatz für den Austausch von Daten zwischen zwei Geräten. Das Protokoll ist asynchron, was bedeutet, dass es kein gemeinsames Taktsignal zwischen dem Sender und dem Empfänger gibt. Stattdessen müssen beide Seiten auf dieselbe Bit- und Baudrate eingestellt sein.
 Zudem müssen die beiden Seiten dieselbe Rahmenstruktur und dieselben Parameter nutzen. Das UART-Protokoll ist simpel und ermöglicht die Signalübertragung in beide Richtungen über lediglich zwei Drähte zwischen Sender und Empfänger. Das Signal wird in einem vom Protokoll bestimmten Format gesendet.\footnote{Vgl. Rohde \& Schwarz: UART verstehen. Online: \url{https://www.rohde-schwarz.com/de/produkte/messtechnik/essentials-test-equipment/digital-oscilloscopes/uart-verstehen_254524.html} (abgerufen am 07.07.2025).} 
 
 Die Kommunikation über UART kann in verschiedenen Formaten, nämlich im:
@@ -51,7 +51,7 @@ Unmittelbar danach folgen die Datenbits, die das Nutzsignal übertragen. Die Dat
 Nach einer erfolgreichen Übertragung der Nutzdaten übergeht der Sender zurück in den Ruhezustand (HIGH-Pegel), um dem Empfänger zu signalisieren, dass die Übertragung abgeschlossen ist.
 In einigen Fällen kann es auch vorkommen, dass ein zweites (optionales) Stoppbit konfiguriert wird, um dem Empfänger Zeit für den nächsten Übertragungsrahmen zu gewähren. Dies wird jedoch in der Praxis selten umgesetzt.\footnote{Vgl. Rohde \& Schwarz: UART verstehen. Online: \url{https://www.rohde-schwarz.com/de/produkte/messtechnik/essentials-test-equipment/digital-oscilloscopes/uart-verstehen_254524.html} (abgerufen am 07.07.2025).}
 
-Zuletzt sollte man noch erwähnen, dass manchmal ein Paritätsbit zur Verwendung kommt. Dieser trägt zur Fehlererkennung bei, indem es die Anzahl der gesetzten Bits (1-Bits) in einem Byte überprüft. Es gibt zwei Arten von Paritätsbits: 
+Zuletzt sollte man noch erwähnen, dass manchmal ein Paritätsbit zur Verwendung kommt. Dieses trägt zur Fehlererkennung bei, indem es die Anzahl der gesetzten Bits (1-Bits) in einem Byte überprüft. Es gibt zwei Arten von Paritätsbits: 
 \begin{itemize}
     \item Gerade Parität: Hier wird das Paritätsbit so gesetzt, dass die Gesamtanzahl der 1-Bits im Byte gerade ist.
     \item Ungerade Parität: Hier wird das Paritätsbit so gesetzt, dass die Gesamtanzahl der 1-Bits im Byte ungerade ist.
@@ -64,13 +64,13 @@ Bei unserer tatsächlichen Schaltung liegt auch ein Standard-UART-Protokoll vor,
 \subsubsection{Betriebsarten von UART}
 Es gibt insgesamt drei Arten vom Betrieb des UART-Protokolls:
 \begin{enumerate}
-    \item \textbf{Simplex-Betrieb}: die Daten werden nur in eine Richtung gesendet.
-    \item \textbf{Halbduplex-Betrieb}: jede Seite sendet, aber nicht zur selben Zeit.
-    \item \textbf{Vollduplex-Betrieb}: beide Seiten können gleichzeitig senden.
+    \item \textbf{Simplex-Betrieb}: Die Daten werden nur in eine Richtung gesendet.
+    \item \textbf{Halbduplex-Betrieb}: Jede Seite sendet, aber nicht zur selben Zeit.
+    \item \textbf{Vollduplex-Betrieb}: Beide Seiten können gleichzeitig senden.
 \end{enumerate}
 
-Theoretisch wäre bei dem vorliegenden Versuchaufbau ein Vollduplex-Betrieb zwar möglich, jedoch ist das in der Praxis für die Anwendung nicht sinnvoll gewesen, weswegen das UART-Protokoll im Simplex-Betrieb ausgeführt wurde.
-Trotzdem muss man erwähnen, dass der Sender die Sendedaten aufgrund der Jumperkonfiguration auch die Daten selbst empfangen kann.
+Theoretisch wäre bei dem vorliegenden Versuchsaufbau ein Vollduplex-Betrieb zwar möglich, jedoch ist das in der Praxis für die Anwendung nicht sinnvoll gewesen, weswegen das UART-Protokoll im Simplex-Betrieb ausgeführt wurde.
+Trotzdem muss man erwähnen, dass der Sender aufgrund der Jumperkonfiguration auch die Daten selbst empfangen kann.
 
 \subsection{BER}
 Bit Error Rate (BER) oder auf Deutsch Bitfehlerrate ist eine Angabe, die die
@@ -87,10 +87,10 @@ Empfangen wurde aber:
 \begin{equation}
       10\textcolor{red}{0}1\textcolor{red}{0}0\textcolor{red}{1}1
 \end{equation}
-Es ist schnell zu erkennen, dass hier drei Bit Falsch empfangen  wurden.
+Es ist schnell zu erkennen, dass hier drei Bits falsch empfangen wurden.
 Die Bitfehlerrate beträgt in diesem Fall:
 \begin{equation}
-    BER = \frac{3}{8} = 0,375
+    BER = \frac{3}{8} = 0{,}375
 \end{equation}
 \subsubsection{Matlab}
 \begin{figure}[H]
@@ -99,63 +99,77 @@ Die Bitfehlerrate beträgt in diesem Fall:
     \caption{Senden/Empfangen}
     \label{fig:matlab_example}
 \end{figure}
-In diesem Code wird zuerst eine random zahl erzeugt die bis 255 geht.
-Um diese in Binärer form daszustellen werden 8Bit benötigt.
+In diesem Code wird zuerst eine Zufallszahl erzeugt, die bis 255 geht.
+Um diese in binärer Form darzustellen, werden 8 Bit benötigt.
 \\
-Nachdem die Daten gesendet wurden, werden sie vom empfänger und auch Sender eingelesen.
+Nachdem die Daten gesendet wurden, werden sie vom Empfänger und auch Sender eingelesen.
 Danach werden sie in die Variable rec\_A\_fb für den Sender selbst und rec\_B für den Empfänger gespeichert.
 \\
-Nun wird genauer betrachtet wie die Bitfehlerrate berrechnet wird:
+Nun wird genauer betrachtet, wie die Bitfehlerrate berechnet wird:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{Pictures/vergleich.png}
-    \caption{Bitfehlerrate berrechnung}
+    \caption{Bitfehlerrate-Berechnung}
     \label{fig:bitfehler}
 \end{figure}
-Wir iterrieren über jedes Bit also insgesamt acht mal.
-Die fehler anzahl werden in err\_cnt\_A\_fb und err\_cnt\_B gespeichert.
-Konnten gar keine Daten empfangen werden wird jeweilger Counter auf 8 hochgezählt.
-Der intressantere Part ist das vergleichen der gesendeten und empfangenen Daten.
-Stimmen diese nicht überein wird ebenfalls der error Counter hochgezählt.
-Zum Schluss wird der BER berrechnet und ausgegeben.
-Um die genauigkeit zu erhöhen wird das mehrfach wiederholt ebenso wird auch der Sender und Empfänger vertauscht.
-Das wurde hier der Übersichtshabler und symmetrie nicht genauer betrachtet.
+Wir iterieren über jedes Bit, also insgesamt acht Mal.
+Die Fehleranzahl wird in err\_cnt\_A\_fb und err\_cnt\_B gespeichert.
+Konnten gar keine Daten empfangen werden, wird der jeweilige Counter auf 8 hochgezählt.
+Der interessantere Part ist das Vergleichen der gesendeten und empfangenen Daten.
+Stimmen diese nicht überein, wird ebenfalls der Error-Counter hochgezählt.
+Zum Schluss wird die BER berechnet und ausgegeben.
+Um die Genauigkeit zu erhöhen, wird das mehrfach wiederholt, ebenso wird auch der Sender und Empfänger vertauscht.
+Das wurde hier der Übersichtlichkeit und Symmetrie halber nicht genauer betrachtet.
 
 
 
 
 \section{Pegelplanrechnung}
-Die Idee: Wir wollen schauen wann der abstand noch Reicht um die Daten zu empfangen.
-Das heißt am ender der empfänger Kette muss ein stark genuges Signal ankommen, damit der Komperator schalten kann.
-Damit könnnen wir von hinten nach vorne Rechnen, und herausfinden welche Leistung am empfänge anliegen muss,
-damit der Komperator schalten kann.
+Die Idee: Wir wollen schauen, wann der Abstand noch reicht, um die Daten zu empfangen.
+Das heißt, am Ende der Empfängerkette muss ein starkes genug Signal ankommen, damit der Komparator schalten kann.
+Damit können wir von hinten nach vorne rechnen und herausfinden, welche Leistung am Empfänger anliegen muss,
+damit der Komparator schalten kann.
 
-Aus Versuch fünf ist die Komperator Schwellspannung die bei etwa $V_{Schwell} = 0,822~V$ liegt bekannt.
+Aus Versuch fünf ist die Komparator-Schwellspannung, die bei etwa $V_{Schwell} = 0{,}822~\mathrm{V}$ liegt, bekannt.
 
-Als nächstes können wir mithilfe der Analogverstärker kennlinie bzw. der Übertragungsfunktion die Spannung am Kondensator C22 berechnen.
-Wenn wir ein Ausgangssignal von $V_{out} = 0,822~V$ annehmen, können wir die Eingangsspannung $V_{in}$ berechnen.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{Pictures/memeASCII.png}
-    \caption{Analogverstärker Kennlinie}
-    \label{fig:AnalogverstärkerKennlinie}
-\end{figure}
-Die Formel der Sensititvität des Analogverstärker lautet:
+Als Nächstes können wir mithilfe der Analogverstärker-Kennlinie bzw. der Übertragungsfunktion die Spannung am Kondensator C22 berechnen.
+Wenn wir ein Ausgangssignal von $U_{out} = 0{,}822~\mathrm{V}$ annehmen, können wir die Eingangsspannung $U_{in}$ berechnen.
+Die Übertragungsfunktion $\frac{U_{out}}{U_{in}}=\frac{U_{out}}{U_{C22}}$ lautet wie folgt (im linearen Bereich):
 \begin{equation}
-    V_\text{out} = k \cdot \sqrt{P_\text{in}} - V_\text{offset}
+    U_{out} = 7{,}36 \cdot U_{C22} -1{,}63~\mathrm{V}
+\end{equation}
+Umrechnen nach $U_{C22}$ ergibt sich:
+\begin{equation}
+    U_{C22} = \frac{U_{out} + 1{,}63~\mathrm{V}}{7{,}36} = \frac{0{,}822~\mathrm{V} + 1{,}63~\mathrm{V}}{7{,}36} = 0{,}333~\mathrm{V}
+\end{equation}
+
+Die Formel der Sensitivität des Analogverstärkers lautet:
+\begin{equation}
+    U_\text{C22} = k \cdot \sqrt{P_\text{in}} - U_\text{offset}
 \end{equation}
 Umgestellt nach $P_\text{in}$ ergibt sich:
 \begin{equation}
-    P_\text{in} = \left(\frac{V_\text{out} + V_\text{offset}}{k}\right)^2
+    P_\text{in} = \left(\frac{U_\text{C22} + U_\text{offset}}{k}\right)^2
 \end{equation}
-Mit den Empirisch bestimmten Werten:
+Mit den empirisch bestimmten Werten und dem vorher berechneten Wert für $U_{C22}$ ergibt sich:
 \begin{equation}
-    P_\text{in} = \left(\frac{xxxxxxxxxxxxxxxxxxxxxxx~V + 368,27~mV}{9,72~\frac{V}{\sqrt{mW}}}\right)^2
+    P_\text{min} = 10 \cdot \log\left(\left(\frac{0{,}333~\mathrm{V} + 0{,}36827~\mathrm{V}}{9{,}72~\frac{\mathrm{V}}{\sqrt{\mathrm{mW}}}}\right)^2\right) = -22{,}84~\mathrm{dBm}
 \end{equation}
-Somit wissen wir nun Welche Leistung am Eingang des Empfängers anliegen muss, damit ein gesendet Signal auch empfangen werden kann.
+Somit wissen wir nun, welche Leistung am Eingang des Empfängers anliegen muss, damit ein gesendetes Signal auch empfangen werden kann.
+Jetzt berechnen wir den Path-Loss, den wir maximal haben dürfen, um danach die Reichweite zu ermitteln.
+Die maximale Freiraumdämpfung (Path-Loss) wird mit der Formel:
 \begin{equation}
-    P_{TX} = P_{RX} + G_{Antenne} + G_{Antenne}
+    D_{Path} = P_{TXGemessen} + D_{Kabel} + G_{TXAntenna} + G_{RXAntenna} - P_{RXMin}
+\end{equation}
+\begin{equation}
+    D_{Path} = -7{,}7~\mathrm{dBm} + 0{,}45~\mathrm{dB} -0{,}51~\mathrm{dBi} -0{,}51~\mathrm{dBi} - (-22{,}84~\mathrm{dBm}) = 14{,}57~\mathrm{dB}
+\end{equation}
+\begin{equation}
+    D_{Path} = 20 \cdot \log\left(\frac{4 \pi d f}{c}\right)
+\end{equation}
+Umgestellt nach $d$ ergibt sich:
+\begin{equation}
+    d = \frac{c}{4 \pi f} \cdot 10^{\frac{D_{Path}}{20}}=0{,}102~\mathrm{m} 
 \end{equation}
 \subsection{Rekapitulation des Link-Budgets}
 \subsection{Rekapitulation der Sensitivität}

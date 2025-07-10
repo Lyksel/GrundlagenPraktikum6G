@@ -42,16 +42,16 @@ Für eine Verstärkerkette mit $n$ Verstärkern ergibt sich die Rauschzahl folge
     \item $F_i$: Die Rauschzahl des $i$-ten Verstärkers
     \item $G_i$: Die Verstärkung des $i$-ten Verstärkers
 \end{itemize}
-Es wird schnell ersichtlich, dass Verstärker am Anfang der Kette am meisten Einfluss auf die Gesamtrauschzahl haben.
+Es wird schnell ersichtlich, dass Verstärker am Anfang der Kette den meisten Einfluss auf die Gesamtrauschzahl haben.
 Deswegen sollten die Verstärker mit der höchsten Verstärkung immer am Anfang der Kette stehen. Andersherum sollten Bauteile mit Dämpfung am Ende der Kette stehen.
 \\
 Deshalb sollte ein Signal immer zuerst vorverstärkt werden, bevor die Frequenzkonversion durchgeführt wird.
 Würde das Signal zuerst gemischt und dann nachverstärkt werden, hätten wir im Vergleich ein deutlich höheres Rauschen,
 da der Verstärker im Vergleich zum Mischer eine höhere Verstärkung hat. Je nach Mischer kann dieser sogar auch dämpfend wirken.
 \section{Frequenz-Downkonversion} %Farhad
-Im Folgenden wird die Frequenz-Downkonversion des analogen Signals erklärt, das bereits vor dem Eingang in den Downconverter verstärkt wurde.
+Im Folgenden wird die Frequenz-Downkonversion des analogen Signals erklärt, das bereits vor dem Eingang in den Downkonverter verstärkt wurde.
 \subsection{Ablauf der Frequenz-Downkonversion in der Schaltung}
-In der Abbildung \ref{fig:downconverter} ist die Schaltung des Downconverters zu sehen.
+In Abbildung \ref{fig:downconverter} ist die Schaltung des Downkonverters zu sehen.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{Pictures/Downconverter.png}
@@ -60,7 +60,7 @@ In der Abbildung \ref{fig:downconverter} ist die Schaltung des Downconverters zu
 \end{figure}
 Ein Downkonverter stellt einen einfachen Abwärtsmischer dar, der dazu dient, ein hochfrequentes Eingangssignal in ein niederfrequentes Ausgangssignal umzuwandeln. 
 
-Zuerst gelangt das hochfrequente Signal in den Transistor Q21 (BFR181W), der in diesem Fall nicht als Verstärker, sondern als Diode betrieben wird, da die Basis und der Kollektor zusammen verbunden sind. Somit wird effektiv nur die Basis-Emitter-Strecke des Transistors benutzt. Der Transistor ist ein \textbf{nichtlineares} Bauelement.
+Zuerst gelangt das hochfrequente Signal in den Transistor Q21 (BFR181W), der in diesem Fall nicht als Verstärker, sondern als Diode betrieben wird, da Basis und Kollektor miteinander verbunden sind. Somit wird effektiv nur die Basis-Emitter-Strecke des Transistors benutzt. Der Transistor ist ein \textbf{nichtlineares} Bauelement.
 Ein nichtlineares Bauelement wird zum Mischvorgang in diesem Zusammenhang benötigt, da es die Amplitudendemodulation des Signals ermöglicht. 
 
 An den Eingang des Mischers, also des Transistors Q21, werden normalerweise zwei Signale angelegt: das eigentliche \ac{RF}-Signal, welches in diesem Fall bei 1,25 GHz liegt, und ein \ac{LO}-Signal.
@@ -71,7 +71,7 @@ Nach der erfolgreichen Abwärtsmischung des Signals kommt es zu einer Signalfilt
 \begin{equation}
     f_{c, \text{rechnerisch}} = \frac{1}{2\pi R C}
 \end{equation}
-Dies lässt sich jedoch durch Vereinfachungen im Schaltplan oder den Fakt, dass hier ein idealer Tiefpassfilter angenommen wird, erklären. Außerdem ist es bei hohen Frequenzen zu beachten, dass die Leiterbahnen in der Schaltung parasitäre Effekte aufweisen (in Form von Induktivitäten und Kapazitäten), die ebenfalls die Grenzfrequenz beeinflussen können. Diese wurden in der oben ausgeführten Berechnung nicht berücksichtigt.
+Dies lässt sich jedoch durch Vereinfachungen im Schaltplan oder die Tatsache, dass hier ein idealer Tiefpassfilter angenommen wird, erklären. Außerdem ist es bei hohen Frequenzen zu beachten, dass die Leiterbahnen in der Schaltung parasitäre Effekte aufweisen (in Form von Induktivitäten und Kapazitäten), die ebenfalls die Grenzfrequenz beeinflussen können. Diese wurden in der oben ausgeführten Berechnung nicht berücksichtigt.
 
 Jedoch liegt in diesem Fall ein passiver Abwärtsmischer vor, da hier kein \ac{LO} zur Anwendung kommt. Trotzdem funktioniert die Abwärtsmischung des Signals, da der Transistor Q21, wie bereits erklärt, ein nichtlineares Bauelement ist.
 
@@ -108,8 +108,7 @@ Die eingesetzten Widerstandswerte ergeben den Übertragungsfaktor:
 \begin{equation}
     V = \frac{U_{out}}{U_{in}} = 1 + \frac{6,8\,\mathrm{k}\Omega}{(11\,\mathrm{k}\Omega \parallel 1,1\,\mathrm{k}\Omega)} = 7,8
 \end{equation}
-Für den weiteren Verlauf Versuches wird die Ausgangsspannung in Abhängigkeit der der Eingangsspannung
-benötigt. Diese lautet:
+Für den weiteren Verlauf des Versuches wird die Ausgangsspannung in Abhängigkeit der Eingangsspannung benötigt. Diese lautet:
 
 \begin{equation}
     U_{\text{out}}(U_{\text{in}}) = V \cdot U_{\text{in}} - U_{\text{offset}}
@@ -125,16 +124,17 @@ mit $U_{\text{offset, Quelle}}$= 3,3V erhält man durch Einsetzten der Widerstan
 \begin{equation}
     U_{\text{offset}} = 2{,}04\,\mathrm{V}
 \end{equation}
-Somit erhält man für die Ausgangsspannung in Abhängigkeit der Eingangsspannung:
+Das ergibt für die Ausgangsspannung in Abhängigkeit der Eingangsspannung:
 \begin{equation}
     U_{\text{out}}(U_{\text{in}}) = 7{,}8 \cdot U_{\text{in}} - 2{,}04\,\mathrm{V}
 \end{equation}
 
-
+\clearpage
 
 
 
 R29 ist wichtig zum einen für die DC-Arbeitspunkteinstellung des OPs, wenn kein Signal angelegt ist, da er dort mit R30 einen Spannungsteiler bildet.
+Ebenso dient er zur Einstellung des Spannungsoffsets des OPs.
 Wird ein Signal angelegt, so ist R29 vor allem wichtig für das Einstellen der Verstärkung.
 
 

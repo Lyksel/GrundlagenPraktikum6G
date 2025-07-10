@@ -29,8 +29,8 @@ Die DC-Spannung am Kondensator C22 wird jetzt auf der Empfängerplatine gemessen
     \label{fig:versuchsaufbau2}
 \end{figure}
 Um die Spannung am Kondensator C22 in Abhängigkeit der Eingangsleistung zu bestimmen, benötigen wir die Sendeleistung des Senders,
-aus Abbildung \ref{fig:sender} ist die Leistung bei 1.25 GHz bei etwa $-6,7~dBm$.Nach Versuch 1 ist die Dämpfung des Koaxialkabels
-bei etwas $0,45~dB$, daraus ergibt sich eine Sendeleistung von $-6,25,~dBm$.
+aus Abbildung \ref{fig:sender} ist die Leistung bei 1.25 GHz bei etwa $-6,7~dBm$. Nach Versuch 1 ist die Dämpfung des Koaxialkabels
+bei etwas $0,45~dB$, daraus ergibt sich eine Sendeleistung von $-6,25~dBm$.
 Die Spannung am Kondensator C22 wird mit einem Multimeter gemessen. Die Ergebnisse in Abhängigkeit der Dämpfung und Empfangsleistung sind in Tabelle \ref{tab:spannung} zu sehen.
 \begin{table}[H]
     \centering
@@ -53,20 +53,20 @@ Wie man der Tabelle \ref{tab:spannung} entnehmen kann, fällt die Spannung am Ko
 
 \subsection{Übertragungsfunktion des Empfängers (Ausgangsspannung/Eingangsleistung)}
 Insgesamt stellt es sich heraus, dass diese Schaltung wie ein HF-Detektor (Schwellenwertdetektor) funktioniert. Das eingehende Hochfrequenzsignal wird gleichgerichtet und die DC-Spannung am Kondensator C22 ist proportional zur Leistung des eingehenden Signals,
-also \( P \propto V_\text{in}^2 \), wobei \( V_\text{in} \) die Eingangsspannung ist. Die Beziehung zwischen der Spannung am Kondensator und der Leistung des eingehenden Signals ist quadratisch. Das liegt daran, dass das Eingangssignal des Empfängers hoch genug dafür ist, dass er insgesamt im linearen Bereich arbeitet. 
+also \( P \propto U_\text{in}^2 \), wobei \( U_\text{in} \) die Eingangsspannung ist. Die Beziehung zwischen der Spannung am Kondensator und der Leistung des eingehenden Signals ist quadratisch. Das liegt daran, dass das Eingangssignal des Empfängers hoch genug dafür ist, dass er insgesamt im linearen Bereich arbeitet.
 
 Hier sind jedoch einige Effekte zu beachten, die die Übertragungsfunktion beeinflussen können. Erstens fließt aufgrund der Arbeitspunkteinstellung des Transistors Q21 ein Strom durch den Widerstand R26. Die entsprechende Spannung \textbf{$V_\text{offset}$} beträgt ungefähr $368,27~mV$ und muss aus der Beziehung herausgerechnet werden, um die Übertragungsfunktion zu erhalten. Außerdem ist eine den Bauteilen der Schaltung charakteristische Konstante \( k \) zu berücksichtigen, die die Übertragungsfunktion beeinflusst. Diese Konstante kann experimentell bestimmt werden.
 
 Die Übertragungsfunktion des Empfängers kann also wie folgt dargestellt werden:
 \begin{equation}
-    V_\text{out} = k \cdot \sqrt{P_\text{in}} - V_\text{offset}
+    U_\text{out} = k \cdot \sqrt{P_\text{in}} - U_\text{offset}
     \label{eq:uebertragungsfunktion}
 \end{equation}
-wobei \( V_\text{offset} \) die Spannung am Widerstand R26 ist, die den Arbeitspunkt des Transistors Q21 festlegt. 
+wobei \( U_\text{offset} \) die Spannung am Widerstand R26 ist, die den Arbeitspunkt des Transistors Q21 festlegt.
 
 Hier möchten wir den Wert von $k$ für unterschiedliche Eingangsleistungen und dadurch auch Ausgangsspannungen ausrechnen. Dafür stellen wir die Gleichung \ref{eq:uebertragungsfunktion} nach $k$ um. Es ergibt sich die folgende Gleichung:
 \begin{equation}
-    k = \frac{V_\text{out} + V_\text{offset}}{\sqrt{P_\text{in}}}
+    k = \frac{U_\text{out} + U_\text{offset}}{\sqrt{P_\text{in}}}
     \label{eq:k}
 \end{equation}
 
@@ -86,7 +86,7 @@ Setzt man die in der Tabelle \ref{tab:spannung} berechneten werte in die Gleichu
         26 dB + Kabel  & 0,0005 & 368,27 & 32,94\\ \hline
     \end{tabular}
     \caption{Messwerte der Spannung am Kondensator C22}
-    \label{tab:spannung}
+    \label{tab:spannung2}
 \end{table}
 
 Rechnet man den das arithmetische Mittel von $k$ aus, ergibt sich der folgende Wert:
@@ -157,14 +157,15 @@ leicht darunter aufgrund von Verlusten und den vorher genannten Faktoren.
 
 Diese Messwerte sind jedoch in dieser Form noch nicht weiter verwertbar für den weiteren Verlauf 
 des Praktikums. Wenn wir die über die Diode Q21 abfallende Spannung $U_{\text{D}}$ von der gemessenen
-Spannung abziehen, erhalten wir die Spannung die am Eingang unseres Operationsverstärkers anliegt.
-Diese erhält man wenn man die Spannung des DC-Arbeitspunkts, wenn kein Signal anliegt, in die Formel zur Ausgangsspannung
+Spannung abziehen, erhalten wir die Spannung, die am Eingang unseres Operationsverstärkers anliegt.
+Diese erhält man, wenn man die Spannung des DC-Arbeitspunkts, wenn kein Signal anliegt, in die Formel zur Ausgangsspannung
 in Abhängigkeit von der Eingangsspannung einsetzt.
 Die Ausgangsspannung $U_\text{out}$ ohne Signal berechnet sich zu:
-\[
-U_\text{out,0} = 7{,}8 \cdot 0{,}365\,\text{V} - 2{,}04\,\text{V} = 0{,}807\]
-Dies liegt nahe an der in der Aufgabenstellung angenommenen Dioden-Flussspannung $U_\text{D'} = 0,8V$. \\
-Nun ziehen wir von der gemessenen Spannung $U_\text{out}$ die Spannung $U_\text{D}$ ab, um die Spannung am 
+\begin{equation}
+U_\text{out,0} = 7{,}8 \cdot 0{,}365\,\text{V} - 2{,}04\,\text{V} = 0{,}807\,\text{V}
+\end{equation}
+Dies liegt nahe an der in der Aufgabenstellung angenommenen Dioden-Flussspannung $U_\text{D'} = 0{,}8\,\text{V}$. \\
+Nun ziehen wir von der gemessenen Spannung $U_\text{in}$ die Spannung $U_\text{D}$ ab, um die Spannung am 
 Eingang des Operationsverstärkers zu erhalten. Diese entspricht dem Spannungsabfall $U_\text{C22}$. Hierbei
 betrachten wir nur die relevanten Messwerte mit Verstärkung. 
 
@@ -184,18 +185,18 @@ $U_{\text{in}}$ (V) & $U_{\text{out}}$ (V) & $U_\text{C22}$ (V) \\
 1{,}4 & 2{,}741 & 0{,}593 \\
 \hline
 \end{tabular}
-\caption{Messwerte von $U_{\text{in}}$, $U_{\text{out}}$ und die am Opertaionsverstärker anliegende Spannung $U_\text{C22}$ mit Verstärkung}
+\caption{Messwerte von $U_{\text{in}}$, $U_{\text{out}}$ und die am Operationsverstärker anliegende Spannung $U_\text{C22}$ mit Verstärkung}
 \end{table}
 \clearpage
-Abbildung 4.5 stellt die Spannung am Operationsverstärker in Abhängigkeit der Aussgangsspannung dar.
+Abbildung 4.5 stellt die Spannung am Operationsverstärker in Abhängigkeit der Ausgangsspannung dar.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{Pictures/uc22.png}
     \caption{Operationverstärker anliegende Spannung $U_{\text{C22}}$ in Abhängigkeit der Ausgangsspannung $U_{\text{out}}$ }
     \label{fig:uc22}
 \end{figure}
-Bei der Approximation der Arbeitsgeraden erhält man für eine Spannung vor dem Operrationsverstärker von 0V eine 
-Spannung von $U_{C22,0}=-1,63V$. Das entspricht nicht exakt unserem berechneten Offsetspannung \( V_\text{offset} \). 
+Bei der Approximation der Arbeitsgeraden erhält man für eine Spannung vor dem Operationsverstärker von 0V eine
+Spannung von $U_{C22,0}=-1,63V$. Das entspricht nicht exakt unserem berechneten Offsetspannung \( U_\text{offset} \).
 Dies kann ebenfall auf verschiedene Faktoren wie Bauteiltoleranzen, Messungenauigkeiten und Verluste zurückzuführen sein.
 
 

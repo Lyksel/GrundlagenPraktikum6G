@@ -138,7 +138,7 @@ $V_{\text{in}}$ (V) & $V_{\text{out}}$ (mV) \\
 \end{tabular}
 \caption{Messwerte von $V_{\text{in}}$ und $V_{\text{out}}$ mit Verstärkung}
 \end{table}
-\clearpage
+
 In Abbildung 4.4 ist die Transferfunktion $V_{out}/V_{in}$ dargestellt. Die geplotete Transferfunktion wurde
 unter Berücksichtigung aller Messwerte erstellt.\\
 
@@ -154,6 +154,50 @@ Dies kann auf verschiedene Faktoren wie Bauteiltoleranzen, Messungenauigkeiten u
 \\
 Bei der kaputten Platine spiegelt sich die fehlende Verstärkung schön wider, da der Übertragungsfaktor etwa bei eins liegt,
 leicht darunter aufgrund von Verlusten und den vorher genannten Faktoren.
+
+Diese Messwerte sind jedoch in dieser Form noch nicht weiter verwertbar für den weiteren Verlauf 
+des Praktikums. Wenn wir die über die Diode Q21 abfallende Spannung $U_{\text{D}}$ von der gemessenen
+Spannung abziehen, erhalten wir die Spannung die am Eingang unseres Operationsverstärkers anliegt.
+Diese erhält man wenn man die Spannung des DC-Arbeitspunkts, wenn kein Signal anliegt, in die Formel zur Ausgangsspannung
+in Abhängigkeit von der Eingangsspannung einsetzt.
+Die Ausgangsspannung $U_\text{out}$ ohne Signal berechnet sich zu:
+\[
+U_\text{out,0} = 7{,}8 \cdot 0{,}365\,\text{V} - 2{,}04\,\text{V} = 0{,}807\]
+Dies liegt nahe an der in der Aufgabenstellung angenommenen Dioden-Flussspannung $U_\text{D'} = 0,8V$. \\
+Nun ziehen wir von der gemessenen Spannung $U_\text{out}$ die Spannung $U_\text{D}$ ab, um die Spannung am 
+Eingang des Operationsverstärkers zu erhalten. Diese entspricht dem Spannungsabfall $U_\text{C22}$. Hierbei
+betrachten wir nur die relevanten Messwerte mit Verstärkung. 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+$U_{\text{in}}$ (V) & $U_{\text{out}}$ (V) & $U_\text{C22}$ (V) \\
+\hline
+0{,}9 & 0{,}039 & 0{,}093 \\
+1{,}0 & 0{,}047 & 0{,}193 \\
+1{,}03 & 0{,}077 & 0{,}223 \\
+1{,}06 & 0{,}242 & 0{,}253 \\
+1{,}1 & 0{,}531 & 0{,}293 \\
+1{,}2 & 1{,}258 & 0{,}393 \\
+1{,}3 & 1{,}994 & 0{,}493 \\
+1{,}4 & 2{,}741 & 0{,}593 \\
+\hline
+\end{tabular}
+\caption{Messwerte von $U_{\text{in}}$, $U_{\text{out}}$ und die am Opertaionsverstärker anliegende Spannung $U_\text{C22}$ mit Verstärkung}
+\end{table}
+\clearpage
+Abbildung 4.5 stellt die Spannung am Operationsverstärker in Abhängigkeit der Aussgangsspannung dar.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Pictures/uc22.png}
+    \caption{Operationverstärker anliegende Spannung $U_{\text{C22}}$ in Abhängigkeit der Ausgangsspannung $U_{\text{out}}$ }
+    \label{fig:uc22}
+\end{figure}
+Bei der Approximation der Arbeitsgeraden erhält man für eine Spannung vor dem Operrationsverstärker von 0V eine 
+Spannung von $U_{C22,0}=-1,63V$. Das entspricht nicht exakt unserem berechneten Offsetspannung \( V_\text{offset} \). 
+Dies kann ebenfall auf verschiedene Faktoren wie Bauteiltoleranzen, Messungenauigkeiten und Verluste zurückzuführen sein.
+
 
 \section{Komparatorschaltung} %Erik
 Zuletzt wird überprüft, ob der Komparator beim Anliegen des HF-Tones durchschaltet und somit die Übertragung der digitalen Daten funktioniert.
